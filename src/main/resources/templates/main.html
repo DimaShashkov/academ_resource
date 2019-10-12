@@ -5,6 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Soon there will be the ' + ${name} + '!'" />
+<form action="/page2" method="post"/>
+<div><label>Input some text here: <input type="text" name="name"></label></div>
+<div><input type="submit" value="Enter"/></div>
+<p th:text="${name}" />
 </body>
 </html>
