@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GreetingController {
 
-	@GetMapping
+	@GetMapping("/")
 	public String greeting(@RequestParam(name="name", required=false, defaultValue="default") String name,
 						   Model model) {
 		if(name.equals("default")) {
@@ -19,7 +19,7 @@ public class GreetingController {
 		return "main";
 	}
 
-	@PostMapping
+	@PostMapping("/")
 	public String postGreeting(@RequestParam(name="name", required=false, defaultValue="default") String name,
 							   Model model) {
 		if(name.equals("default")) {
