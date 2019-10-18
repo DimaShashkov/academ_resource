@@ -9,7 +9,7 @@
 
 <div id="app-5">
     <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">Перевернуть сообщение</button>
+    <button v-on:click="reverseMessage">Reverse message</button>
 </div>
 
 <p> </p>
@@ -17,10 +17,10 @@
 <p> </p>
 <p> </p>
 <p> </p>
-<form action="/" method="post"/>
-<div><input type="test" name="name"></div>
+<form method="post"/>
+<div><input type="text" name="name"></div>
 <div><input type="submit" value="Enter"/></div>
-<p th:text="${name}" />
+${name}
 
 
 
@@ -31,7 +31,7 @@
 var app5 = new Vue({
 el: '#app-5',
 data: {
-message: 'Привет, Vue.js!'
+message: 'Hello, Vue.js!'
 },
 methods: {
 reverseMessage: function () {
