@@ -1,0 +1,39 @@
+body {
+  text-align: center;
+  background: url('../img/registration.jpg');
+  background-size: cover;
+  font-family: 'Roboto', 'Helvetica Nue', cursive;
+  font-size: 110%;
+  color: #F5F5DC;
+}
+a.avatar {
+  text-align: left;
+  width: 300px;
+}
+
+table {
+  background: navy;
+}
+td {
+  background: #3EB489;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: auto;
+  border: 0.5px solid #333;
+  background: #B0E0E6;
+}
+
+input[type="password"] {
+  color: hsla(100, 100%, 40%, 0.7);
+}
+
+input[type="text"] {
+  color: hsla(230, 230%, 40%, 0.7);
+}
+.saveButton:hover {
+  font-size: 110%;
+  background: green;
+}

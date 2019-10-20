@@ -2,9 +2,118 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Recommendation</title>
+    <title>Tasks</title>
+    <link rel="stylesheet" href="css/tasks.css">
 </head>
 <body>
-
+<table cellpadding="4" cellspacing="1" class="header" border="1" align="center">
+  <tr>
+    <td><a href="http://localhost:8080/schedule" target="">Schedule</a></td>
+    <td><a href="http://localhost:8080/calendar" target="">Calendar</a></td>
+    <td><a href="http://localhost:8080/tasks" target="">Tasks</a></td>
+  </tr>
+</table>
+<br>
+<br>
+  <table cellpadding="4" cellspacing="1" border="1" align='center' >
+          <caption>Tasks</caption>
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Data</th>
+        <th>Subject</th>
+        <th>Text</th>
+        <th>File</th>
+        <th>Is done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>27.10.2019</td>
+        <td>Maths</td>
+        <td>bring a notebook</td>
+        <td> <a href="https://drive.google.com/file/d/0B_P1E4HWyAiIODBCOGhrdWpMN1k/view" target="_blank">File</a> </td>
+        <td><input type="checkbox" name="isDone">is done</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<a href="#addJob">Add job</a>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<a name="addJob"></a>
+<table cellpadding="4" cellspacing="1" border="1" align='center'>
+  <tr>
+    <th>Data</th>
+    <th>Subject</th>
+    <th>Text</th>
+    <th>File</th>
+  </tr>
+  <tr>
+    <td> <input type="date" name="newDate" value="newDate"></td>
+    <td><select class="select" name="select">
+      <option selected value="s1">Maths</option>
+      <option value="s2">SQL</option>
+      <option value="s3">PE</option>
+    </select></td>
+    <td> <input type="text" name="newText"></td>
+    <td> <input type="file" name="newFile" value="newFile"></td>
+  </tr>
+  <tr>
+    <td colspan="4"><button class="addButton" type="button" name="addJob">Add job</button></td>
+  </tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>

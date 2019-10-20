@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a624aec5-dfb8-4e06-874a-d1c95e52e813" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/TasksController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/registration.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/schedule.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/tasks.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/img/registration.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addingJobs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/schedule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tasks.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,15 +60,15 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main" />
-      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\java\webapp\WEB-INF\viewer" />
-      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\java\webapp" />
-      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\web\WEB-INF" />
-      <recent name="F:\programming\Netcracker\Academ Resource\src\main\resources\templates\js" />
+      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\webapp\WEB-INF\views" />
+      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\webapp\WEB-INF" />
+      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\webapp" />
+      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\webapp\WEB-INF\resources" />
+      <recent name="F:\programming\Netcracker\Academ Resource\academ_resource\src\main\webapp\resources\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -101,6 +114,13 @@
       <workItem from="1571396522734" duration="529000" />
       <workItem from="1571408893175" duration="9191000" />
       <workItem from="1571429205608" duration="1889000" />
+      <workItem from="1571466445301" duration="384000" />
+      <workItem from="1571478332194" duration="8000" />
+      <workItem from="1571480053421" duration="84000" />
+      <workItem from="1571482960174" duration="20000" />
+      <workItem from="1571513946382" duration="41000" />
+      <workItem from="1571586484818" duration="5793000" />
+      <workItem from="1571603171645" duration="515000" />
     </task>
     <servers />
   </component>

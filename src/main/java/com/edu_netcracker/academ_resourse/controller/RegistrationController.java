@@ -22,13 +22,13 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String postRegistration(User user, Model model) {
-        if(user.getPassword().equals("") || user.getUsername().equals("")) {
+        if(user.getPassword().equals("") || user.getEmail().equals("")) {
             model.addAttribute("message", "Incorrect data");
             logger.info("incorrect data registration has been added into model");
             return "registration";
         }
 
-        String userData = String.format("username: %s | pass: %s", user.getUsername(), user.getPassword());
+        String userData = String.format("email: %s | password: %s", user.getEmail(), user.getPassword());
         model.addAttribute("message", "User successfully registered! " + userData);
         logger.info("the data has been added into model");
         return "registration";

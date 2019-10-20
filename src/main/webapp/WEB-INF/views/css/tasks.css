@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  background: url('../img/registration.jpg');
+  background-size: cover;
+  font-family: 'Roboto', 'Helvetica Nue', cursive;
+  font-size: 110%;
+  color: #F5F5DC;
+}
+
+table {
+  background: navy;
+}
+td {
+  background: #3EB489;
+}
+.addButton:hover {
+  font-size: 110%;
+  background: green;
+}
+.header {
+  width: 100%;
+  position: fixed;
+  top: auto;
+  border: 0.5px solid #333;
+  background: #B0E0E6;
+}

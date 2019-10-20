@@ -1,0 +1,54 @@
+body {
+  text-align: center;
+  background: url('../img/registration.jpg');
+  background-size: cover;
+  font-family: 'Roboto', 'Helvetica Nue', cursive;
+  font-size: 110%;
+  color: #F5F5DC;
+}
+
+strong.msg:hover {
+  color: red;
+  font-size: 110%;
+}
+
+.socialNetworks {
+  color: black;
+text-decoration: none;
+background: hsla(150, 60%, 100%, 0.5);
+}
+
+div.dataField {
+  font-family: 'Roboto', 'Helvetica Nue', monospace;
+  text-decoration: underline;
+}
+
+input[type="password"] {
+  color: hsla(100, 100%, 40%, 0.7);
+}
+
+input[type="text"] {
+  color: hsla(230, 230%, 40%, 0.7);
+}
+
+input[type=submit]  {
+  text-decoration: none;
+  color: #000000;
+
+
+}
+
+div.dataButton  {
+text-decoration: none;
+  color: #000000;
+
+
+}
+
+div.dataButton :hover {
+    font-size: 110%;
+    background: green;
+}
+div.dataButton :active {
+  background: white;
+}

@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="css/registration.css" type="text/css">
     <meta charset="UTF-8">
     <title>Registration</title>
 </head>
-${message}
-<form method="post"/>
-<div><label>User name: <input type="text" name="username"/> </label></div>
-<div><label>Password: <input type="password" name="password"/> </label></div>
-<div><input type="submit" value="Sing up"></div>
+<strong class="msg"> ${message} </strong>
+<table class="socialNetworks" align='right' border="0">
+  <tr>
+    <th>Login with</th>
+  </tr>
+  <tr>
+    <td><a href="http://vk.com/" target="_blank">Вконтакте</a></td>
+  </tr>
+</table>
+<hr>
 
+<br>
+<table border="0" align='center'>
+<form method="post">
+<tr>
+  <td><div class="dataField">E-mail:<br>
+   <input type="email" name="email" required/></div> </td>
+</tr>
+<tr>
+   <td><div class="dataField">Password:<br>
+   <input type="password" name="password" required/></div> <td>
+</tr>
+<tr>
+   <td><div class="dataField">Repeat password:<br>
+   <input type="password" name="password2"/></div> <td>
+</tr>
+<tr>
+   <td><div class="dataField">University:<br>
+   <input type="text" name="university" required/></div> <td>
+</tr>
+<tr>
+   <td><div class="dataField">Group:<br>
+   <input type="text" name="group" required/></div> <td>
+</tr>
+<tr>
+   <td><div class="dataButton"><input type="submit" value="Sing up"></div></td>
+</tr>
+<br>
+<tr>
+   <td><div class="dataButton"><input type="reset"></div></td>
+</tr>
+</form>
+</table>
 
 </body>
 </html>
