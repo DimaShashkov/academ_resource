@@ -2,9 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Scedule</title>
+    <link rel="stylesheet" href="css/schedule.css">
 </head>
 <body>
+  <table cellpadding="4" cellspacing="1" class="header" border="1" align="center">
+    <tr>
+      <td><a href="http://localhost:8080/schedule" target="">Schedule</a></td>
+      <td><a href="http://localhost:8080/calendar" target="">Calendar</a></td>
+      <td><a href="http://localhost:8080/tasks" target="">Tasks</a></td>
+    </tr>
+  </table>
+  <br>
+  <br>
+   <a class="avatar"><img src="https://yt3.ggpht.com/a-/AAuE7mB-x4uFugC7DuM6ph-jphPsaE0nnZdUI-QUTg=s800-mo-c-c0xffffffff-rj-k-no" alt="avatar" width="200"
+    vspace="5" hspace="5"> </a>
+  <form method="post">
+  <table class="persData" cellpadding="4" cellspacing="1" border="1" align='center' >
+    <caption>Personal data</caption>
+    <tr>
+      <td>Name:<br>
+        {{name}}</td>
+    </tr>
+    <tr>
+      <td>Last name:<br>
+        {{lsstName}}</td>
+    </tr>
+    <tr>
+      <td>E-mail:<br>
+        {{email}}</td>
+    </tr>
+    <tr>
+      <td>University:<br>
+        {{university}}</td>
+    </tr>
+    <tr>
+      <td>group:<br>
+        {{group}}</td>
+    </tr>
+    <tr>
+      <td>Role:<br>
+        {{role}}</td>
+    </tr>
+    <tr>
+      <td><hr> </td>
+    </tr>
+    <tr>
+      <td>Old password:<br>
+        <input type="password" name="password"></td>
+    </tr>
+    <tr>
+      <td>New passwoed:<br>
+        <input type="password" name="password2"></td>
+    </tr>
+  </table>
 
+  <input class="saveButton" type="submit" value="Save change">
+    </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </body>
 </html>
