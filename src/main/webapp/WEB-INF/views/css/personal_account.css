@@ -6,6 +6,10 @@ body {
   font-size: 110%;
   color: #F5F5DC;
 }
+a.avatar {
+  text-align: left;
+  width: 300px;
+}
 
 table {
   background: navy;
@@ -13,10 +17,7 @@ table {
 td {
   background: #3EB489;
 }
-.addButton:hover {
-  font-size: 110%;
-  background: green;
-}
+
 .header {
   width: 100%;
   position: fixed;
@@ -31,7 +32,11 @@ li.jshover ul {
 .header li:hover, .header li.jshover {
   background: #424242;
 }
+input[type="password"] {
+  color: hsla(100, 100%, 40%, 0.7);
+}
 
-input[type="text"] {
-  color: hsla(230, 230%, 40%, 0.7);
+.saveButton:hover {
+  font-size: 110%;
+  background: green;
 }

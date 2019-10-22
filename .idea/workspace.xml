@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a624aec5-dfb8-4e06-874a-d1c95e52e813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/TasksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/registration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/schedule.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/tasks.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/img/registration.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/personal_account.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/personal_account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addingJobs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/PersonalAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/PersonalAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/schedule.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/schedule.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/tasks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/personalAccount.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/schedule.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tasks.html" afterDir="false" />
     </list>
@@ -120,7 +115,10 @@
       <workItem from="1571482960174" duration="20000" />
       <workItem from="1571513946382" duration="41000" />
       <workItem from="1571586484818" duration="5793000" />
-      <workItem from="1571603171645" duration="515000" />
+      <workItem from="1571603171645" duration="802000" />
+      <workItem from="1571665486898" duration="749000" />
+      <workItem from="1571671490562" duration="889000" />
+      <workItem from="1571716842552" duration="258000" />
     </task>
     <servers />
   </component>

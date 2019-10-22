@@ -6,67 +6,137 @@
     <link rel="stylesheet" href="css/schedule.css">
 </head>
 <body>
-  <table cellpadding="4" cellspacing="1" class="header" border="1" align="center">
+  <table class="header" cellpadding="4" cellspacing="1" border="1" align="center">
     <tr>
-      <td><a href="http://localhost:8080/schedule" target="">Schedule</a></td>
-      <td><a href="http://localhost:8080/calendar" target="">Calendar</a></td>
-      <td><a href="http://localhost:8080/tasks" target="">Tasks</a></td>
+      <td><ul>
+        <li> <a href="#"></a>Schedule</li>
+        <li> <a href="#"></a>Tomorrow's schedule</li>
+        <li> <a href="http://localhost:8080/schedule" target="">All schedule</a></li>
+      </ul></td>
+      <td><ul>
+        <li><a href="http://localhost:8080/calendar" target="">Calendar</a></li>
+      </ul> </td>
+      <td><ul>
+        <li><a href="http://localhost:8080/tasks" target="">Tasks</a></li>
+      </ul> </td>
     </tr>
   </table>
   <br>
   <br>
-   <a class="avatar"><img src="https://yt3.ggpht.com/a-/AAuE7mB-x4uFugC7DuM6ph-jphPsaE0nnZdUI-QUTg=s800-mo-c-c0xffffffff-rj-k-no" alt="avatar" width="200"
-    vspace="5" hspace="5"> </a>
-  <form method="post">
-  <table class="persData" cellpadding="4" cellspacing="1" border="1" align='center' >
-    <caption>Personal data</caption>
-    <tr>
-      <td>Name:<br>
-        {{name}}</td>
-    </tr>
-    <tr>
-      <td>Last name:<br>
-        {{lsstName}}</td>
-    </tr>
-    <tr>
-      <td>E-mail:<br>
-        {{email}}</td>
-    </tr>
-    <tr>
-      <td>University:<br>
-        {{university}}</td>
-    </tr>
-    <tr>
-      <td>group:<br>
-        {{group}}</td>
-    </tr>
-    <tr>
-      <td>Role:<br>
-        {{role}}</td>
-    </tr>
-    <tr>
-      <td><hr> </td>
-    </tr>
-    <tr>
-      <td>Old password:<br>
-        <input type="password" name="password"></td>
-    </tr>
-    <tr>
-      <td>New passwoed:<br>
-        <input type="password" name="password2"></td>
-    </tr>
-  </table>
-
-  <input class="saveButton" type="submit" value="Save change">
-    </form>
   <br>
   <br>
   <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+   <table class="tomorSheduleT" cellpadding="4" cellspacing="1" border="1" align='center'>
+     <caption>Tomorrow's schedule</caption>
+     <tr>
+       <td>8:00</td>
+       <td>9:50</td>
+       <td>11:50</td>
+       <td>13:45</td>
+       <td>15:35</td>
+       <td>17:25</td>
+       <td>19:00</td>
+     </tr>
+     <tr>
+       <td>-</td>
+       <td>Maths</td>
+       <td>SQL</td>
+       <td>SQL</td>
+       <td>-</td>
+       <td>PE</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>-</td>
+       <td>2470 <br>
+         Popova street, 5</td>
+       <td>3319 <br>
+Popova street, 5</td>
+       <td>3319 <br>
+Popova street, 5</td>
+       <td>-</td>
+       <td>6202 <br>
+Popova street, 37</td>
+       <td>-</td>
+     </tr>
+   </table>
+   <br>
+   <br>
+   <br>
+   <br>
+   <table class="weekSheduleT" cellpadding="4" cellspacing="1" border="1" align='center'>
+     <caption>Schedule for the week</caption>
+     <tr>
+        <th>Mo</th>
+        <th>Tu</th>
+        <th>We</th>
+        <th>Th</th>
+        <th>Fr</th>
+        <th>Sa</th>
+     </tr>
+     <tr>
+       <td>8:00</td>
+       <td>SQL lecture</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>9:50</td>
+       <td>SQL lecture</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>11:40</td>
+       <td>SQL lecture</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>13:45</td>
+       <td>SQL lecture</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>15:35</td>
+       <td>SQL lecture</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>17:25</td>
+       <td>SQL lecture</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>-</td>
+     </tr>
+     <tr>
+       <td>19:00</td>
+       <td>-</td>
+       <td>Maths practice</td>
+       <td>Maths lecture</td>
+       <td>PE</td>
+       <td>SQL</td>
+       <td>Maths practice</td>
+     </tr>
+   </table>
 </body>
 </html>
