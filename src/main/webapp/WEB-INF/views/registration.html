@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="css/registration.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/registration.css">
     <meta charset="UTF-8">
     <title>Registration</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<strong class="msg"> ${message} </strong>
+<strong class="msg"> {{message}} </strong>
 <table class="socialNetworks" align='right' border="0">
   <tr>
     <th>Login with</th>
@@ -18,7 +19,7 @@
 
 <br>
 <table border="0" align='center'>
-<form method="post">
+<form method="post" action="/registration">
 <tr>
   <td><div class="dataField">E-mail:<br>
    <input type="email" name="email" required/></div> </td>
@@ -48,6 +49,6 @@
 </tr>
 </form>
 </table>
-
+<script src="/resources/js/registration.js"></script>
 </body>
 </html>

@@ -5,6 +5,15 @@ public class User {
     private String password;
     private String university;
     private String group;
+    private String sessionId;
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
 
     public String getEmail() {
         return email;
