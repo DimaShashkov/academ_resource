@@ -2,8 +2,10 @@ package com.edu_netcracker.academ_resourse.parsing;
 
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.domain.model.Itmo;
+import com.edu_netcracker.academ_resourse.domain.model.Nsu;
 import com.edu_netcracker.academ_resourse.domain.model.Smtu;
 import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
+import com.edu_netcracker.academ_resourse.repositories.NsuRepository;
 import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -21,6 +23,8 @@ public class JsoupPars {
     ItmoRepository itmoRepository;
     @Autowired
     SmtuRepository smtuRepository;
+    @Autowired
+    NsuRepository nsuRepository;
 
 public void addSchedule(User user) throws IOException {
 
@@ -32,6 +36,12 @@ public void addSchedule(User user) throws IOException {
     }
     else if (user.getUniversity() instanceof Smtu) {
         if(smtuRepository.findAllByGroup(user.getGroup()).size() != 0) {
+            logger.info("this group already exist");
+            return;
+        }
+    }
+    else if (user.getUniversity() instanceof Nsu) {
+        if(nsuRepository.findAllByGroup(user.getGroup()).size() != 0) {
             logger.info("this group already exist");
             return;
         }
@@ -74,5 +84,20 @@ public void addSchedule(User user) throws IOException {
             Smtu smtu = (Smtu) user.getUniversity();
             smtuRepository.save(smtu);
         }
+        else if(user.getUniversity() instanceof Nsu) {
+            StringBuilder sb = new StringBuilder();
+            String[] str = elements.toString().split("\n");
+            for (int i = 0; i < str.length; i++) {
+                if (i == 0) {
+                    sb.append(str[0].substring(0, str[0].length() - 2) + " border=\"1\"> \n");
+                } else {
+                    sb.append(str[i] + "\n");
+                }
+            }
+                user.getUniversity().setSchedule(sb.toString());
+
+                Nsu nsu = (Nsu) user.getUniversity();
+                nsuRepository.save(nsu);
+            }
     }
 }

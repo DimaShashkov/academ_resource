@@ -1,9 +1,10 @@
 package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.domain.model.Itmo;
+import com.edu_netcracker.academ_resourse.domain.model.Nsu;
 import com.edu_netcracker.academ_resourse.domain.model.Smtu;
-import com.edu_netcracker.academ_resourse.domain.model.University;
 import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
+import com.edu_netcracker.academ_resourse.repositories.NsuRepository;
 import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class ScheduleController {
     ItmoRepository itmoRepository;
     @Autowired
     SmtuRepository smtuRepository;
+    @Autowired
+    NsuRepository nsuRepository;
     private final static Logger logger = Logger.getLogger(RegistrationController.class);
 
     @GetMapping("/schedule")
@@ -37,6 +40,12 @@ public class ScheduleController {
             List<Itmo> itmos = itmoRepository.findAllByGroup("D3110");
             for (Itmo itmo: itmos) {
                 sb.append(itmo.getSchedule());
+            }
+        }
+        else if(univ.equals("NSU")) {
+            List<Nsu> nsus = nsuRepository.findAllByGroup("19161");
+            for (Nsu nsu: nsus) {
+                sb.append(nsu.getSchedule());
             }
         }
 
