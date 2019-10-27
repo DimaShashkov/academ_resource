@@ -1,9 +1,11 @@
 package com.edu_netcracker.academ_resourse.domain;
 
-public class User {
+import com.edu_netcracker.academ_resourse.domain.model.University;
+
+public class User <T extends University>{
     private String email;
     private String password;
-    private String university;
+    private T university;
     private String group;
     private String sessionId;
 
@@ -23,11 +25,11 @@ public class User {
         this.email = email;
     }
 
-    public String getUniversity() {
+    public T getUniversity() {
         return university;
     }
 
-    public void setUniversity(String university) {
+    public void setUniversity(T university) {
         this.university = university;
     }
 

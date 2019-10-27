@@ -1,49 +1,78 @@
 package com.edu_netcracker.academ_resourse.parsing;
 
+import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.domain.model.Itmo;
-import com.edu_netcracker.academ_resourse.repositories.ScheduleRepository;
+import com.edu_netcracker.academ_resourse.domain.model.Smtu;
+import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
+import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.*;
+import java.io.IOException;
 
 
 public class JsoupPars {
-private final String ITMO_URL = "http://www.ifmo.ru/ru/schedule/0/";
-private final String UNECON_URL = "https://rasp.unecon.ru/raspisanie_grp.php?g=";
-private final String ITMO_QUERY = "div.rasp_tabl_day";
-private final String UNECON_QUERY = "iv.rasp";
-
     private final static Logger logger = Logger.getLogger(JsoupPars.class);
 
     @Autowired
-    ScheduleRepository scheduleRepository;
+    ItmoRepository itmoRepository;
+    @Autowired
+    SmtuRepository smtuRepository;
 
-public void addSchedule(String group) throws IOException {
+public void addSchedule(User user) throws IOException {
 
-    if(scheduleRepository.findAllByGroup(group).size() != 0) {
-        logger.info("this group already exist");
-        return;
+    if(user.getUniversity() instanceof Itmo) {
+        if(itmoRepository.findAllByGroup(user.getGroup()).size() != 0) {
+            logger.info("this group already exist");
+            return;
+        }
+    }
+    else if (user.getUniversity() instanceof Smtu) {
+        if(smtuRepository.findAllByGroup(user.getGroup()).size() != 0) {
+            logger.info("this group already exist");
+            return;
+        }
     }
 
-        String url = String.format("%s%s%s%s.htm", ITMO_URL, group.toUpperCase(), "/raspisanie_zanyatiy_", group.toUpperCase());
-
-    Document document = Jsoup.connect(url)
+    Document document = Jsoup.connect(user.getUniversity().getUrl())
             .userAgent("Chrome/4.0.249.0 Safari/532.5")
             .referrer("http://www.google.com")
             .get();
 
-    Elements elements = document.select(ITMO_QUERY);
+    Elements elements = document.select(user.getUniversity().getQuery());
 
-
-    StringBuilder sb = new StringBuilder(elements.toString().replaceAll("border=\"0\"", "border=\"1\""));
-    Itmo itmo = new Itmo(group);
-    itmo.setSchedule(sb.toString());
-    scheduleRepository.save(itmo);
+    save(user, elements);
 }
 
+    private void save(User user, Elements elements) {
+        if(user.getUniversity() instanceof Itmo) {
+            StringBuilder sb = new StringBuilder(elements.toString().replaceAll("border=\"0\"", "border=\"1\""));
+            user.getUniversity().setSchedule(sb.toString());
 
+            Itmo itmo = (Itmo)user.getUniversity();
+            itmoRepository.save(itmo);
+        }
+        else if(user.getUniversity() instanceof Smtu) {
+            boolean a = false;
+            String[] str = elements.toString().split("\n");
+            StringBuilder sb = new StringBuilder();
+            for (String s : str) {
+                if(s.contains("<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\" width=\"100%\">")) {
+                    a = true;
+                }
+                if(s.contains("</table>")) {
+                    a = false;
+                }
+                if(a) {
+                    sb.append(s + "\n");
+                }
+            }
+            user.getUniversity().setSchedule(sb.toString());
+            Smtu smtu = (Smtu) user.getUniversity();
+            smtuRepository.save(smtu);
+        }
+    }
 }
