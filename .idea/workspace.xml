@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a624aec5-dfb8-4e06-874a-d1c95e52e813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/model/Smtu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/model/University.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/repositories/SmtuRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schedule.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/Group.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/University.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/model/Itmo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/model/Itmo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/parsing/JsoupPars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/parsing/JsoupPars.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/repositories/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/repositories/ItmoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +125,8 @@
       <workItem from="1572101442307" duration="1661000" />
       <workItem from="1572103543360" duration="13197000" />
       <workItem from="1572121621095" duration="64000" />
-      <workItem from="1572163679766" duration="10379000" />
+      <workItem from="1572163679766" duration="10590000" />
+      <workItem from="1572176435895" duration="1063000" />
     </task>
     <servers />
   </component>
