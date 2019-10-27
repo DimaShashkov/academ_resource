@@ -3,14 +3,14 @@ package com.edu_netcracker.academ_resourse.domain.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Itmo implements University{
+public class Smtu implements University{
     private String group;
     private String schedule;
 
-    public Itmo() {
+    public Smtu() {
     }
 
-    public Itmo(String group) {
+    public Smtu(String group) {
         this.group = group;
     }
 
@@ -32,11 +32,11 @@ public class Itmo implements University{
 
     @Override
     public String getUrl() {
-        return "http://www.ifmo.ru/ru/schedule/0/" + group.toUpperCase() + "/raspisanie_zanyatiy_" + group.toUpperCase() + ".htm";
+        return "https://www.smtu.ru/ru/viewschedule/" + group.toUpperCase() + "/";
     }
 
     @Override
     public String getQuery() {
-        return "div.rasp_tabl_day";
+        return "div.l-container";
     }
 }
