@@ -2,17 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a624aec5-dfb8-4e06-874a-d1c95e52e813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/TasksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/registration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/schedule.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/tasks.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/img/registration.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/model/Itmo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/model/Unecon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/parsing/JsoupPars.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/repositories/ScheduleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/registration.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/schedule.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/academ_resourse.iml" beforeDir="false" afterPath="$PROJECT_DIR$/academ_resourse.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/controller/ScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/addingJobs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/edu_netcracker/academ_resourse/repositorie/TimeTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/personal_account.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/registration.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/schedule.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/css/tasks.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/img/registration.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/personal_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/personal_account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/schedule.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tasks.html" afterDir="false" />
@@ -54,13 +67,14 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="jsx.switch.disabled" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../testProjects/springapp1" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -92,6 +106,10 @@
       </method>
     </configuration>
   </component>
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+    <option name="myConnectionType" value="NONE" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -120,7 +138,17 @@
       <workItem from="1571482960174" duration="20000" />
       <workItem from="1571513946382" duration="41000" />
       <workItem from="1571586484818" duration="5793000" />
-      <workItem from="1571603171645" duration="515000" />
+      <workItem from="1571603171645" duration="802000" />
+      <workItem from="1571665486898" duration="749000" />
+      <workItem from="1571671490562" duration="889000" />
+      <workItem from="1571716842552" duration="919000" />
+      <workItem from="1571903244412" duration="311000" />
+      <workItem from="1571948254459" duration="19000" />
+      <workItem from="1571995012098" duration="584000" />
+      <workItem from="1572025694298" duration="6087000" />
+      <workItem from="1572072311067" duration="13415000" />
+      <workItem from="1572101442307" duration="1661000" />
+      <workItem from="1572103543360" duration="12691000" />
     </task>
     <servers />
   </component>

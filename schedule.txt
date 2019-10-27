@@ -1,0 +1,805 @@
+<div class="rasp_tabl_day"> 
+ <table id="1day" class="rasp_tabl" border="0" cellpadding="0" cellspacing="0"> 
+  <tbody>
+   <tr>
+    <th class="day"> <script>$("#1day_btn").show();</script> <span>Пн</span></th>
+    <td class="time"> <span>08:20-09:50</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      285 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       285 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Детали мехатронных модулей, роботов и их конструирование (Лек) : 2 сентября в ауд. 329
+      </dd> нечетная неделя 
+      <dt>
+       <b><a href="/ru/viewperson/87/timofeev_boris_pavlovich.htm">Тимофеев Борис Павлович</a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>10:00-11:30</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      319 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       319 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Правовые основы интеллектуальной собственности (Прак) : с 4 нед.
+      </dd> четная неделя 
+      <dt>
+       <b>Рысляева Наталья Викторовна</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>10:00-11:30</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      562 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       562 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Детали мехатронных модулей, роботов и их конструирование (Прак) 
+      </dd> нечетная неделя 
+      <dt>
+       <b>Абрамчук Михаил Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>11:40-13:10</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      403 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       403 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Правовые основы интеллектуальной собственности (Лек) : с 3 нед.
+      </dd> нечетная неделя 
+      <dt>
+       <b>Рысляева Наталья Викторовна</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>11:40-13:10</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      319 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       319 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Правовые основы интеллектуальной собственности (Прак) : с 4 нед.
+      </dd> четная неделя 
+      <dt>
+       <b>Рысляева Наталья Викторовна</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>13:30-15:00</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      583 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       583 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Электроника (Лек) 
+      </dd> четная неделя 
+      <dt>
+       <b>Денисов Константин Михайлович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>15:20-16:50</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      583 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       583 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Электроника (Лаб) 
+      </dd> четная неделя 
+      <dt>
+       <b>Денисов Константин Михайлович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr></tr>
+  </tbody>
+ </table>
+</div>
+<div class="rasp_tabl_day">
+ <table id="2day" class="rasp_tabl" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <th class="day"> <script>$("#2day_btn").show();</script> <span>Вт</span></th>
+    <td class="time"> <span>08:20-09:50</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      285 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       285 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Теория механизмов и машин (Лек) 
+      </dd> четная неделя 
+      <dt>
+       <b><a href="/ru/viewperson/87/timofeev_boris_pavlovich.htm">Тимофеев Борис Павлович</a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>10:00-11:30</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      285 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       285 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Теория механизмов и машин (Лек) 
+      </dd> четная неделя 
+      <dt>
+       <b><a href="/ru/viewperson/87/timofeev_boris_pavlovich.htm">Тимофеев Борис Павлович</a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>10:00-11:30</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      206 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       206 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Прикладная механика (Лек) 
+      </dd> нечетная неделя 
+      <dt>
+       <b>Биндюк Владимир Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>11:40-13:10</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      464 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       464 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Теория механизмов и машин (Лаб) 
+      </dd> четная неделя 
+      <dt>
+       <b>Абрамчук Михаил Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>11:40-13:10</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      19/1 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       19/1 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Технологии обработки конструкционных материалов (Лек) 
+      </dd> нечетная неделя 
+      <dt>
+       <b>Иванов Андрей Юрьевич</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>13:30-15:00</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      562 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       562 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Прикладная механика (Лаб) 
+      </dd> четная неделя 
+      <dt>
+       <b>Биндюк Владимир Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>13:30-15:00</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      19/1 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       19/1 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Технологии обработки конструкционных материалов (Лаб) 
+      </dd> нечетная неделя 
+      <dt>
+       <b>Иванов Андрей Юрьевич</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>15:20-16:50</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      19/1 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       19/1 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Технологии обработки конструкционных материалов (Прак) 
+      </dd> нечетная неделя 
+      <dt>
+       <b>Иванов Андрей Юрьевич</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>15:20-16:50</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      562 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       562 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Прикладная механика (Прак) 
+      </dd> четная неделя 
+      <dt>
+       <b>Биндюк Владимир Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr></tr>
+  </tbody>
+ </table>
+</div>
+<div class="rasp_tabl_day">
+ <table id="3day" class="rasp_tabl" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <th class="day"> <script>$("#3day_btn").show();</script> <span>Ср</span></th>
+    <td class="time"> <span>11:40-13:10</span> 
+     <dt style="font-size:14px;"></dt> 
+     <dd class="rasp_aud_mobile">
+      1603 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>ул.Ломоносова, д.9, лит. М</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       1603 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>ул.Ломоносова, д.9, лит. М</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Основы теории систем (Лек) 
+      </dd> 
+      <dt>
+       <b><a href="/ru/viewperson/350/dudarenko_nataliya_aleksandrovna.htm">Дударенко Наталия Александровна</a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>13:30-15:00</span> 
+     <dt style="font-size:14px;"></dt> 
+     <dd class="rasp_aud_mobile"></dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>ул.Ломоносова, д.9, лит. Е</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd></dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>ул.Ломоносова, д.9, лит. Е</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Иностранный язык (Прак) 
+      </dd> 
+      <dt>
+       <b><a href="/ru/viewperson/66/.htm"></a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>15:20-16:50</span> 
+     <dt style="font-size:14px;"></dt> 
+     <dd class="rasp_aud_mobile"></dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>ул.Ломоносова, д.9, лит. Е</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd></dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>ул.Ломоносова, д.9, лит. Е</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Иностранный язык (Прак) 
+      </dd> 
+      <dt>
+       <b><a href="/ru/viewperson/66/.htm"></a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr></tr>
+  </tbody>
+ </table>
+</div>
+<div class="rasp_tabl_day">
+ <table id="5day" class="rasp_tabl" border="0" cellpadding="0" cellspacing="0">
+  <tbody>
+   <tr>
+    <th class="day"> <script>$("#5day_btn").show();</script> <span>Пт</span></th>
+    <td class="time"> <span>10:00-11:30</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      562 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       562 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Сопротивление материалов (Лек) 
+      </dd> четная неделя 
+      <dt>
+       <b>Биндюк Владимир Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>11:40-13:10</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      562 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       562 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Сопротивление материалов (Лаб) 
+      </dd> четная неделя 
+      <dt>
+       <b>Биндюк Владимир Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>13:30-15:00</span> 
+     <dt style="font-size:14px;">
+      четная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      562 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>Кронверкский пр., д.49, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       562 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>Кронверкский пр., д.49, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Сопротивление материалов (Прак) 
+      </dd> четная неделя 
+      <dt>
+       <b>Биндюк Владимир Владимирович</b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>15:20-16:50</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      400 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>пер. Гривцова, д.14-16, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       400 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>пер. Гривцова, д.14-16, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Основы теории систем (Лаб) 
+      </dd> нечетная неделя 
+      <dt>
+       <b><a href="/ru/viewperson/350/dudarenko_nataliya_aleksandrovna.htm">Дударенко Наталия Александровна</a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+   <tr>
+    <th class="day"></th>
+    <td class="time"> <span>17:00-18:30</span> 
+     <dt style="font-size:14px;">
+      нечетная неделя
+     </dt> 
+     <dd class="rasp_aud_mobile">
+      450 ауд.
+     </dd> 
+     <dt class="rasp_corp_mobile">
+      <i class="fa fa-map-marker"></i>
+      <span>пер. Гривцова, д.14-16, лит.А</span>
+     </dt> </td> 
+    <td class="room"> 
+     <dl> 
+      <dd>
+       450 ауд.
+      </dd> 
+      <dt>
+       <i class="fa fa-map-marker"></i>
+       <span>пер. Гривцова, д.14-16, лит.А</span>
+      </dt> 
+     </dl> </td> 
+    <td class="lesson"> 
+     <dl> 
+      <dd>
+       Основы теории систем (Лаб) 
+      </dd> нечетная неделя 
+      <dt>
+       <b><a href="/ru/viewperson/350/dudarenko_nataliya_aleksandrovna.htm">Дударенко Наталия Александровна</a></b>
+      </dt> 
+     </dl> </td> 
+   </tr>
+  </tbody>
+ </table>
+</div>

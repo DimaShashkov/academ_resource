@@ -1,5 +1,4 @@
 package com.edu_netcracker.academ_resourse;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

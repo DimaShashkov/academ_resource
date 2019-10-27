@@ -1,16 +1,22 @@
 package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.domain.User;
-
+import com.edu_netcracker.academ_resourse.parsing.JsoupPars;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.IOException;
+
 
 @Controller
 public class RegistrationController {
+
+    @Autowired
+    JsoupPars jsoupPars;
     private final static Logger logger = Logger.getLogger(RegistrationController.class);
 
     @GetMapping("/registration")
@@ -21,17 +27,15 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String postRegistration(User user, Model model) {
-        if(user.getPassword().equals("") || user.getEmail().equals("")) {
-            model.addAttribute("message", "Incorrect data");
-            logger.info("incorrect data registration has been added into model");
-            return "registration";
-        }
+    public String postRegistration(String sessionId, User user, Model model) {
 
-        String userData = String.format("email: %s | password: %s", user.getEmail(), user.getPassword());
-        model.addAttribute("message", "User successfully registered! " + userData);
+        try {
+            jsoupPars.addSchedule(user.getGroup().toUpperCase());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         logger.info("the data has been added into model");
-        return "registration";
+        return "redirect:personal_account";
     }
 
 }
