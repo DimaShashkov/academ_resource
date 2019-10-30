@@ -5,4 +5,5 @@ public interface University {
     public String getQuery();
     public void setSchedule(String schedule);
     public String getSchedule();
+    public String getTomorrowSchedule();
 }

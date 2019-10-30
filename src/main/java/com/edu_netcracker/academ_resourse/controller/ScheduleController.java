@@ -29,27 +29,30 @@ public class ScheduleController {
 
     @GetMapping("/schedule")
     public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ, Model model) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder week = new StringBuilder();
+        String tomorrow = new String();
         if(univ.equals("SMTU")) {
             List<Smtu> smtus = smtuRepository.findAllByGroup("1410");
             for (Smtu smtu : smtus) {
-                sb.append(smtu.getSchedule());
+                week.append(smtu.getSchedule());
+                tomorrow = smtu.getTomorrowSchedule();
             }
         }
         else if(univ.equals("ITMO")) {
             List<Itmo> itmos = itmoRepository.findAllByGroup("D3110");
             for (Itmo itmo: itmos) {
-                sb.append(itmo.getSchedule());
+                week.append(itmo.getSchedule());
+                tomorrow = itmo.getTomorrowSchedule();
             }
         }
         else if(univ.equals("NSU")) {
             List<Nsu> nsus = nsuRepository.findAllByGroup("19161");
             for (Nsu nsu: nsus) {
-                sb.append(nsu.getSchedule());
+                week.append(nsu.getSchedule());
             }
         }
-
-        model.addAttribute("schedule", sb);
+        model.addAttribute("tomorrow_schedule", tomorrow);
+        model.addAttribute("schedule", week);
         return "schedule";
     }
 

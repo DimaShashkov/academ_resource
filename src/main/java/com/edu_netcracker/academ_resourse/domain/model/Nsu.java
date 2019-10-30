@@ -28,6 +28,11 @@ public class Nsu implements University{
     }
 
     @Override
+    public String getTomorrowSchedule() {
+        return null;
+    }
+
+    @Override
     public String getUrl() {
         return "https://table.nsu.ru/group/" + group.toUpperCase();
     }

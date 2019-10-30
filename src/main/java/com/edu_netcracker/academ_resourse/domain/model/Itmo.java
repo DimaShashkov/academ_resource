@@ -2,6 +2,12 @@ package com.edu_netcracker.academ_resourse.domain.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 @Document
 public class Itmo implements University{
     private String group;
@@ -28,6 +34,27 @@ public class Itmo implements University{
 
     public String getSchedule() {
         return this.schedule;
+    }
+
+    @Override
+    public String getTomorrowSchedule() {
+        DateFormat df = new SimpleDateFormat("E", new Locale("Ru", "ru"));
+        String today = df.format(new Date());
+        StringBuilder tomorrow = new StringBuilder();
+        String[] strings = schedule.split("<table");
+
+        boolean a = false;
+        for(String s : strings) {
+            if(a) {
+                tomorrow.append("<table" + s);
+                a = false;
+            }
+            if(s.contains(today)) {
+                a = true;
+            }
+
+        }
+        return tomorrow.toString();
     }
 
     @Override
