@@ -1,5 +1,6 @@
-package com.edu_netcracker.academ_resourse.domain.model;
+package com.edu_netcracker.academ_resourse.domain.universities;
 
+import com.edu_netcracker.academ_resourse.domain.model.University;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.text.DateFormat;
@@ -8,7 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 
 @Document
-public class Smtu implements University{
+public class Smtu implements University {
     private String group;
     private String schedule;
 

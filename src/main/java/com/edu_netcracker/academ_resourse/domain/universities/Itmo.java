@@ -1,15 +1,15 @@
-package com.edu_netcracker.academ_resourse.domain.model;
+package com.edu_netcracker.academ_resourse.domain.universities;
 
+import com.edu_netcracker.academ_resourse.domain.model.University;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 @Document
-public class Itmo implements University{
+public class Itmo implements University {
     private String group;
     private String schedule;
 

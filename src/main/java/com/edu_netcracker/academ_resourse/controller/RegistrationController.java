@@ -1,9 +1,10 @@
 package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.domain.User;
-import com.edu_netcracker.academ_resourse.domain.model.Itmo;
-import com.edu_netcracker.academ_resourse.domain.model.Nsu;
-import com.edu_netcracker.academ_resourse.domain.model.Smtu;
+import com.edu_netcracker.academ_resourse.domain.UserFactory;
+import com.edu_netcracker.academ_resourse.domain.universities.Itmo;
+import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
+import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
 import com.edu_netcracker.academ_resourse.parsing.JsoupPars;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,31 +33,8 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String postRegistration(@RequestParam("university") String university, String group, String email, String password, Model model) {
-        if(university.equals("ITMO")) {
-            User<Itmo> user = new User();
-            user.setUniversity(new Itmo(group));
-            user.setEmail(email);
-            user.setGroup(group);
-            user.setPassword(password);
-            addSchedule(user);
-        }
-        else if(university.equals("SMTU")){
-            User<Smtu> user = new User();
-            user.setUniversity(new Smtu(group));
-            user.setEmail(email);
-            user.setGroup(group);
-            user.setPassword(password);
-            addSchedule(user);
-        }
-        else if(university.equals("NSU")){
-            User<Nsu> user = new User();
-            user.setUniversity(new Nsu(group));
-            user.setEmail(email);
-            user.setGroup(group);
-            user.setPassword(password);
-            addSchedule(user);
-        }
-
+        User user = UserFactory.getUser(university, group, email, password);
+        addSchedule(user);
         return "redirect:personal_account";
     }
 

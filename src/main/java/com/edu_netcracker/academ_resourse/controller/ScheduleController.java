@@ -1,8 +1,8 @@
 package com.edu_netcracker.academ_resourse.controller;
 
-import com.edu_netcracker.academ_resourse.domain.model.Itmo;
-import com.edu_netcracker.academ_resourse.domain.model.Nsu;
-import com.edu_netcracker.academ_resourse.domain.model.Smtu;
+import com.edu_netcracker.academ_resourse.domain.universities.Itmo;
+import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
+import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
 import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
 import com.edu_netcracker.academ_resourse.repositories.NsuRepository;
 import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
@@ -46,7 +46,7 @@ public class ScheduleController {
             }
         }
         else if(univ.equals("NSU")) {
-            List<Nsu> nsus = nsuRepository.findAllByGroup("19605.1");
+            List<Nsu> nsus = nsuRepository.findAllByGroup("19205");
             for (Nsu nsu: nsus) {
                 week.append(nsu.getSchedule());
                 tomorrow = nsu.getTomorrowSchedule();
