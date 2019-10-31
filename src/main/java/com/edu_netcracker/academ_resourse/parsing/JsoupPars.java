@@ -26,7 +26,7 @@ public class JsoupPars {
     @Autowired
     NsuRepository nsuRepository;
 
-public void addSchedule(User user) throws IOException {
+public void addSchedule(final User user) throws IOException {
 
     if(user.getUniversity() instanceof Itmo) {
         if(itmoRepository.findAllByGroup(user.getGroup()).size() != 0) {

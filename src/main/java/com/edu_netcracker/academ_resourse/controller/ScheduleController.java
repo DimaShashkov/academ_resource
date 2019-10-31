@@ -46,9 +46,10 @@ public class ScheduleController {
             }
         }
         else if(univ.equals("NSU")) {
-            List<Nsu> nsus = nsuRepository.findAllByGroup("19161");
+            List<Nsu> nsus = nsuRepository.findAllByGroup("19605.1");
             for (Nsu nsu: nsus) {
                 week.append(nsu.getSchedule());
+                tomorrow = nsu.getTomorrowSchedule();
             }
         }
         model.addAttribute("tomorrow_schedule", tomorrow);

@@ -46,7 +46,7 @@ public class Itmo implements University{
         boolean a = false;
         for(String s : strings) {
             if(a) {
-                tomorrow.append("<table" + s);
+                tomorrow.append("<table").append(s);
                 a = false;
             }
             if(s.contains(today)) {
