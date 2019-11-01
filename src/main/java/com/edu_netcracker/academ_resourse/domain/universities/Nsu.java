@@ -57,6 +57,8 @@ public class Nsu implements University {
             dayNumber = 6;
         if (tomorrowDay.equals("Суббота"))
             dayNumber = 7;
+        if(tomorrowDay.equals("Воскресенье"))
+            dayNumber = 2;
 
 
         String[] str = schedule.split("<tr>");

@@ -40,19 +40,21 @@ public class Itmo implements University {
     public String getTomorrowSchedule() {
         DateFormat df = new SimpleDateFormat("E", new Locale("Ru", "ru"));
         String today = df.format(new Date());
+        String tomorrowDay = df.format(new Date(new Date().getTime() + 86400000));
+
+        int i = 2;
+        while(!schedule.contains(tomorrowDay)) {
+            tomorrowDay = df.format(new Date(+(86400000 * i)));
+            i++;
+        }
+
         StringBuilder tomorrow = new StringBuilder();
         String[] strings = schedule.split("<table");
 
-        boolean a = false;
         for(String s : strings) {
-            if(a) {
+            if(s.contains(tomorrowDay)) {
                 tomorrow.append("<table").append(s);
-                a = false;
             }
-            if(s.contains(today)) {
-                a = true;
-            }
-
         }
         return tomorrow.toString();
     }

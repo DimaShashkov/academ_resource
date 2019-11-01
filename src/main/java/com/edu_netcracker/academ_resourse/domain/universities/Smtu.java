@@ -47,14 +47,17 @@ public class Smtu implements University {
         boolean a = false;
         for(String s : strings) {
             if(a) {
-                tomorrow.append(start + "\r\n" + "<thead>" + s + "</table>");
+                tomorrow.append(start).append("\r\n").append("<thead>").append(s).append("</table>");
                 a = false;
             }
             if(s.toLowerCase().contains(today)) {
                 a = true;
             }
-
         }
+        if (tomorrow.length() == 0) {
+            tomorrow.append(start).append("\r\n").append("<thead>").append(strings[2]).append("</table>");
+        }
+
         return tomorrow.toString();
     }
 
