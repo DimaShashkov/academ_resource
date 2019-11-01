@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <td>Last name:<br>
-        {{lsstName}}</td>
+        {{lastName}}</td>
     </tr>
     <tr>
       <td>E-mail:<br>
@@ -45,11 +45,19 @@
     </tr>
     <tr>
       <td>University:<br>
-        {{university}}</td>
+        {{university}}<br>
+          <div class="dataField">University:<br>
+              <select name="university">
+                  <option value="ITMO">ITMO</option>
+                  <option value="NSU">NSU</option>
+                  <option value="SMTU">SMTU</option>
+              </select></div></td>
     </tr>
     <tr>
       <td>group:<br>
-        {{group}}</td>
+        {{group}} <br>
+        <div class="dataField">Group:<br>
+            <input type="text" name="group" required/></div></td>
     </tr>
     <tr>
       <td>Role:<br>
@@ -63,7 +71,7 @@
         <input type="password" name="password"></td>
     </tr>
     <tr>
-      <td>New passwoed:<br>
+      <td>New password:<br>
         <input type="password" name="password2"></td>
     </tr>
     </table>

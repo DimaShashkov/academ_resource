@@ -28,25 +28,26 @@ public class ScheduleController {
     private final static Logger logger = Logger.getLogger(RegistrationController.class);
 
     @GetMapping("/schedule")
-    public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ, Model model) {
+    public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ,
+                              @RequestParam(value = "group", defaultValue = "") String group, Model model) {
         StringBuilder week = new StringBuilder();
         String tomorrow = new String();
         if(univ.equals("SMTU")) {
-            List<Smtu> smtus = smtuRepository.findAllByGroup("1410");
+            List<Smtu> smtus = smtuRepository.findAllByGroup(group);
             for (Smtu smtu : smtus) {
                 week.append(smtu.getSchedule());
                 tomorrow = smtu.getTomorrowSchedule();
             }
         }
         else if(univ.equals("ITMO")) {
-            List<Itmo> itmos = itmoRepository.findAllByGroup("D3110");
+            List<Itmo> itmos = itmoRepository.findAllByGroup(group);
             for (Itmo itmo: itmos) {
                 week.append(itmo.getSchedule());
                 tomorrow = itmo.getTomorrowSchedule();
             }
         }
         else if(univ.equals("NSU")) {
-            List<Nsu> nsus = nsuRepository.findAllByGroup("19205");
+            List<Nsu> nsus = nsuRepository.findAllByGroup(group);
             for (Nsu nsu: nsus) {
                 week.append(nsu.getSchedule());
                 tomorrow = nsu.getTomorrowSchedule();

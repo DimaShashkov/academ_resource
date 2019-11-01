@@ -1,5 +1,6 @@
-package com.edu_netcracker.academ_resourse.domain;
+package com.edu_netcracker.academ_resourse.domain.model;
 
+import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.domain.universities.Itmo;
 import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
 import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
