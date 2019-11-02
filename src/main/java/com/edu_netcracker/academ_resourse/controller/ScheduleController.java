@@ -1,8 +1,8 @@
 package com.edu_netcracker.academ_resourse.controller;
 
-import com.edu_netcracker.academ_resourse.domain.model.Itmo;
-import com.edu_netcracker.academ_resourse.domain.model.Nsu;
-import com.edu_netcracker.academ_resourse.domain.model.Smtu;
+import com.edu_netcracker.academ_resourse.domain.universities.Itmo;
+import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
+import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
 import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
 import com.edu_netcracker.academ_resourse.repositories.NsuRepository;
 import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
@@ -28,28 +28,33 @@ public class ScheduleController {
     private final static Logger logger = Logger.getLogger(RegistrationController.class);
 
     @GetMapping("/schedule")
-    public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ, Model model) {
-        StringBuilder sb = new StringBuilder();
+    public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ,
+                              @RequestParam(value = "group", defaultValue = "") String group, Model model) {
+        StringBuilder week = new StringBuilder();
+        String tomorrow = new String();
         if(univ.equals("SMTU")) {
-            List<Smtu> smtus = smtuRepository.findAllByGroup("1410");
+            List<Smtu> smtus = smtuRepository.findAllByGroup(group);
             for (Smtu smtu : smtus) {
-                sb.append(smtu.getSchedule());
+                week.append(smtu.getSchedule());
+                tomorrow = smtu.getTomorrowSchedule();
             }
         }
         else if(univ.equals("ITMO")) {
-            List<Itmo> itmos = itmoRepository.findAllByGroup("D3110");
+            List<Itmo> itmos = itmoRepository.findAllByGroup(group);
             for (Itmo itmo: itmos) {
-                sb.append(itmo.getSchedule());
+                week.append(itmo.getSchedule());
+                tomorrow = itmo.getTomorrowSchedule();
             }
         }
         else if(univ.equals("NSU")) {
-            List<Nsu> nsus = nsuRepository.findAllByGroup("19161");
+            List<Nsu> nsus = nsuRepository.findAllByGroup(group);
             for (Nsu nsu: nsus) {
-                sb.append(nsu.getSchedule());
+                week.append(nsu.getSchedule());
+                tomorrow = nsu.getTomorrowSchedule();
             }
         }
-
-        model.addAttribute("schedule", sb);
+        model.addAttribute("tomorrow_schedule", tomorrow);
+        model.addAttribute("schedule", week);
         return "schedule";
     }
 

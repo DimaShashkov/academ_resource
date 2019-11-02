@@ -1,6 +1,6 @@
 package com.edu_netcracker.academ_resourse.repositories;
 
-import com.edu_netcracker.academ_resourse.domain.model.Nsu;
+import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
