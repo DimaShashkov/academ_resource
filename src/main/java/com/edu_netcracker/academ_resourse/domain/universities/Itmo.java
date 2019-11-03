@@ -44,7 +44,7 @@ public class Itmo implements University {
 
         int i = 2;
         while(!schedule.contains(tomorrowDay)) {
-            tomorrowDay = df.format(new Date(+(86400000 * i)));
+            tomorrowDay = df.format(new Date(new Date().getTime()+(86400000 * i)));
             i++;
         }
 
