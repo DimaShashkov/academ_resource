@@ -1,6 +1,6 @@
-package com.edu_netcracker.academ_resourse.domain.universities;
+package com.edu_netcracker.academ_resourse.schedule.universities;
 
-import com.edu_netcracker.academ_resourse.domain.model.University;
+import com.edu_netcracker.academ_resourse.schedule.model.University;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

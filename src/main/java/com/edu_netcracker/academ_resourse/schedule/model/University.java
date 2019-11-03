@@ -1,4 +1,4 @@
-package com.edu_netcracker.academ_resourse.domain.model;
+package com.edu_netcracker.academ_resourse.schedule.model;
 
 public interface University {
     public String getUrl();

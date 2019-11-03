@@ -1,12 +1,8 @@
-package com.edu_netcracker.academ_resourse.parsing;
+package com.edu_netcracker.academ_resourse.schedule.parsing;
 
-import com.edu_netcracker.academ_resourse.domain.User;
-import com.edu_netcracker.academ_resourse.domain.universities.Itmo;
-import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
-import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
-import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
-import com.edu_netcracker.academ_resourse.repositories.NsuRepository;
-import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
+import com.edu_netcracker.academ_resourse.schedule.MongoGroup;
+import com.edu_netcracker.academ_resourse.schedule.repositories.*;
+import com.edu_netcracker.academ_resourse.schedule.universities.*;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,46 +22,46 @@ public class JsoupPars {
     @Autowired
     NsuRepository nsuRepository;
 
-public void addSchedule(final User user) throws IOException {
+public void addSchedule(final MongoGroup mongoGroup) throws IOException {
 
-    if(user.getUniversity() instanceof Itmo) {
-        if(itmoRepository.findAllByGroup(user.getGroup()).size() != 0) {
+    if(mongoGroup.getUniversity() instanceof Itmo) {
+        if(itmoRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
             logger.info("this group already exist");
             return;
         }
     }
-    else if (user.getUniversity() instanceof Smtu) {
-        if(smtuRepository.findAllByGroup(user.getGroup()).size() != 0) {
+    else if (mongoGroup.getUniversity() instanceof Smtu) {
+        if(smtuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
             logger.info("this group already exist");
             return;
         }
     }
-    else if (user.getUniversity() instanceof Nsu) {
-        if(nsuRepository.findAllByGroup(user.getGroup()).size() != 0) {
+    else if (mongoGroup.getUniversity() instanceof Nsu) {
+        if(nsuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
             logger.info("this group already exist");
             return;
         }
     }
 
-    Document document = Jsoup.connect(user.getUniversity().getUrl())
+    Document document = Jsoup.connect(mongoGroup.getUniversity().getUrl())
             .userAgent("Chrome/4.0.249.0 Safari/532.5")
             .referrer("http://www.google.com")
             .get();
 
-    Elements elements = document.select(user.getUniversity().getQuery());
+    Elements elements = document.select(mongoGroup.getUniversity().getQuery());
 
-    save(user, elements);
+    save(mongoGroup, elements);
 }
 
-    private void save(User user, Elements elements) {
-        if(user.getUniversity() instanceof Itmo) {
+    private void save(MongoGroup mongoGroup, Elements elements) {
+        if(mongoGroup.getUniversity() instanceof Itmo) {
             StringBuilder sb = new StringBuilder(elements.toString().replaceAll("border=\"0\"", "border=\"1\""));
-            user.getUniversity().setSchedule(sb.toString());
+            mongoGroup.getUniversity().setSchedule(sb.toString());
 
-            Itmo itmo = (Itmo)user.getUniversity();
+            Itmo itmo = (Itmo)mongoGroup.getUniversity();
             itmoRepository.save(itmo);
         }
-        else if(user.getUniversity() instanceof Smtu) {
+        else if(mongoGroup.getUniversity() instanceof Smtu) {
             boolean a = false;
             String[] str = elements.toString().split("\n");
             StringBuilder sb = new StringBuilder();
@@ -80,11 +76,11 @@ public void addSchedule(final User user) throws IOException {
                     sb.append(s + "\n");
                 }
             }
-            user.getUniversity().setSchedule(sb.toString());
-            Smtu smtu = (Smtu) user.getUniversity();
+            mongoGroup.getUniversity().setSchedule(sb.toString());
+            Smtu smtu = (Smtu) mongoGroup.getUniversity();
             smtuRepository.save(smtu);
         }
-        else if(user.getUniversity() instanceof Nsu) {
+        else if(mongoGroup.getUniversity() instanceof Nsu) {
             StringBuilder sb = new StringBuilder();
             String[] str = elements.toString().split("\n");
             for (int i = 0; i < str.length; i++) {
@@ -94,9 +90,9 @@ public void addSchedule(final User user) throws IOException {
                     sb.append(str[i] + "\n");
                 }
             }
-                user.getUniversity().setSchedule(sb.toString());
+                mongoGroup.getUniversity().setSchedule(sb.toString());
 
-                Nsu nsu = (Nsu) user.getUniversity();
+                Nsu nsu = (Nsu) mongoGroup.getUniversity();
                 nsuRepository.save(nsu);
             }
     }
