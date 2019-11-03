@@ -1,6 +1,6 @@
-package com.edu_netcracker.academ_resourse.repositories;
+package com.edu_netcracker.academ_resourse.schedule.repositories;
 
-import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
+import com.edu_netcracker.academ_resourse.schedule.universities.Smtu;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,24 +1,51 @@
 body {
   text-align: center;
-  background: url('../img/registration.jpg');
+  background: url('../img/background.jpg');
   background-size: cover;
   font-family: 'Roboto', 'Helvetica Nue', cursive;
   font-size: 110%;
   color: #F5F5DC;
 }
-a.avatar {
-  text-align: left;
+
+table {
+  color: #F5F5DC;
+  border: 1px solid green;
+  margin: auto;
+  width: 1000px;
+  background: navy;
+}
+th {
+
+  width: 30px;
+  padding: 10px;
+}
+td {
+
+    width: 300px;
+  padding: 10px;
+  background: #3EB489;
+}
+dd {
+
+    width: 300px;
+  padding: 10px;
+}
+dt {
   width: 300px;
 }
 
-table {
-  background: navy;
-}
-td {
-  background: #3EB489;
+a {
+  pointer-events: none;
+  color: #F5F5DC;
+  text-decoration: none;
 }
 
-.header {
+.header a {
+  pointer-events: auto;
+}
+
+.header  {
+  pointer-events: auto;
   width: 100%;
   position: fixed;
   top: auto;
@@ -32,11 +59,4 @@ li.jshover ul {
 .header li:hover, .header li.jshover {
   background: #424242;
 }
-input[type="password"] {
-  color: hsla(100, 100%, 40%, 0.7);
-}
 
-.saveButton:hover {
-  font-size: 110%;
-  background: green;
-}

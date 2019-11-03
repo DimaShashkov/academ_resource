@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background: url('../img/registration.jpg');
+  background: url('../img/background.jpg');
   background-size: cover;
   font-family: 'Roboto', 'Helvetica Nue', cursive;
   font-size: 110%;
@@ -8,44 +8,16 @@ body {
 }
 
 table {
-  color: #F5F5DC;
-  border: 1px solid green;
-  margin: auto;
-  width: 1000px;
   background: navy;
 }
-th {
-
-  width: 30px;
-  padding: 10px;
-}
 td {
-
-    width: 300px;
-  padding: 10px;
   background: #3EB489;
 }
-dd {
-
-    width: 300px;
-  padding: 10px;
+.addButton:hover {
+  font-size: 110%;
+  background: green;
 }
-dt {
-  width: 300px;
-}
-
-a {
-  pointer-events: none;
-  color: #F5F5DC;
-  text-decoration: none;
-}
-
-.header a {
-  pointer-events: auto;
-}
-
-.header  {
-  pointer-events: auto;
+.header {
   width: 100%;
   position: fixed;
   top: auto;
@@ -60,3 +32,6 @@ li.jshover ul {
   background: #424242;
 }
 
+input[type="text"] {
+  color: hsla(230, 230%, 40%, 0.7);
+}

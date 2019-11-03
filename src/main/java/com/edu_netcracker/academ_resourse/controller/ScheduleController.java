@@ -1,11 +1,7 @@
 package com.edu_netcracker.academ_resourse.controller;
 
-import com.edu_netcracker.academ_resourse.domain.universities.Itmo;
-import com.edu_netcracker.academ_resourse.domain.universities.Nsu;
-import com.edu_netcracker.academ_resourse.domain.universities.Smtu;
-import com.edu_netcracker.academ_resourse.repositories.ItmoRepository;
-import com.edu_netcracker.academ_resourse.repositories.NsuRepository;
-import com.edu_netcracker.academ_resourse.repositories.SmtuRepository;
+import com.edu_netcracker.academ_resourse.schedule.universities.*;
+import com.edu_netcracker.academ_resourse.schedule.repositories.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

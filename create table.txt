@@ -1,0 +1,50 @@
+create table roles_table (
+	id INT,
+	name VARCHAR,
+	PRIMARY KEY (id)
+);
+
+create table university_table (
+	id INT,
+	name VARCHAR,
+	number INT,
+	email VARCHAR,
+	PRIMARY KEY (id)
+);
+
+create table subject_table (
+	id INT,
+	subject VARCHAR,
+	is_lecture BOOLEAN,
+	PRIMARY KEY (id)
+);
+
+create table task_table (
+	id INT,
+	task VARCHAR,
+	sub_id INTEGER REFERENCES subject_table (id),
+	date DATE,
+	is_done BOOLEAN,
+	file VARCHAR,
+	PRIMARY KEY (id)
+);
+
+create table group_table (
+	id INT,	
+	name VARCHAR,
+	un_id INTEGER REFERENCES university_table (id),
+	task_id INTEGER REFERENCES task_table (id),
+	PRIMARY KEY (id)
+);
+
+create table user_table (
+	id INT,
+	name VARCHAR,
+	surname VARCHAR,
+	password VARCHAR,
+	role INTEGER REFERENCES roles_table (id),
+	email VARCHAR,
+	group_inf INTEGER REFERENCES group_table (id),
+	token VARCHAR,
+	PRIMARY KEY (id)
+);

@@ -1,6 +1,6 @@
-package com.edu_netcracker.academ_resourse.domain.universities;
+package com.edu_netcracker.academ_resourse.schedule.universities;
 
-import com.edu_netcracker.academ_resourse.domain.model.University;
+import com.edu_netcracker.academ_resourse.schedule.model.University;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -57,8 +57,11 @@ public class Nsu implements University {
             dayNumber = 6;
         if (tomorrowDay.equals("Суббота"))
             dayNumber = 7;
-        if(tomorrowDay.equals("Воскресенье"))
+        if(tomorrowDay.equals("Воскресенье")) {
             dayNumber = 2;
+            tomorrowDay = "Понедельник";
+        }
+
 
 
         String[] str = schedule.split("<tr>");
