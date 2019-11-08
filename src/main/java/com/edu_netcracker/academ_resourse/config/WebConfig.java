@@ -40,6 +40,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 
 
+
+
     @Bean
     JsoupPars getJsoupPars() {
         return new JsoupPars();
