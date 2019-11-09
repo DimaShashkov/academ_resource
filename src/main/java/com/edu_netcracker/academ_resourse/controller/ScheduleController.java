@@ -21,7 +21,7 @@ public class ScheduleController {
     SmtuRepository smtuRepository;
     @Autowired
     NsuRepository nsuRepository;
-    private final static Logger logger = Logger.getLogger(RegistrationController.class);
+    private final static Logger logger = Logger.getLogger(ScheduleController.class);
 
     @GetMapping("/schedule")
     public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ,

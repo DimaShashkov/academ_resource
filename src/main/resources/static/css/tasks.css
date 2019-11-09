@@ -8,28 +8,51 @@ body {
 }
 
 table {
+  color: #F5F5DC;
+  border: 1px solid green;
+  margin: auto;
+  width: 1000px;
   background: navy;
 }
+th {
+
+  width: 30px;
+  padding: 10px;
+}
 td {
+
+  width: 300px;
+  padding: 10px;
   background: #3EB489;
+}
+dd {
+
+  width: 300px;
+  padding: 10px;
+}
+dt {
+  width: 300px;
 }
 .addButton:hover {
   font-size: 110%;
   background: green;
 }
-.header {
+
+a:hover{
+  color:red;
+}
+a{
+  text-decoration: none;
+  color:black;
+  transition: all .5s ease-in-out;
+}
+.head  {
+  pointer-events: auto;
   width: 100%;
   position: fixed;
   top: auto;
   border: 0.5px solid #333;
   background: #B0E0E6;
-}
-.header li:hover ul, .header
-li.jshover ul {
-  display: block;
-}
-.header li:hover, .header li.jshover {
-  background: #424242;
 }
 
 input[type="text"] {
