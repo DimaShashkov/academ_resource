@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class TasksController {
-    private final static Logger logger = Logger.getLogger(RegistrationController.class);
+    private final static Logger logger = Logger.getLogger(TasksController.class);
     @GetMapping("/tasks")
     public String getSchedule() {
         return "tasks";
