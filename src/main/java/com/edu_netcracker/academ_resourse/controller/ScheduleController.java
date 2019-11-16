@@ -1,8 +1,6 @@
 package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.schedule.logic.Schedule;
-import com.edu_netcracker.academ_resourse.schedule.universities.*;
-import com.edu_netcracker.academ_resourse.schedule.repositories.*;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

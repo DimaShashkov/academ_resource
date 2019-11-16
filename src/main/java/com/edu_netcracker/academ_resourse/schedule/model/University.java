@@ -1,9 +1,26 @@
 package com.edu_netcracker.academ_resourse.schedule.model;
 
-public interface University {
-    public String getUrl();
-    public String getQuery();
-    public void setSchedule(String schedule);
-    public String getSchedule();
-    public String getTomorrowSchedule();
+public abstract class University {
+
+    public String getUrl() {
+        return "";
+    }
+    public String getQuery() {
+        return "";
+    }
+    public void setSchedule(String schedule) {
+    }
+    public String getSchedule() {
+        return "";
+    }
+    public String getTomorrowSchedule() {
+        return "";
+    }
+
+    public String getGroup() {
+        return "";
+    }
+
+    public void setGroup(String group) {
+    }
 }

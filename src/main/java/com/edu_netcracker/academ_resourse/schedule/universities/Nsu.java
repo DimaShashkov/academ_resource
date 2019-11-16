@@ -1,20 +1,37 @@
 package com.edu_netcracker.academ_resourse.schedule.universities;
 
 import com.edu_netcracker.academ_resourse.schedule.model.University;
+import freemarker.template.utility.HtmlEscape;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.web.servlet.tags.HtmlEscapeTag;
 
+import javax.swing.text.html.HTML;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Nsu implements University {
+public class Nsu extends University {
+    @Field
     private String group;
+    @Field
     private String schedule;
+    private static String URL = "https://table.nsu.ru/group/";
+    private static String SCHEDULE_START = "<table cellspacing=\"0\" border=\"1\" class=\"time-table\"> \r\n";
+    private static String QUERY = "table.time-table";
+    private static String TABLE = "<table>";
+    private static String TR = "<tr>";
+    private static String TH = "<th>";
+    private static String TD = "<td>";
+    private static String TOMORROW_1 = "<tr> \r\n <th>Время</th> \r\n";
+    private static String TOMORROW_2 = "</th> </tr> \r\n";
+    private static String TOMORROW_3 = "<tr> \r\n <td>";
+    private static String TOMORROW_4 = "</tr> \r\n";
 
     public Nsu() {
     }
 
-    public Nsu(String group) {
+    public Nsu(final String group) {
         this.group = group;
     }
 
@@ -22,11 +39,11 @@ public class Nsu implements University {
         return group;
     }
 
-    public void setGroup(String group) {
+    public void setGroup(final String group) {
         this.group = group;
     }
 
-    public void setSchedule(String schedule) {
+    public void setSchedule(final String schedule) {
         this.schedule = schedule;
     }
 
@@ -36,11 +53,9 @@ public class Nsu implements University {
 
     @Override
     public String getTomorrowSchedule() {
-        String start = "<table cellspacing=\"0\" border=\"1\" class=\"time-table\"> \r\n";
-        String end = "</table>";
 
-        DateFormat df = new SimpleDateFormat("EEEE", new Locale("Ru", "ru"));
-        char[] charArray = df.format(new Date(new Date().getTime() + 86400000)).toCharArray();
+        final DateFormat df = new SimpleDateFormat("EEEE", new Locale("Ru", "ru"));
+        final char[] charArray = df.format(new Date(new Date().getTime() + 86400000)).toCharArray();
         charArray[0] = Character.toUpperCase(charArray[0]);
         String tomorrowDay = new String(charArray);
 
@@ -63,28 +78,27 @@ public class Nsu implements University {
         }
 
 
-
-        String[] str = schedule.split("<tr>");
+        String[] str = schedule.split(TR);
         StringBuilder tomorrow = new StringBuilder();
-        tomorrow.append(start).append("<tr> \r\n <th>Время</th> \r\n").append("<th>").append(tomorrowDay).append("</th> </tr> \r\n");
+        tomorrow.append(SCHEDULE_START).append(TOMORROW_1).append(TH).append(tomorrowDay).append(TOMORROW_2);
 
         for (int i = 2; i < str.length; i++) {
             String s = str[i];
-            String[] strg = s.split("<td>");
-            tomorrow.append("<tr> \r\n <td>").append(strg[1]).append("<td>").append(strg[dayNumber]).append("</tr> \r\n");
+            String[] strg = s.split(TD);
+            tomorrow.append(TOMORROW_3).append(strg[1]).append(TD).append(strg[dayNumber]).append(TOMORROW_4);
         }
-        tomorrow.append("</table>");
+        tomorrow.append(TABLE);
         return tomorrow.toString();
     }
 
     @Override
     public String getUrl() {
-        return "https://table.nsu.ru/group/" + group.toUpperCase();
+        return URL + group.toUpperCase();
     }
 
     @Override
     public String getQuery() {
-        return "table.time-table";
+        return QUERY;
     }
 }
 
