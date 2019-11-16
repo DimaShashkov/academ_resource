@@ -1,6 +1,6 @@
-package com.edu_netcracker.academ_resourse.schedule.parsing;
+package com.edu_netcracker.academ_resourse.schedule.logic;
 
-import com.edu_netcracker.academ_resourse.schedule.MongoGroup;
+import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
 import com.edu_netcracker.academ_resourse.schedule.repositories.*;
 import com.edu_netcracker.academ_resourse.schedule.universities.*;
 import org.apache.log4j.Logger;
@@ -53,7 +53,7 @@ public void addSchedule(final MongoGroup mongoGroup) throws IOException {
     save(mongoGroup, elements);
 }
 
-    private void save(MongoGroup mongoGroup, Elements elements) {
+    private void save(final MongoGroup mongoGroup, final Elements elements) {
         if(mongoGroup.getUniversity() instanceof Itmo) {
             StringBuilder sb = new StringBuilder(elements.toString().replaceAll("border=\"0\"", "border=\"1\""));
             mongoGroup.getUniversity().setSchedule(sb.toString());

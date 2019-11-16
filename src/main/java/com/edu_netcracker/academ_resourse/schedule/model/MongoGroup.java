@@ -1,4 +1,4 @@
-package com.edu_netcracker.academ_resourse.schedule;
+package com.edu_netcracker.academ_resourse.schedule.model;
 
 import com.edu_netcracker.academ_resourse.schedule.model.University;
 

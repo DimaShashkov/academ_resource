@@ -1,15 +1,14 @@
 package com.edu_netcracker.academ_resourse.config;
 
-import com.edu_netcracker.academ_resourse.schedule.parsing.JsoupPars;
+import com.edu_netcracker.academ_resourse.schedule.logic.Schedule;
+import com.edu_netcracker.academ_resourse.schedule.logic.JsoupPars;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
@@ -45,5 +44,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     JsoupPars getJsoupPars() {
         return new JsoupPars();
+    }
+    @Bean
+    Schedule getSchedule() {
+        return new Schedule();
     }
 }
