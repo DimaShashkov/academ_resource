@@ -2,7 +2,9 @@ package com.edu_netcracker.academ_resourse.controller;
 
 
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GreetingController {
-	final static Logger logger = Logger.getLogger(GreetingController.class);
+	final static Logger logger = LoggerFactory.getLogger(GreetingController.class);
 
 	@GetMapping("/main")
 	public String getGreeting(@RequestParam(name="name", required=false, defaultValue="default") String name,

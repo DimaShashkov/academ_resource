@@ -1,17 +1,20 @@
 package com.edu_netcracker.academ_resourse.schedule.logic;
 
 import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
-import org.apache.log4j.Logger;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
 
 public class JsoupPars {
-    private final static Logger logger = Logger.getLogger(JsoupPars.class);
+    private final static Logger logger = LoggerFactory.getLogger(JsoupPars.class);
+
 
     private final String JSOUP_USERAGENT = "Chrome/4.0.249.0 Safari/532.5";
     private final String JSOUP_REFERRER = "http://www.google.com";
