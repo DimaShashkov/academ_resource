@@ -1,8 +1,8 @@
 package com.edu_netcracker.academ_resourse.controller;
 
-import com.edu_netcracker.academ_resourse.schedule.MongoGroup;
-import com.edu_netcracker.academ_resourse.schedule.model.MongoGroupFactory;
-import com.edu_netcracker.academ_resourse.schedule.parsing.JsoupPars;
+import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
+import com.edu_netcracker.academ_resourse.schedule.factory.MongoGroupFactory;
+import com.edu_netcracker.academ_resourse.schedule.logic.JsoupPars;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +44,7 @@ public class PersonalAccountController {
             jsoupPars.addSchedule(mongoGroup);
         } catch (IOException e) {
             e.printStackTrace();
-            logger.info("schedule wasn't added into Mongo");
+            logger.error("schedule wasn't added into Mongo");
         }
         logger.info("the data has been added into model");
     }

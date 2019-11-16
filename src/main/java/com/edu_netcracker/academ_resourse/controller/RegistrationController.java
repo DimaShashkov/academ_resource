@@ -15,7 +15,6 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String getRegistration(Model model) {
         model.addAttribute("message", "");
-        logger.info("the empty data has been added into model");
         return "registration";
     }
 
