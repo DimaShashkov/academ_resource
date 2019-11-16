@@ -1,7 +1,9 @@
 package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.schedule.logic.Schedule;
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ public class ScheduleController {
     @Autowired
     Schedule schedule;
 
-    private final static Logger logger = Logger.getLogger(ScheduleController.class);
+    private final static Logger logger = LoggerFactory.getLogger(ScheduleController.class);
 
     @GetMapping("/schedule")
     public String getSchedule(@RequestParam(value = "univ", defaultValue = "") String univ,
