@@ -37,16 +37,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
        return freeMarkerViewResolver;
     }
 
-
-
-
-
-    @Bean
-    JsoupPars getJsoupPars() {
-        return new JsoupPars();
-    }
-    @Bean
-    Schedule getSchedule() {
-        return new Schedule();
-    }
 }
