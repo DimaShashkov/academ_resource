@@ -98,7 +98,7 @@ public class Schedule {
                     a = false;
                 }
                 if(a) {
-                    sb.append(s + "\n");
+                    sb.append(s + END_LINE);
                 }
             }
             mongoGroup.getUniversity().setSchedule(sb.toString());
@@ -112,7 +112,7 @@ public class Schedule {
                 if (i == 0) {
                     sb.append(str[0].substring(0, str[0].length() - 2) + NSU_TABLE);
                 } else {
-                    sb.append(str[i] + "\n");
+                    sb.append(str[i] + END_LINE);
                 }
             }
             mongoGroup.getUniversity().setSchedule(sb.toString());
