@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <title>Schedule</title>
     <link rel="stylesheet" type="text/css" href="css/schedule.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -29,14 +30,14 @@
   <br>
   <br>
   <div id="tomorrow_table">
-      <p>${tomorrow_schedule}</p>
+          <div th:utext="${tomorrow}"/>
   </div>
    <br>
    <br>
    <br>
    <br>
    <div id="week_table">
-       <p>${schedule}</p>
+       <div th:utext="${schedule}"/>
    </div>
     <script src="/resources/js/schedule.js"></script>
 </body>

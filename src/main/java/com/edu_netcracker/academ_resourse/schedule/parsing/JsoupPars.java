@@ -38,7 +38,7 @@ public void addSchedule(final MongoGroup mongoGroup) throws IOException {
     }
     else if (mongoGroup.getUniversity() instanceof Nsu) {
         if(nsuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
-            logger.info("this group already exist");
+            logger.info("this group already exist ");
             return;
         }
     }

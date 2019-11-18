@@ -1,0 +1,123 @@
+package com.edu_netcracker.academ_resourse.controller;
+
+import com.edu_netcracker.academ_resourse.domain.Group;
+import com.edu_netcracker.academ_resourse.domain.User;
+import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
+import com.edu_netcracker.academ_resourse.repos.IUserRepo;
+import com.edu_netcracker.academ_resourse.schedule.MongoGroup;
+import com.edu_netcracker.academ_resourse.schedule.model.MongoGroupFactory;
+import com.edu_netcracker.academ_resourse.schedule.parsing.JsoupPars;
+import com.edu_netcracker.academ_resourse.services.GroupService;
+import com.edu_netcracker.academ_resourse.services.UserService;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@Controller
+
+public class UserController {
+    @Autowired
+    JsoupPars jsoupPars;
+
+    @Autowired
+	private IUserRepo userRepo;
+	@Autowired
+	private IGroupRepo groupRepo;
+
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private GroupService groupService;
+
+
+    private final static Logger logger = Logger.getLogger(UserController.class);
+
+    @GetMapping("/profile")
+	public String getProfile(
+			@AuthenticationPrincipal User user,
+			Model model) {
+
+		model.addAttribute("user", user);
+		return "profile";
+	}
+	@PostMapping("/profile")
+	public String updateUser(
+			@AuthenticationPrincipal User user,
+			@RequestParam String email,
+			@RequestParam String password,
+			@RequestParam String group,
+			@RequestParam String university,
+			HttpServletResponse response,
+			Model model) {
+
+		Group groupFromDb = groupRepo.findGroupByName(group);
+		if(groupFromDb != null){
+			user.setGroup(groupFromDb);
+		} else {
+			Group userGroup = new Group(group);
+			groupRepo.save(userGroup);
+			user.setGroup(userGroup);
+		}
+
+		user.setEmail(email);
+		user.setPassword(password);
+		user.setUniversity(university);
+
+		userRepo.save(user);
+		model.addAttribute("user", user);
+
+		MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
+
+		addSchedule(mongoGroup);
+        StringBuilder sb = new StringBuilder();
+        sb.append("http://localhost:8080/schedule?univ=").append(university).append("&group=").append(group.toUpperCase());
+        try {
+            response.sendRedirect(sb.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return "profile";
+	}
+
+//    @PostMapping("/profile")
+//    public String postPersonalAccount(
+//			@RequestParam("university") String university,
+//			String group, Model model,
+//			HttpServletResponse response) {
+//        MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
+//
+//
+//
+//
+//
+//
+//        addSchedule(mongoGroup);
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("http://localhost:8080/schedule?univ=").append(university).append("&group=").append(group.toUpperCase());
+//        try {
+//            response.sendRedirect(sb.toString());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return "profile";
+//    }
+
+    private void addSchedule(MongoGroup mongoGroup) {
+        try {
+            jsoupPars.addSchedule(mongoGroup);
+        } catch (IOException e) {
+            e.printStackTrace();
+            logger.info("schedule wasn't added into Mongo");
+        }
+        logger.info("the data has been added into model");
+    }
+}

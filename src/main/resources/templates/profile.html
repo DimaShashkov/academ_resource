@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal account</title>
+    <link rel="stylesheet" type="text/css" href="css/personal_account.css" />
+    </head>
+    <body>
+
+    <table class="header" cellpadding="4" cellspacing="1" border="1" align="center">
+        <tr>
+            <td><ul>
+                <li> <a href="#"></a>Schedule</li>
+                <li> <a href="#"></a>Tomorrow's schedule</li>
+                <li> <a href="http://localhost:8080/schedule" target="">All schedule</a></li>
+            </ul></td>
+            <td><ul>
+                <li><a th:href="@{/calendar}" target="">Calendar</a></li>
+            </ul> </td>
+            <td><ul>
+                <li><a th:href="@{/tasks}" target="">Tasks</a></li>
+            </ul> </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
+
+    <form action="/profile" method="post">
+        <lable type="text">Email</lable><br>
+        <input type="email" name="email" th:value="${user.email}"><br>
+        <lable type="password">Password</lable><br>
+        <input type="password" name="password" th:value="${user.password}"><br>
+        <lable type="text">Group</lable><br>
+        <input type="text" name="group" th:value="${user.groupName}"><br>
+        <lable type="text">University</lable><br>
+        <input type="text" name="university" th:value="${user.university}"><br>
+        <input type="hidden" th:value="${_csrf.token}" name="_csrf">
+        <button type="submit">Save</button>
+    </form>
+
+<!--    <a class="avatar"><img th:src="@{https://yt3.ggpht.com/a-/AAuE7mB-x4uFugC7DuM6ph-jphPsaE0nnZdUI-QUTg=s800-mo-c-c0xffffffff-rj-k-no}" alt="avatar" width="200"-->
+<!--    vspace="5" hspace="5"> </a>-->
+<!--    <form method="post">-->
+<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+<!--    <table class="persData" cellpadding="4" cellspacing="1" border="1" align='center' >-->
+<!--    <caption>Personal data</caption>-->
+<!--    <tr>-->
+<!--      <td>Name:<br>-->
+<!--&lt;!&ndash;        <li th:text="${user.name}"></li>&ndash;&gt;-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Last name:<br>-->
+<!--        [[lastName]]</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td> Email: <br>-->
+<!--          <div th:text="${user.email}"></div>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>University:<br>-->
+<!--        ${university}<br>-->
+<!--          <div class="dataField">University:<br>-->
+<!--              <select name="university">-->
+<!--                  <option value="ITMO">ITMO</option>-->
+<!--                  <option value="NSU">NSU</option>-->
+<!--                  <option value="SMTU">SMTU</option>-->
+<!--              </select></div></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>group:<br>-->
+<!--        ${group} <br>-->
+<!--        <div class="dataField">Group:<br>-->
+<!--            <input type="text" th:name="group" required/></div></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Role:<br>-->
+<!--        [[role]]</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td><hr> </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Old password:<br>-->
+<!--        <input type="password" name="password"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>New password:<br>-->
+<!--        <input type="password" name="password2"></td>-->
+<!--    </tr>-->
+<!--    </table>-->
+
+<!--    <input class="saveButton" type="submit" value="Save change">-->
+<!--    </form>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+    </body>
+</html>

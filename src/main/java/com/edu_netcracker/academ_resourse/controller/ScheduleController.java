@@ -49,7 +49,7 @@ public class ScheduleController {
                 tomorrow = nsu.getTomorrowSchedule();
             }
         }
-        model.addAttribute("tomorrow_schedule", tomorrow);
+        model.addAttribute("tomorrow", tomorrow);
         model.addAttribute("schedule", week);
         return "schedule";
     }
