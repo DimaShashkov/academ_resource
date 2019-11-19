@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+>
 <head>
     <meta charset="UTF-8">
     <title>Personal account</title>
-    <link rel="stylesheet" type="text/css" href="css/personal_account.css" />
+    <link rel="stylesheet" type="text/css" href="css/profile.css" />
     </head>
     <body>
-
-    <table class="header" cellpadding="4" cellspacing="1" border="1" align="center">
+    <table class="head" cellpadding="4" cellspacing="1" border="1" align="center">
         <tr>
             <td><ul>
-                <li> <a href="#"></a>Schedule</li>
-                <li> <a href="#"></a>Tomorrow's schedule</li>
-                <li> <a href="http://localhost:8080/schedule" target="">All schedule</a></li>
+                <li><a href="/schedule" target="">Schedule</a></li>
             </ul></td>
             <td><ul>
-                <li><a th:href="@{/calendar}" target="">Calendar</a></li>
+                <li><a href="/calendar" target="">Calendar</a></li>
             </ul> </td>
             <td><ul>
-                <li><a th:href="@{/tasks}" target="">Tasks</a></li>
+                <li><a href="/tasks" target="">Tasks</a></li>
             </ul> </td>
         </tr>
     </table>
@@ -41,7 +38,12 @@
         <lable type="text">Group</lable><br>
         <input type="text" name="group" th:value="${user.groupName}"><br>
         <lable type="text">University</lable><br>
-        <input type="text" name="university" th:value="${user.university}"><br>
+        <p th:text="${user.university}"> </p>
+        <select name="university" th:value="${user.university}">
+            <option value="ITMO">ITMO</option>
+            <option value="NSU">NSU</option>
+            <option value="SMTU">SMTU</option>
+        </select>
         <input type="hidden" th:value="${_csrf.token}" name="_csrf">
         <button type="submit">Save</button>
     </form>

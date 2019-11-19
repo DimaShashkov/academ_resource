@@ -2,7 +2,8 @@ package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.services.UserService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,12 @@ public class RegistrationController {
 	@Autowired
 	private UserService userService;
 
-    private final static Logger logger = Logger.getLogger(RegistrationController.class);
+    private final static Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
     @GetMapping("/registration")
-    public String registration() {
+    public String getRegistration(Model model) {
+        model.addAttribute("message", "");
+        logger.info("the empty data has been added into model");
         return "registration";
     }
 

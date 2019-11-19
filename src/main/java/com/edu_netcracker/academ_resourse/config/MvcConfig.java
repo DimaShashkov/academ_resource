@@ -1,18 +1,9 @@
 package com.edu_netcracker.academ_resourse.config;
 
-import com.edu_netcracker.academ_resourse.schedule.parsing.JsoupPars;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
 //@EnableWebMvc
@@ -42,10 +33,6 @@ public class MvcConfig implements WebMvcConfigurer {
 //
 //
 //
-    @Bean
-    JsoupPars getJsoupPars() {
-        return new JsoupPars();
-    }
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {

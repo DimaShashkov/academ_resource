@@ -1,13 +1,13 @@
-package com.edu_netcracker.academ_resourse.schedule.model;
+package com.edu_netcracker.academ_resourse.schedule.factory;
 
-import com.edu_netcracker.academ_resourse.schedule.MongoGroup;
+import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
 import com.edu_netcracker.academ_resourse.schedule.universities.Itmo;
 import com.edu_netcracker.academ_resourse.schedule.universities.Nsu;
 import com.edu_netcracker.academ_resourse.schedule.universities.Smtu;
 
 public class MongoGroupFactory {
 
-    public static MongoGroup getGroup(String university, String group) {
+    public static MongoGroup getGroup(final String university, final String group) {
         if(university.equals("ITMO")) {
             MongoGroup<Itmo> mongoGroup = new MongoGroup();
             mongoGroup.setUniversity(new Itmo(group));

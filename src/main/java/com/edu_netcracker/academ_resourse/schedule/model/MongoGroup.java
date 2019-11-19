@@ -1,6 +1,4 @@
-package com.edu_netcracker.academ_resourse.schedule;
-
-import com.edu_netcracker.academ_resourse.schedule.model.University;
+package com.edu_netcracker.academ_resourse.schedule.model;
 
 public class MongoGroup<T extends University>{
     private T university;

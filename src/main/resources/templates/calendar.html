@@ -1,10 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/calendar.css" />
+    <meta charset="utf-8">
+    <title>Calendar</title>
 </head>
 <body>
+<table class="head" cellpadding="4" cellspacing="1" border="1" align="center">
+    <tr>
+        <td><ul>
+            <li><a href="/schedule" target="">Schedule</a></li>
+        </ul></td>
+        <td><ul>
+            <li><a href="/calendar" target="">Calendar</a></li>
+        </ul> </td>
+        <td><ul>
+            <li><a href="/tasks" target="">Tasks</a></li>
+        </ul> </td>
+    </tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="calendar">
+    <div class="title">{{title}}</div>
+    <div class="month">
+        <a href="#" @click="previousMonth">
+            < </a> {{thisMonth}} , {{thisYear}} <a href="#" @click="nextMonth"> > </a></div>
+    <div class="weeks">
+        <div class="week-day" v-for="weekDay in weekDays"> {{weekDay}}
+        </div>
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Sunday'">
+        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-if="lastDay==31" v-for="a in 4"></div>
+        <div class="day" v-if="lastDay==30" v-for="a in 5"></div>
+        <div class="day" v-if="lastDay==29" v-for="a in 6"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 7"></div>
 
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Monday' && firstWeekDay != 'Sunday'">
+        <div class="day"></div>
+        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-if="lastDay==31" v-for="a in 3"></div>
+        <div class="day" v-if="lastDay==30" v-for="a in 4"></div>
+        <div class="day" v-if="lastDay==29" v-for="a in 5"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 6"></div>
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Tuesday'  && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday'">
+        <div class="day" v-for="a in 2"></div>
+        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-if="lastDay==31" v-for="a in 2"></div>
+        <div class="day" v-if="lastDay==30" v-for="a in 3"></div>
+        <div class="day" v-if="lastDay==29" v-for="a in 6"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 5"></div>
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Wednesday' && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday'">
+        <div class="day" v-for="a in 3"></div>
+        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <dv class="day"  v-if="lastDay==31"></dv>
+        <div class="day" v-if="lastDay==30" v-for="a in 2"></div>
+        <div class="day" v-if="lastDay==29" v-for="a in 3"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 4"></div>
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Thursday'  && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday' && firstWeekDay != 'Wednssday'">
+        <div class="day" v-for="a in 4"></div>
+        <div class="day" v-for="n in lastDay">
+            <span style="color:red" v-if="n==today">{{ n }}</span>
+            <span v-if="n!=today">{{ n }}</span>
+        </div>
+        <div class="day" v-if="lastDay==30"></div>
+        <div class="day" v-if="lastDay==29" v-for="a in 2"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 3"></div>
+
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Friday' && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday' && firstWeekDay != 'Wednssday' && firstWeekDay != 'Thursday'">
+        <div class="day" v-for="a in 5"></div>
+        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-if="lastDay==31" v-for="a in 6"></div>
+        <div class="day" v-if="lastDay==29" v-for="a in 1"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 2"></div>
+    </div>
+    <div class="days" v-if="firstWeekDay == 'Saturday' && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday' && firstWeekDay != 'Wednssday' && firstWeekDay != 'Thursday' && firstWeekDay != 'Friday'">
+        <div class="day" v-for="a in 6"></div>
+        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-if="lastDay==31" v-for="a in 5"></div>
+        <div class="day" v-if="lastDay==30" v-for="a in 6"></div>
+        <div class="day" v-if="lastDay==28" v-for="a in 1"></div>
+
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js'></script>
+
+
+    <script  src="js/calendar.js"></script>
+
+</div>
 </body>
 </html>
