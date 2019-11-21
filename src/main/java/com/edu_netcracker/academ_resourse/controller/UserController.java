@@ -59,20 +59,12 @@ public class UserController {
 			HttpServletResponse response,
 			Model model) {
 
-		Group groupFromDb = groupRepo.findGroupByName(group);
-		if(groupFromDb != null){
-			user.setGroup(groupFromDb);
-		} else {
-			Group userGroup = new Group(group);
-			groupRepo.save(userGroup);
-			user.setGroup(userGroup);
-		}
-
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setUniversity(university);
 
-		userRepo.save(user);
+		groupService.addUserGroup(user, group);
+
 		model.addAttribute("user", user);
 
 		MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
