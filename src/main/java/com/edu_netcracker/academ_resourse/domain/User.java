@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.Set;
 
 @Entity
@@ -54,6 +55,15 @@ public class User implements UserDetails {
 	public String getUniversity(){
 		return group !=null ? group.getUniversityName() : "<none>";
 	}
+
+
+	public String getRole() {
+		Iterator<Role> iterator = roles.iterator();
+		String result = iterator.next().toString();
+
+		return result.substring(0, 1) + result.substring(1).toLowerCase();
+	}
+
 	public long getId() {
 		return id;
 	}

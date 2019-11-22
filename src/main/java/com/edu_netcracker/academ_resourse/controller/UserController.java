@@ -36,8 +36,8 @@ public class UserController {
 	public String getProfile(
 			@AuthenticationPrincipal User user,
 			Model model) {
-
 		model.addAttribute("user", user);
+
 		return "profile";
 	}
 	@PostMapping("/profile")
@@ -47,17 +47,23 @@ public class UserController {
 			@RequestParam String password,
 			@RequestParam String group,
 			@RequestParam String university,
+			@RequestParam String role,
 			Model model) {
 
 		user.setEmail(email);
 		user.setPassword(password);
 
 		userService.addGroup(user, group, university);
+ 
+		userService.addRole(user, role);
+	
+
 
 		model.addAttribute("user", user);
 
 		MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
 		addSchedule(mongoGroup);
+
 
 		return "redirect:/schedule";
 	}

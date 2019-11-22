@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.formLogin()
 					.loginPage("/login").usernameParameter("email")
 					.permitAll()
-				.and() //Как аботает
+				.and() //Как работает
 					.logout()
 					.permitAll();
 	}
