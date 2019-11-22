@@ -31,13 +31,18 @@ public class UserService implements UserDetailsService {
 
 	public boolean addUser(User user) {
 		User userFromDb = userRepo.findUserByEmail(user.getEmail());
+
 		user.setRoles(Collections.singleton(Role.USER));
+
 
 		if (userFromDb != null) {
 			return false;
 		}
 
 		user.setActive(true);
+
+		user.setRoles(Collections.singleton(Role.USER));
+
 		userRepo.save(user);
 
 		return true;
@@ -47,6 +52,7 @@ public class UserService implements UserDetailsService {
 		user.setGroup(group);
 		userRepo.save(user);
 	}
+
 	public void addRole(User user, String role) {
 		if(role.equals("USER")) {
 			user.setRoles(Collections.singleton(Role.USER));

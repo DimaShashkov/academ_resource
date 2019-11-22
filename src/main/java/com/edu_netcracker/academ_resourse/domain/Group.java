@@ -1,6 +1,14 @@
 package com.edu_netcracker.academ_resourse.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "grp")
@@ -28,8 +36,7 @@ public class Group {
 	public Group(String name) {
 		this.name = name;
 	}
-	//    private int universityId;
-//    private int taskId;
+
 
 	public int getId() {
 		return id;

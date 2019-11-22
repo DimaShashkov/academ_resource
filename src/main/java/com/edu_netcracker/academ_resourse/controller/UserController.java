@@ -36,7 +36,6 @@ public class UserController {
 	public String getProfile(
 			@AuthenticationPrincipal User user,
 			Model model) {
-		String role = user.getRole();
 		model.addAttribute("user", user);
 
 		return "profile";
@@ -55,8 +54,10 @@ public class UserController {
 		user.setPassword(password);
 
 		userService.addGroup(user, group, university);
+ 
 		userService.addRole(user, role);
-		logger.info("role: ", user.getRole());
+	
+
 
 		model.addAttribute("user", user);
 
