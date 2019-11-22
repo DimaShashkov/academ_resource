@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Tasks</title>
@@ -30,34 +30,12 @@
 <br>
 <br>
 <div id="taskTable">
-  <table cellpadding="4" cellspacing="1" border="1" align='center' >
-    <caption>Tasks</caption>
-    <thead>
-    <tr>
-      <th>№</th>
-      <th>Data</th>
-      <th>Subject</th>
-      <th>Text</th>
-      <th>Link</th>
-      <th>Is done</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr v-for="task in tasks">
-      <td>{{ task.id }}</td>
-      <td>{{ task.date }}</td>
-      <td>{{ task.subject }}</td>
-      <td>{{ task.text }}</td>
-      <td><a :href="task.link" target="_blank">Link</a></td>
-      <td><input type="checkbox" name="isDone">is done</td>
-    </tr>
-    </tbody>
-  </table>
+
 </div>
 <br>
 <br>
 <div id="newJob">
-  <template v-if="access">
+  <p th:utext="${admin}"></p>
     <hr>
     <table cellpadding="4" cellspacing="1" border="1" align='center'>
       <tr>
