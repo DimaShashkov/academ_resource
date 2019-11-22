@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.CollectionTable;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.util.Collection;
@@ -45,8 +43,6 @@ public class User implements UserDetails {
 	@JoinColumn(name = "group_id")
 	private Group group;
 
-	private String university;
-
 //    private String token;
 
 	public User() {
@@ -54,6 +50,9 @@ public class User implements UserDetails {
 
 	public String getGroupName(){
 		return group !=null ? group.getName() : "<none>";
+	}
+	public String getUniversity(){
+		return group !=null ? group.getUniversityName() : "<none>";
 	}
 	public long getId() {
 		return id;
@@ -84,13 +83,6 @@ public class User implements UserDetails {
 		this.password = password;
 	}
 
-	public String getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(String university) {
-		this.university = university;
-	}
 
 	public boolean isActive() {
 		return active;

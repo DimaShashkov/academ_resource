@@ -5,6 +5,7 @@ import com.edu_netcracker.academ_resourse.schedule.factory.MongoGroupFactory;
 import com.edu_netcracker.academ_resourse.schedule.logic.JsoupPars;
 import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
 import com.edu_netcracker.academ_resourse.services.GroupService;
+import com.edu_netcracker.academ_resourse.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class UserController {
 
 	@Autowired
 	private GroupService groupService;
+	@Autowired
+	private UserService userService;
 
 
 	private final static Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -48,9 +51,8 @@ public class UserController {
 
 		user.setEmail(email);
 		user.setPassword(password);
-		user.setUniversity(university);
 
-		groupService.addUserGroup(user, group);
+		userService.addGroup(user, group, university);
 
 		model.addAttribute("user", user);
 

@@ -19,16 +19,18 @@ import java.util.Collections;
 @Service
 public class UserService implements UserDetailsService {
 	@Autowired
-	private IUserRepo IUserRepo;
+	private IUserRepo userRepo;
+	@Autowired
+	private GroupService groupService;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		return IUserRepo.findUserByEmail(email);
+		return userRepo.findUserByEmail(email);
 	}
 
 
 	public boolean addUser(User user) {
-		User userFromDb = IUserRepo.findUserByEmail(user.getEmail());
+		User userFromDb = userRepo.findUserByEmail(user.getEmail());
 
 		if (userFromDb != null) {
 			return false;
@@ -36,9 +38,14 @@ public class UserService implements UserDetailsService {
 
 		user.setActive(true);
 		user.setRoles(Collections.singleton(Role.USER));
-		IUserRepo.save(user);
+		userRepo.save(user);
 
 		return true;
+	}
+	public void addGroup(User user, String groupName, String universityName){
+		Group group = groupService.addGroupUniversity(groupName, universityName);
+		user.setGroup(group);
+		userRepo.save(user);
 	}
 
 }
