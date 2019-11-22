@@ -3,7 +3,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Personal account</title>
+    <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="css/profile.css" />
     </head>
     <body>
@@ -40,9 +40,17 @@
         <input type="password" name="password" th:value="${user.password}"><br>
         <lable type="text">Group</lable><br>
         <input type="text" name="group" th:value="${user.groupName}"><br>
+        <lable type="text">Role</lable><br>
+        <p th:text="${user.getRole()}"></p>
+        <select name="role">
+            <option th:value="${user.getRole()}"><p th:text="${user.getRole()}"></p></option>
+            <option value="ADMIN">Admin</option>
+            <option value="USER">User</option>
+        </select><br>
         <lable type="text">University</lable><br>
-        <p th:text="${user.university}"> </p>
-        <select name="university" th:value="${user.university}">
+        <p th:text="${user.university}"></p>
+        <select name="university">
+            <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>
             <option value="ITMO">ITMO</option>
             <option value="NSU">NSU</option>
             <option value="SMTU">SMTU</option>

@@ -1,15 +1,6 @@
 package com.edu_netcracker.academ_resourse.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "grp")
@@ -19,6 +10,12 @@ public class Group {
 	private int id;
 
     private String name;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="univ_id")
+	private University university;
+
+//  private int taskId;
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
 //	@JoinColumn(name ="group_fk)
@@ -50,32 +47,14 @@ public class Group {
 		this.name = name;
 	}
 
-//	public Set<User> getUsers() {
-//		return users;
-//	}
-//
-//	public void setUsers(Set<User> users) {
-//		this.users = users;
-//	}
-//
-//	public void setUser(User user) {
-//		this.users.add(user);
-//	}
+	public University getUniversity() {
+		return university;
+	}
 
-
-	//	public int getUniversityId() {
-//		return universityId;
-//	}
-//
-//	public void setUniversityId(int universityId) {
-//		this.universityId = universityId;
-//	}
-
-//	public int getTaskId() {
-//		return taskId;
-//	}
-//
-//	public void setTaskId(int taskId) {
-//		this.taskId = taskId;
-//	}
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+	public String getUniversityName(){
+		return university !=null ? university.getName() : "<none>";
+	}
 }
