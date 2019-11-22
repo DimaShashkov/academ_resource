@@ -1,11 +1,8 @@
 package com.edu_netcracker.academ_resourse.schedule.universities;
 
 import com.edu_netcracker.academ_resourse.schedule.model.University;
-import freemarker.template.utility.HtmlEscape;
 import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.web.servlet.tags.HtmlEscapeTag;
 
-import javax.swing.text.html.HTML;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
