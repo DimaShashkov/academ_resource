@@ -1,8 +1,10 @@
 package com.edu_netcracker.academ_resourse.services;
 
 import com.edu_netcracker.academ_resourse.domain.Group;
+import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.University;
 import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
+import com.edu_netcracker.academ_resourse.repos.ITasksRepo;
 import com.edu_netcracker.academ_resourse.repos.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ public class GroupService {
 	private IUserRepo userRepo;
 	@Autowired
 	private UniversityService universityService;
+	@Autowired
+	ITasksRepo tasksRepo;
 
 	public void addGroup(Group group) {
 		Group groupFromDB = groupRepo.findGroupByName(group.getName());
@@ -50,5 +54,16 @@ public class GroupService {
 			groupRepo.save(groupUniv);
 			return groupUniv;
 		}
+	}
+
+	public Task addTasks(Task task, Group group) {
+		Task taskFromBD = tasksRepo.findTasksByTaskAndDate(task.getTask(), task.getDate());
+		if(taskFromBD != null)
+			return taskFromBD;
+
+		group.addTask(task);
+		tasksRepo.save(task);
+		groupRepo.save(group);
+			return task;
 	}
 }

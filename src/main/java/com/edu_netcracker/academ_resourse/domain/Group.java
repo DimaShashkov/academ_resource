@@ -1,5 +1,10 @@
 package com.edu_netcracker.academ_resourse.domain;
 
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,6 +27,10 @@ public class Group {
     @ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="univ_id")
 	private University university;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="group_id")
+	private List<Task> tasks;
 
 //  private int taskId;
 
@@ -61,6 +70,24 @@ public class Group {
 	public void setUniversity(University university) {
 		this.university = university;
 	}
+
+	public List<Task> getTasks() {
+    	if(tasks == null) {
+    		tasks = new ArrayList<>();
+		}
+		return tasks;
+	}
+
+	public void addTask(Task task) {
+    	if(tasks.isEmpty())
+    		tasks = new ArrayList<>();
+		this.tasks.add(task);
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
 	public String getUniversityName(){
 		return university !=null ? university.getName() : "<none>";
 	}

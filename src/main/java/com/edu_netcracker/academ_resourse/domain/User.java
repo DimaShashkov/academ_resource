@@ -127,6 +127,9 @@ public class User implements UserDetails {
 	}
 
 	public Group getGroup() {
+		if(group == null) {
+			group = new Group();
+		}
 		return group;
 	}
 
