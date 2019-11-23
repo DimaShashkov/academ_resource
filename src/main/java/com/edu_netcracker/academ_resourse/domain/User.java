@@ -44,7 +44,6 @@ public class User implements UserDetails {
 	@JoinColumn(name = "group_id")
 	private Group group;
 
-
 //    private String token;
 
 	public User() {
@@ -57,12 +56,14 @@ public class User implements UserDetails {
 		return group !=null ? group.getUniversityName() : "<none>";
 	}
 
+
 	public String getRole() {
 		Iterator<Role> iterator = roles.iterator();
 		String result = iterator.next().toString();
 
 		return result.substring(0, 1) + result.substring(1).toLowerCase();
 	}
+
 	public long getId() {
 		return id;
 	}
