@@ -44,7 +44,6 @@ public class User implements UserDetails {
 	@JoinColumn(name = "group_id")
 	private Group group;
 
-	private String university;
 
 //    private String token;
 
@@ -127,6 +126,9 @@ public class User implements UserDetails {
 	}
 
 	public Group getGroup() {
+		if(group == null) {
+			group = new Group();
+		}
 		return group;
 	}
 

@@ -5,6 +5,7 @@
   <title>Tasks</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
   <link rel="stylesheet" type="text/css" href="css/tasks.css" />
 </head>
 <body>
@@ -17,7 +18,7 @@
       <li><a href="/calendar" target="">Calendar</a></li>
     </ul> </td>
     <td><ul>
-      <li><a href="/tasks" target="">Tasks</a></li>
+      <li><a href="/task" target="">Tasks</a></li>
     </ul> </td>
     <td><ul>
       <li><a href="/profile" target="">Profile</a></li>
@@ -30,13 +31,39 @@
 <br>
 <br>
 <div id="taskTable">
-
+  <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+        <caption>Tasks</caption>
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Text</th>
+            <th>Link</th>
+            <th>Is done</th>
+          </tr>
+        </thead>
+        <tbody>
+       <tr th:block th:each="task, state: ${tasks}
+  "class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+         <td th:utext="${state.count}">№</td>
+         <td th:utext="${task.date}">Date</td>
+         <td th:utext="${task.subject}">Subject</td>
+         <td th:utext="${task.task}">Text</td>
+         <td th:utext="${task.link}">Link</td>
+            <td><input type="checkbox" name="isDone">is done</td>
+         </tr>
+        </tbody>
+      </table>
 </div>
+
+
 <br>
 <br>
 <div id="newJob">
   <p th:utext="${admin}"></p>
     <hr>
+  <form action="/tasks" method="post">
     <table cellpadding="4" cellspacing="1" border="1" align='center'>
       <tr>
         <th>Data</th>
@@ -45,19 +72,21 @@
         <th>Link</th>
       </tr>
       <tr>
-        <td> <input type="date" name="newDate" value="newDate"></td>
-        <td><select class="select" name="select">
-          <option selected value="s1">Maths</option>
-          <option value="s2">SQL</option>
-          <option value="s3">PE</option>
+        <td> <input type="date" name="date" value="newDate"></td>
+        <td><select class="select" name="subject">
+          <option selected value="Math">Math</option>
+          <option value="SQL">SQL</option>
+          <option value="PE">PE</option>
         </select></td>
-        <td> <input type="text" name="newText"></td>
-        <td> <input type="url" name="newLink" value="newLink"></td>
+        <td> <input type="text" name="taskText"></td>
+        <td> <input type="url" name="link"></td>
       </tr>
       <tr>
-        <td colspan="4"><button class="addButton" type="button" name="addJob">Add job</button></td>
+        <td colspan="4"><input type="hidden" th:value="${_csrf.token}" name="_csrf">
+          <button type="submit">Save</button></td>
       </tr>
     </table>
+  </form>
   </template>
 </div>
 <br>
