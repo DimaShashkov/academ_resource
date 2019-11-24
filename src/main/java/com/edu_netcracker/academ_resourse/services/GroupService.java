@@ -18,9 +18,9 @@ public class GroupService {
 	@Autowired
 	private UniversityService universityService;
 	@Autowired
-	ITasksRepo tasksRepo;
+	private TasksService tasksService;
 
-	public void addGroup(Group group) {
+	public void addGroup(final Group group) {
 		Group groupFromDB = groupRepo.findGroupByName(group.getName());
 
 		if (groupFromDB == null) {
@@ -41,7 +41,7 @@ public class GroupService {
 //		userRepo.save(user);
 //	}
 
-	public Group addGroupUniversity(String group, String universityName){
+	public Group addGroupUniversity(final String group, final String universityName){
 		University university = universityService.addUniversity(universityName);
 		Group groupFromDb = groupRepo.findGroupByName(group);
 		if(groupFromDb != null){
@@ -56,13 +56,10 @@ public class GroupService {
 		}
 	}
 
-	public Task addTasks(Task task, Group group) {
-		Task taskFromBD = tasksRepo.findTasksByTaskAndDate(task.getTask(), task.getDate());
-		if(taskFromBD != null)
-			return taskFromBD;
+	public Task addTasks(final Task task, final Group group) {
+		Task taskFromBD = tasksService.addTasks(task);
 
-		group.addTask(task);
-		tasksRepo.save(task);
+		group.addTask(taskFromBD);
 		groupRepo.save(group);
 			return task;
 	}
