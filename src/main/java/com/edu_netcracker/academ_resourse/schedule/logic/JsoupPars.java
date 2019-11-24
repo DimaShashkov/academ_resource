@@ -38,6 +38,8 @@ public void addSchedule(final MongoGroup mongoGroup) throws IOException {
     Elements elements = document.select(mongoGroup.getUniversity().getQuery());
 
     schedule.save(mongoGroup, elements);
+
+    schedule.saveSubjects(mongoGroup, elements);
 }
 
 }
