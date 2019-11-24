@@ -15,6 +15,7 @@ public class Itmo extends University {
     private String group;
     @Field
     private String schedule;
+    private String[] subjects;
     private static String URL1 = "http://www.ifmo.ru/ru/schedule/0/";
     private static String URL2 = "/raspisanie_zanyatiy_";
     private static String URL3 = ".htm";
@@ -75,4 +76,5 @@ public class Itmo extends University {
     public String getQuery() {
         return QUERY;
     }
+
 }

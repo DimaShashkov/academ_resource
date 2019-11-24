@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Controller
 
@@ -63,6 +64,9 @@ public class UserController {
 
 		MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
 		addSchedule(mongoGroup);
+		//////////// В этом месте уже можно доставать через mongoGroup.getSubjects() все предметы для этой
+		//////////// группы, вытащенные из расписания на неделю
+		System.out.println(Arrays.toString(mongoGroup.getSubjects()));
 
 
 		return "redirect:/schedule";

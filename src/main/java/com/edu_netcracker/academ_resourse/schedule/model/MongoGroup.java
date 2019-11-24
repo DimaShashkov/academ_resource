@@ -3,6 +3,7 @@ package com.edu_netcracker.academ_resourse.schedule.model;
 public class MongoGroup<T extends University>{
     private T university;
     private String group;
+    private String[] subjects;
 
     public T getUniversity() {
         return university;
@@ -18,5 +19,13 @@ public class MongoGroup<T extends University>{
 
     public void setGroup(String group) {
         this.group = group;
+    }
+
+    public String[] getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(String[] subjects) {
+        this.subjects = subjects;
     }
 }

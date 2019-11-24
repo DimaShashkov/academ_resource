@@ -23,4 +23,5 @@ public abstract class University {
 
     public void setGroup(String group) {
     }
+
 }
