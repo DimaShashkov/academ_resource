@@ -1,30 +1,26 @@
 package com.edu_netcracker.academ_resourse.domain;
 
 
+import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-
-@Entity
-@Table(name = "grp")
-public class Group {
+	@Entity
+	@Table(name = "grp")
+	public class Group {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO )
 	private int id;
 
-    private String name;
+	private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="univ_id")
 	private University university;
 
@@ -32,13 +28,21 @@ public class Group {
 	@JoinColumn(name="group_id")
 	private List<Task> tasks;
 
+	@ManyToMany
+	@JoinTable (name="grp_subject",
+			joinColumns=@JoinColumn (name="grp_id"),
+			inverseJoinColumns=@JoinColumn(name="subject_id"))
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ElementCollection(targetClass=Subject.class)
+	private List<Subject> subjects;
+
 //  private int taskId;
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
 //	@JoinColumn(name ="group_fk)
 //	private Set<User> users;
 
-    public Group(){
+	public Group(){
 
 	}
 
@@ -71,16 +75,17 @@ public class Group {
 		this.university = university;
 	}
 
+	@Transactional
 	public List<Task> getTasks() {
-    	if(tasks == null) {
-    		tasks = new ArrayList<>();
+		if(tasks == null) {
+			tasks = new ArrayList<>();
 		}
 		return tasks;
 	}
 
 	public void addTask(Task task) {
-    	if(tasks.isEmpty())
-    		tasks = new ArrayList<>();
+		if(tasks.isEmpty())
+			tasks = new ArrayList<>();
 		this.tasks.add(task);
 	}
 
@@ -90,5 +95,13 @@ public class Group {
 
 	public String getUniversityName(){
 		return university !=null ? university.getName() : "<none>";
+	}
+
+	public List<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
 	}
 }

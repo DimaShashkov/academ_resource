@@ -1,8 +1,11 @@
 package com.edu_netcracker.academ_resourse.controller;
 
+import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.services.GroupService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,8 +43,10 @@ public class TasksController {
         if(user.getGroup() == null ||
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
             List<Task> tasks = user.getGroup().getTasks();
+            List<Subject> subjects = user.getGroup().getSubjects();
 
             model.addAttribute("tasks", tasks);
+            model.addAttribute("subjects", subjects);
         }
         model.addAttribute("admin", isAdmin);
 

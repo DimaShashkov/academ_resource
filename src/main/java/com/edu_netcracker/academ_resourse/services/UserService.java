@@ -1,11 +1,8 @@
 package com.edu_netcracker.academ_resourse.services;
 
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.core.userdetails.UserDetailsService;
-//import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import com.edu_netcracker.academ_resourse.domain.Group;
 import com.edu_netcracker.academ_resourse.domain.Role;
+import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.repos.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -47,8 +45,8 @@ public class UserService implements UserDetailsService {
 
 		return true;
 	}
-	public void addGroup(User user, String groupName, String universityName){
-		Group group = groupService.addGroupUniversity(groupName, universityName);
+	public void addGroup(User user, String groupName, String universityName, List<Subject> sub){
+		Group group = groupService.addGroupUniversity(groupName, universityName, sub);
 		user.setGroup(group);
 		userRepo.save(user);
 	}

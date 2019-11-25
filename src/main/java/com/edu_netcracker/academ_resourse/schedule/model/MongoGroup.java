@@ -22,6 +22,8 @@ public class MongoGroup<T extends University>{
     }
 
     public String[] getSubjects() {
+        if (subjects == null)
+            return null;
         return subjects;
     }
 

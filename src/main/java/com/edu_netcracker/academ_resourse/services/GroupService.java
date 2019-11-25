@@ -1,13 +1,14 @@
 package com.edu_netcracker.academ_resourse.services;
 
 import com.edu_netcracker.academ_resourse.domain.Group;
+import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.University;
 import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
-import com.edu_netcracker.academ_resourse.repos.ITasksRepo;
 import com.edu_netcracker.academ_resourse.repos.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class GroupService {
@@ -27,30 +28,19 @@ public class GroupService {
 			groupRepo.save(group);
 		}
 	}
-//	public void addUserGroup(User user, String group, String university) {
-//		universityService.addUniversity(university);
-//		Group groupFromDb = groupRepo.findGroupByName(group);
-//		if(groupFromDb != null){
-//
-//			user.setGroup(groupFromDb);
-//		} else {
-//			Group userGroup = new Group(group);
-//			groupRepo.save(userGroup);
-//			user.setGroup(userGroup);
-//		}
-//		userRepo.save(user);
-//	}
 
-	public Group addGroupUniversity(final String group, final String universityName){
+
+	public Group addGroupUniversity(final String group, final String universityName, final List<Subject> sub){
 		University university = universityService.addUniversity(universityName);
 		Group groupFromDb = groupRepo.findGroupByName(group);
 		if(groupFromDb != null){
 			groupFromDb.setUniversity(university);
-			//groupRepo.save(groupFromDb); Возможно здесь это нужно
+			groupFromDb.setSubjects(sub);
 			return groupFromDb;
 		} else {
 			Group groupUniv = new Group(group);
 			groupUniv.setUniversity(university);
+			groupUniv.setSubjects(sub);
 			groupRepo.save(groupUniv);
 			return groupUniv;
 		}
@@ -61,6 +51,6 @@ public class GroupService {
 
 		group.addTask(taskFromBD);
 		groupRepo.save(group);
-			return task;
+		return task;
 	}
 }

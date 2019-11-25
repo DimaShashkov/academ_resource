@@ -44,8 +44,8 @@
           </tr>
         </thead>
         <tbody>
-       <tr th:block th:each="task, state: ${tasks}
-  "class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+       <tr th:block th:each="task, state: ${tasks}"
+           class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
          <td th:utext="${state.count}">№</td>
          <td th:utext="${task.date}">Date</td>
          <td th:utext="${task.subject}">Subject</td>
@@ -71,12 +71,10 @@
         <th>Text</th>
         <th>Link</th>
       </tr>
-      <tr>
+        <tr>
         <td> <input type="date" name="date" value="newDate"></td>
         <td><select class="select" name="subject">
-          <option selected value="Math">Math</option>
-          <option value="SQL">SQL</option>
-          <option value="PE">PE</option>
+          <option   th:block th:each="subject: ${subjects}" th:utext="${subject.getName()}"></option>
         </select></td>
         <td> <input type="text" name="taskText"></td>
         <td> <input type="url" name="link"></td>
