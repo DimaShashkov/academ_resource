@@ -21,6 +21,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class TasksController {
@@ -43,7 +44,7 @@ public class TasksController {
         if(user.getGroup() == null ||
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
             List<Task> tasks = user.getGroup().getTasks();
-            List<Subject> subjects = user.getGroup().getSubjects();
+            Set<Subject> subjects = user.getGroup().getSubjects();
 
             model.addAttribute("tasks", tasks);
             model.addAttribute("subjects", subjects);

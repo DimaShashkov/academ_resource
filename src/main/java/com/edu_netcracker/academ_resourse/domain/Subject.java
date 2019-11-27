@@ -3,15 +3,20 @@ package com.edu_netcracker.academ_resourse.domain;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "subject")
+@Table(name = "subjects_table")
 public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     private String name;
+    @ManyToMany(mappedBy = "subjects")
+//    @JoinColumn(name = "group_id")
+    private Set<Group> groups;
 
 //	@ManyToMany
 //	@JoinColumn(name = "grop_id")
@@ -28,7 +33,7 @@ public class Subject {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -41,14 +46,17 @@ public class Subject {
     }
 
 
+    public Set<Group> getGroups() {
+        return groups;
+    }
 
-//	public Group getGroup() {
-//		return group;
-//	}
-//
-//	public void setGroup(Group group) {
-//		this.group = group;
-//	}
+    public void addGroup(Group group) {
+        if(groups == null)
+            groups = new HashSet<>();
+        groups.add(group);
+    }
 
-
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -45,7 +46,7 @@ public class UserService implements UserDetailsService {
 
 		return true;
 	}
-	public void addGroup(User user, String groupName, String universityName, List<Subject> sub){
+	public void addGroup(User user, String groupName, String universityName, Set<Subject> sub){
 		Group group = groupService.addGroupUniversity(groupName, universityName, sub);
 		user.setGroup(group);
 		userRepo.save(user);

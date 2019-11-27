@@ -9,13 +9,14 @@ import com.edu_netcracker.academ_resourse.repos.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class GroupService {
 	@Autowired
 	private IGroupRepo groupRepo;
 	@Autowired
-	private IUserRepo userRepo;
+	private SubjectService subjectService;
 	@Autowired
 	private UniversityService universityService;
 	@Autowired
@@ -30,18 +31,29 @@ public class GroupService {
 	}
 
 
-	public Group addGroupUniversity(final String group, final String universityName, final List<Subject> sub){
+	public Group addGroupUniversity(final String group, final String universityName,
+									final Set<Subject> sub){
 		University university = universityService.addUniversity(universityName);
 		Group groupFromDb = groupRepo.findGroupByName(group);
 		if(groupFromDb != null){
 			groupFromDb.setUniversity(university);
-			groupFromDb.setSubjects(sub);
+
+
+			    groupFromDb.setSubjects(sub);
+			    groupRepo.save(groupFromDb);
+
+
 			return groupFromDb;
 		} else {
 			Group groupUniv = new Group(group);
 			groupUniv.setUniversity(university);
-			groupUniv.setSubjects(sub);
-			groupRepo.save(groupUniv);
+
+
+                groupUniv.setSubjects(sub);
+                groupRepo.save(groupUniv);
+
+
+
 			return groupUniv;
 		}
 	}

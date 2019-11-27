@@ -1,17 +1,14 @@
 package com.edu_netcracker.academ_resourse.domain;
 
 
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
 
 
-	@Entity
+@Entity
 	@Table(name = "grp")
 	public class Group {
 	@Id
@@ -28,19 +25,52 @@ import java.util.List;
 	@JoinColumn(name="group_id")
 	private List<Task> tasks;
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER,
+			cascade = {
+					CascadeType.MERGE,
+					CascadeType.REFRESH
+			})
 	@JoinTable (name="grp_subject",
 			joinColumns=@JoinColumn (name="grp_id"),
 			inverseJoinColumns=@JoinColumn(name="subject_id"))
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ElementCollection(targetClass=Subject.class)
-	private List<Subject> subjects;
+
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@ElementCollection(targetClass=Subject.class)
+	private Set<Subject> subjects;
 
 //  private int taskId;
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
 //	@JoinColumn(name ="group_fk)
 //	private Set<User> users;
+
+		@Embeddable
+		public static class GroupSubject implements Serializable {
+			Integer groupID;
+			Integer subjectId;
+
+			public GroupSubject() {}
+
+			public GroupSubject(Integer groupID, Integer subjectId) {
+				this.groupID = groupID;
+				this.subjectId = subjectId;
+			}
+
+			@Override
+			public boolean equals(Object o) {
+				if (this == o) return true;
+				if (o == null || getClass() != o.getClass()) return false;
+				GroupSubject that = (GroupSubject) o;
+				return Objects.equals(groupID, that.groupID) &&
+						Objects.equals(subjectId, that.subjectId);
+			}
+
+			@Override
+			public int hashCode() {
+				return Objects.hash(groupID, subjectId);
+			}
+		}
+
 
 	public Group(){
 
@@ -97,11 +127,17 @@ import java.util.List;
 		return university !=null ? university.getName() : "<none>";
 	}
 
-	public List<Subject> getSubjects() {
+	public Set<Subject> getSubjects() {
 		return subjects;
 	}
 
-	public void setSubjects(List<Subject> subjects) {
+	public void setSubjects(Set<Subject> subjects) {
 		this.subjects = subjects;
 	}
+
+	public void addSubject(Subject subject) {
+	    if(subjects == null)
+	        subjects = new HashSet<>();
+	    subjects.add(subject);
+    }
 }

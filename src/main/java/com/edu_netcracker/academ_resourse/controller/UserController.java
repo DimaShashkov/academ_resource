@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 
@@ -67,7 +69,7 @@ public class UserController {
 
         addSchedule(mongoGroup);
 
-            List<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());
+            Set<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());
             userService.addGroup(user, group, university, sub);
 
         //////////// В этом месте уже можно доставать через mongoGroup.getSubjects() все предметы для этой
