@@ -57,3 +57,4 @@ public class Subject {
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
     }
+}
