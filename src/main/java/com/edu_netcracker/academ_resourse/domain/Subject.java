@@ -1,36 +1,60 @@
 package com.edu_netcracker.academ_resourse.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "subject")
+@Table(name = "subjects_table")
 public class Subject {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	private String name;
+    private String name;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name = "grp_subject",
+            joinColumns={@JoinColumn(name = "subject_id")},
+            inverseJoinColumns={@JoinColumn(name = "grp_id")})
+    private Set<Group> groups;
 
-	public Subject() {
-	}
 
-	public long getId() {
-		return id;
-	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    public Subject() {
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Subject(String name) {
+        this.name = name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public long getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void addGroup(Group group) {
+        if(groups == null)
+            groups = new HashSet<>();
+        groups.add(group);
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 }

@@ -25,10 +25,7 @@ public class JsoupPars {
 
 public void addSchedule(final MongoGroup mongoGroup) throws IOException {
 
-    if(schedule.existGroup(mongoGroup)) {
-        logger.info(ALREADY_EXIST);
-        return;
-    }
+
 
     Document document = Jsoup.connect(mongoGroup.getUniversity().getUrl())
             .userAgent(JSOUP_USERAGENT)
@@ -37,9 +34,16 @@ public void addSchedule(final MongoGroup mongoGroup) throws IOException {
 
     Elements elements = document.select(mongoGroup.getUniversity().getQuery());
 
+    schedule.saveSubjects(mongoGroup, elements);
+
+    if(schedule.existGroup(mongoGroup)) {
+        logger.info(ALREADY_EXIST);
+        return;
+    }
+
     schedule.save(mongoGroup, elements);
 
-    schedule.saveSubjects(mongoGroup, elements);
+
 }
 
 }

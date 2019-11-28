@@ -10,20 +10,7 @@ import org.springframework.stereotype.Service;
 public class UniversityService {
 	@Autowired
 	private IUniversityRepo universityRepo;
-	@Autowired
-	private IGroupRepo groupRepo;
 
-//	public void addUniversity(String university, Group group){
-//		University universityFromDB = universityRepo.findUniversityByName(university);
-//		if(universityFromDB != null){
-//			group.setUniversity(universityFromDB);
-//		} else {
-//			University groupUniversity = new University(university);
-//			universityRepo.save(groupUniversity);
-//			group.setUniversity(groupUniversity);
-//		}
-//		groupRepo.save(group);
-//	}
 	public University addUniversity(String universityName) {
 		University universityFromDB = universityRepo.findUniversityByName(universityName);
 
