@@ -1,7 +1,5 @@
 package com.edu_netcracker.academ_resourse.domain;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,13 +12,13 @@ public class Subject {
     private int id;
 
     private String name;
-    @ManyToMany(mappedBy = "subjects")
-//    @JoinColumn(name = "group_id")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @JoinTable(name = "grp_subject",
+            joinColumns={@JoinColumn(name = "subject_id")},
+            inverseJoinColumns={@JoinColumn(name = "grp_id")})
     private Set<Group> groups;
 
-//	@ManyToMany
-//	@JoinColumn(name = "grop_id")
-//	private Group group;
+
 
     public Subject() {
     }

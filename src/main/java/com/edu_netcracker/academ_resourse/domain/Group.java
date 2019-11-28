@@ -1,14 +1,18 @@
 package com.edu_netcracker.academ_resourse.domain;
 
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
-@Entity
+	@Entity
 	@Table(name = "grp")
 	public class Group {
 	@Id
@@ -26,13 +30,10 @@ import java.util.*;
 	private List<Task> tasks;
 
 	@ManyToMany(fetch = FetchType.EAGER,
-			cascade = {
-					CascadeType.MERGE,
-					CascadeType.REFRESH
-			})
+			cascade = CascadeType.ALL)
 	@JoinTable (name="grp_subject",
-			joinColumns=@JoinColumn (name="grp_id"),
-			inverseJoinColumns=@JoinColumn(name="subject_id"))
+			joinColumns=@JoinColumn (name="grp_id", insertable=false, updatable=false),
+			inverseJoinColumns=@JoinColumn(name="subject_id", insertable=false, updatable=false))
 
 //	@LazyCollection(LazyCollectionOption.FALSE)
 //	@ElementCollection(targetClass=Subject.class)
@@ -43,34 +44,6 @@ import java.util.*;
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
 //	@JoinColumn(name ="group_fk)
 //	private Set<User> users;
-
-		@Embeddable
-		public static class GroupSubject implements Serializable {
-			Integer groupID;
-			Integer subjectId;
-
-			public GroupSubject() {}
-
-			public GroupSubject(Integer groupID, Integer subjectId) {
-				this.groupID = groupID;
-				this.subjectId = subjectId;
-			}
-
-			@Override
-			public boolean equals(Object o) {
-				if (this == o) return true;
-				if (o == null || getClass() != o.getClass()) return false;
-				GroupSubject that = (GroupSubject) o;
-				return Objects.equals(groupID, that.groupID) &&
-						Objects.equals(subjectId, that.subjectId);
-			}
-
-			@Override
-			public int hashCode() {
-				return Objects.hash(groupID, subjectId);
-			}
-		}
-
 
 	public Group(){
 

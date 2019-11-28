@@ -5,18 +5,15 @@ import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.University;
 import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
-import com.edu_netcracker.academ_resourse.repos.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
+
 import java.util.Set;
 
 @Service
 public class GroupService {
 	@Autowired
 	private IGroupRepo groupRepo;
-	@Autowired
-	private SubjectService subjectService;
 	@Autowired
 	private UniversityService universityService;
 	@Autowired
