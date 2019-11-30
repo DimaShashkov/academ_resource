@@ -18,11 +18,12 @@ public class Task {
     private String link;
 
 //    @ElementCollection(targetClass = TaskLvl.class, fetch = FetchType.EAGER)
-    @JoinTable(name = "task_lvl_table", joinColumns = @JoinColumn(name = "task_id"))
-    @Enumerated(EnumType.STRING)
+
 //    @JoinTable (name="task_lvl_table",
 //            joinColumns=@JoinColumn (name="taskLvl_id", insertable=false, updatable=false),
 //            inverseJoinColumns=@JoinColumn(name="task_id", insertable=false, updatable=false))
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="task_lvl_id")
     private TaskLvl taskLvl;
 
 

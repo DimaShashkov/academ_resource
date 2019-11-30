@@ -1,19 +1,24 @@
 package com.edu_netcracker.academ_resourse.domain;
 
-public enum TaskLvl {
-    TEST("Test"),
-    COURSEWORK("Coursework"),
-    RESEARCH("Research"),
-    REPORT("Report"),
-    ABSTRACT("Abstract");
+import javax.persistence.*;
 
-    private final String type;
+@Entity
+@Table(name = "task_lvl_table")
+public class TaskLvl {
 
-    private TaskLvl(String type) {
-        this.type = type;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+
+    public TaskLvl(String name) {
+        this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public TaskLvl() {
+    }
+
+    public String getName() {
+        return name;
     }
 }

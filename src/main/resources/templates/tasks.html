@@ -78,8 +78,7 @@
           <option th:block th:each="subject: ${subjects}" th:utext="${subject.getName()}"></option>
         </select></td>
         <td><select class="select" name="taskLvl">
-          <option th:each="taskLvl : ${T(com.edu_netcracker.academ_resourse.domain.TaskLvl).values()}"
-                           th:value="${taskLvl}" th:text="${taskLvl.type}"></option>
+          <option th:each="taskLvl : ${taskLvls}" th:utext="${taskLvl.getName()}"></option>
         </select></td>
         <td> <input type="text" name="taskText"></td>
         <td> <input type="url" name="link"></td>
