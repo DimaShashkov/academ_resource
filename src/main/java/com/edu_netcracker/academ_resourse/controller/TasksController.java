@@ -4,8 +4,7 @@ import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.services.GroupService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.edu_netcracker.academ_resourse.services.TasksService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.transaction.Transactional;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,6 +29,9 @@ public class TasksController {
 
     @Autowired
     private GroupService groupService;
+    @Autowired
+    private TasksService tasksService;
+
 
     @GetMapping("/tasks")
     public String getSchedule(@AuthenticationPrincipal User user, Model model) {
@@ -45,7 +46,9 @@ public class TasksController {
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
             List<Task> tasks = user.getGroup().getTasks();
             Set<Subject> subjects = user.getGroup().getSubjects();
-
+//            List<TaskLvl> taskLvls = taskLvlService.getTaskLvl();
+//
+//            model.addAttribute("taskLvls", taskLvls);
             model.addAttribute("tasks", tasks);
             model.addAttribute("subjects", subjects);
         }
@@ -56,7 +59,8 @@ public class TasksController {
 
     @PostMapping("/tasks")
     public String postSchedule(@AuthenticationPrincipal User user, String date,
-                               String subject, String taskText, String link, Model model) {
+                               String subject, String taskText, String link,
+                               String taskLvl, Model model) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = new Date();
         try {
@@ -69,6 +73,7 @@ public class TasksController {
         task.setSubject(subject);
         task.setTask(taskText);
         task.setLink(link);
+        tasksService.setTaskLvl(task, taskLvl);
         groupService.addTasks(task, user.getGroup());
         return "redirect:/tasks";
     }

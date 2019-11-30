@@ -1,6 +1,7 @@
 package com.edu_netcracker.academ_resourse.services;
 
 import com.edu_netcracker.academ_resourse.domain.Task;
+import com.edu_netcracker.academ_resourse.domain.TaskLvl;
 import com.edu_netcracker.academ_resourse.repos.ITasksRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,26 @@ public class TasksService {
             tasksRepo.save(task);
             return task;
         }
+    }
+
+    public void setTaskLvl(Task task, String taskLvl) {
+        if(taskLvl.equals("TEST")) {
+            task.setTaskLvl(TaskLvl.TEST);
+        }
+        if(taskLvl.equals("COURSEWORK")) {
+            task.setTaskLvl(TaskLvl.COURSEWORK);
+        }
+        if(taskLvl.equals("RESEARCH")) {
+            task.setTaskLvl(TaskLvl.RESEARCH);
+        }
+        if(taskLvl.equals("REPORT")) {
+            task.setTaskLvl(TaskLvl.REPORT);
+        }
+        if(taskLvl.equals("ABSTRACT")) {
+            task.setTaskLvl(TaskLvl.ABSTRACT);
+        }
+
+        tasksRepo.save(task);
     }
 
 }

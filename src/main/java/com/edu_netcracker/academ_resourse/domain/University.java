@@ -3,7 +3,7 @@ package com.edu_netcracker.academ_resourse.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="university")
+@Table(name="university_table")
 public class University {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

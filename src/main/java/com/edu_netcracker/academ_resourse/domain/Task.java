@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "tasks_table")
+@Table(name = "task_table")
 public class Task {
 
     @Id
@@ -16,6 +16,15 @@ public class Task {
     private Date date;
     private boolean isDone;
     private String link;
+
+//    @ElementCollection(targetClass = TaskLvl.class, fetch = FetchType.EAGER)
+    @JoinTable(name = "task_lvl_table", joinColumns = @JoinColumn(name = "task_id"))
+    @Enumerated(EnumType.STRING)
+//    @JoinTable (name="task_lvl_table",
+//            joinColumns=@JoinColumn (name="taskLvl_id", insertable=false, updatable=false),
+//            inverseJoinColumns=@JoinColumn(name="task_id", insertable=false, updatable=false))
+    private TaskLvl taskLvl;
+
 
     public Task() {
     }
@@ -67,4 +76,13 @@ public class Task {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
+    public TaskLvl getTaskLvl() {
+        return taskLvl;
+    }
+
+    public void setTaskLvl(TaskLvl taskLvl) {
+        this.taskLvl = taskLvl;
+    }
+
 }
