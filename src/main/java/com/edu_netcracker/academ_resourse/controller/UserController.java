@@ -30,8 +30,6 @@ public class UserController {
     JsoupPars jsoupPars;
 
     @Autowired
-    private GroupService groupService;
-    @Autowired
     private UserService userService;
 
     @Autowired

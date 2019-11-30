@@ -1,8 +1,6 @@
 package com.edu_netcracker.academ_resourse.domain;
 
 
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -13,7 +11,7 @@ import java.util.Set;
 
 
 	@Entity
-	@Table(name = "grp")
+	@Table(name = "grp_table")
 	public class Group {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO )
@@ -31,19 +29,10 @@ import java.util.Set;
 
 	@ManyToMany(fetch = FetchType.EAGER,
 			cascade = CascadeType.ALL)
-	@JoinTable (name="grp_subject",
+	@JoinTable (name="grp_subject_table",
 			joinColumns=@JoinColumn (name="grp_id", insertable=false, updatable=false),
 			inverseJoinColumns=@JoinColumn(name="subject_id", insertable=false, updatable=false))
-
-//	@LazyCollection(LazyCollectionOption.FALSE)
-//	@ElementCollection(targetClass=Subject.class)
 	private Set<Subject> subjects;
-
-//  private int taskId;
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
-//	@JoinColumn(name ="group_fk)
-//	private Set<User> users;
 
 	public Group(){
 

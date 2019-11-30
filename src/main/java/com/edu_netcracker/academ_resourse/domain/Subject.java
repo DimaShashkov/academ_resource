@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "subjects_table")
+@Table(name = "subject_table")
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,7 +13,7 @@ public class Subject {
 
     private String name;
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    @JoinTable(name = "grp_subject",
+    @JoinTable(name = "grp_subject_table",
             joinColumns={@JoinColumn(name = "subject_id")},
             inverseJoinColumns={@JoinColumn(name = "grp_id")})
     private Set<Group> groups;
