@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TaskLvlService {
@@ -15,7 +17,7 @@ public class TaskLvlService {
     ITaskLvlRepo taskLvlRepo;
 
     private static final List<String> taskLvl;
-    private List<TaskLvl> taskLvls;
+    private Set<TaskLvl> taskLvls;
 
     static {
         taskLvl = new ArrayList<>();
@@ -26,20 +28,21 @@ public class TaskLvlService {
         taskLvl.add("Abstract");
     }
 
-    public List<TaskLvl> getTaskLvl() {
+    public Set<TaskLvl> getTaskLvl() {
         return taskLvls;
     }
 
     public TaskLvl addTaskLvl(TaskLvl taskLvl) {
         if(taskLvls == null)
-            taskLvls = new ArrayList<>();
+            taskLvls = new HashSet<>();
         TaskLvl taskLvl1FromBD = taskLvlRepo.findAllByName(taskLvl.getName());
         if(taskLvl1FromBD == null) {
             taskLvlRepo.save(taskLvl);
-            taskLvls.add(taskLvl);
+//            taskLvls.add(taskLvl);
             return taskLvl;
         }
         else {
+            taskLvls.add(taskLvl);
             return taskLvl1FromBD;
         }
     }
@@ -48,5 +51,9 @@ public class TaskLvlService {
         for(String s : taskLvl) {
             addTaskLvl(new TaskLvl(s));
         }
+    }
+
+    public List<TaskLvl> getTaskLvls() {
+        return taskLvlRepo.findAll();
     }
 }

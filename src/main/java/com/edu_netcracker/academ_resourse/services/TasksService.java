@@ -30,7 +30,7 @@ public class TasksService {
     public void setTaskLvl(Task task, String taskLvl) {
         task.setTaskLvl(taskLvlService.addTaskLvl(new TaskLvl(taskLvl)));
 
-        tasksRepo.save(task);
+        tasksRepo.saveAndFlush(task);
     }
 
 }

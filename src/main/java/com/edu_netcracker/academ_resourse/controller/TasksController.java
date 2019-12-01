@@ -55,7 +55,7 @@ public class TasksController {
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
             List<Task> tasks = user.getGroup().getTasks();
             Set<Subject> subjects = user.getGroup().getSubjects();
-            List<TaskLvl> taskLvls = taskLvlService.getTaskLvl();
+            List<TaskLvl> taskLvls = taskLvlService.getTaskLvls();
 
             model.addAttribute("taskLvls", taskLvls);
             model.addAttribute("tasks", tasks);

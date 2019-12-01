@@ -4,13 +4,10 @@ package com.edu_netcracker.academ_resourse.domain;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
-	@Entity
+@Entity
 	@Table(name = "grp_table")
 	public class Group {
 	@Id
@@ -28,7 +25,7 @@ import java.util.Set;
 	private List<Task> tasks;
 
 	@ManyToMany(fetch = FetchType.EAGER,
-			cascade = CascadeType.ALL)
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable (name="grp_subject_table",
 			joinColumns=@JoinColumn (name="grp_id", insertable=false, updatable=false),
 			inverseJoinColumns=@JoinColumn(name="subject_id", insertable=false, updatable=false))
@@ -102,4 +99,20 @@ import java.util.Set;
 	        subjects = new HashSet<>();
 	    subjects.add(subject);
     }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Group group = (Group) o;
+		return id == group.id &&
+				Objects.equals(name, group.name) &&
+				Objects.equals(university, group.university) &&
+				Objects.equals(tasks, group.tasks);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, university, tasks);
+	}
 }

@@ -78,7 +78,7 @@
           <option th:block th:each="subject: ${subjects}" th:utext="${subject.getName()}"></option>
         </select></td>
         <td><select class="select" name="taskLvl">
-          <option th:each="taskLvl : ${taskLvls}" th:utext="${taskLvl.getName()}"></option>
+          <option th:block th:each="taskLvl : ${taskLvls}" th:utext="${taskLvl.getName()}"></option>
         </select></td>
         <td> <input type="text" name="taskText"></td>
         <td> <input type="url" name="link"></td>
