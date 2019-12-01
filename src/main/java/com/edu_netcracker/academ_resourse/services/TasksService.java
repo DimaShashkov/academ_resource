@@ -12,6 +12,9 @@ public class TasksService {
     @Autowired
     ITasksRepo tasksRepo;
 
+    @Autowired
+    TaskLvlService taskLvlService;
+
 
     public Task addTasks(final Task task) {
         Task taskFromBD = tasksRepo.findTasksByTaskAndDate(task.getTask(), task.getDate());
@@ -25,23 +28,9 @@ public class TasksService {
     }
 
     public void setTaskLvl(Task task, String taskLvl) {
-        if(taskLvl.equals("TEST")) {
-            task.setTaskLvl(TaskLvl.TEST);
-        }
-        if(taskLvl.equals("COURSEWORK")) {
-            task.setTaskLvl(TaskLvl.COURSEWORK);
-        }
-        if(taskLvl.equals("RESEARCH")) {
-            task.setTaskLvl(TaskLvl.RESEARCH);
-        }
-        if(taskLvl.equals("REPORT")) {
-            task.setTaskLvl(TaskLvl.REPORT);
-        }
-        if(taskLvl.equals("ABSTRACT")) {
-            task.setTaskLvl(TaskLvl.ABSTRACT);
-        }
+        task.setTaskLvl(taskLvlService.addTaskLvl(new TaskLvl(taskLvl)));
 
-        tasksRepo.save(task);
+        tasksRepo.saveAndFlush(task);
     }
 
 }

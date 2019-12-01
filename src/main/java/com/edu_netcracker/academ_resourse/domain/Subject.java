@@ -2,6 +2,7 @@ package com.edu_netcracker.academ_resourse.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -12,10 +13,7 @@ public class Subject {
     private int id;
 
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-    @JoinTable(name = "grp_subject_table",
-            joinColumns={@JoinColumn(name = "subject_id")},
-            inverseJoinColumns={@JoinColumn(name = "grp_id")})
+    @ManyToMany(mappedBy = "subjects")
     private Set<Group> groups;
 
 
@@ -56,5 +54,19 @@ public class Subject {
 
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subject subject = (Subject) o;
+        return id == subject.id &&
+                Objects.equals(name, subject.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }

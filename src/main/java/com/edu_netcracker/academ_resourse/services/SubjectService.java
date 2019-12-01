@@ -1,8 +1,6 @@
 package com.edu_netcracker.academ_resourse.services;
 
-import com.edu_netcracker.academ_resourse.domain.Group;
 import com.edu_netcracker.academ_resourse.domain.Subject;
-import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
 import com.edu_netcracker.academ_resourse.repos.ISubjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +13,8 @@ public class SubjectService {
     @Autowired
     private ISubjectRepo subjectRepo;
 
-
-
+    @Autowired
+    private TaskLvlService taskLvlService;
 
     public Set<Subject> addSubject(String[] sub){
         HashSet<Subject> subjects = new HashSet<>();
@@ -30,6 +28,7 @@ public class SubjectService {
                 subjects.add(subject);
             }
         }
+        taskLvlService.setTaskLvlTable();
         return subjects;
     }
 }

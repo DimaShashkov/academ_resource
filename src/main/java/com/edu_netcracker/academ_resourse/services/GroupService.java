@@ -8,6 +8,7 @@ import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -45,11 +46,8 @@ public class GroupService {
 			Group groupUniv = new Group(group);
 			groupUniv.setUniversity(university);
 
-
-                groupUniv.setSubjects(sub);
-                groupRepo.save(groupUniv);
-
-
+			groupUniv.setSubjects(sub);
+			groupRepo.saveAndFlush(groupUniv);
 
 			return groupUniv;
 		}

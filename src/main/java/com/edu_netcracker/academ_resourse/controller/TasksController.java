@@ -2,8 +2,10 @@ package com.edu_netcracker.academ_resourse.controller;
 
 import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
+import com.edu_netcracker.academ_resourse.domain.TaskLvl;
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.services.GroupService;
+import com.edu_netcracker.academ_resourse.services.TaskLvlService;
 import com.edu_netcracker.academ_resourse.services.TasksService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,10 +33,17 @@ public class TasksController {
     private GroupService groupService;
     @Autowired
     private TasksService tasksService;
+    @Autowired
+    private TaskLvlService taskLvlService;
 
 
     @GetMapping("/tasks")
     public String getSchedule(@AuthenticationPrincipal User user, Model model) {
+
+        if(user.getUniversity() == null || user.getGroupName() == null) {
+            return "redirect:/profile";
+        }
+
         String isAdmin = new String();
         if(user.getRole().equals("Admin"))
             isAdmin = ADMIN;
@@ -46,9 +55,9 @@ public class TasksController {
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
             List<Task> tasks = user.getGroup().getTasks();
             Set<Subject> subjects = user.getGroup().getSubjects();
-//            List<TaskLvl> taskLvls = taskLvlService.getTaskLvl();
-//
-//            model.addAttribute("taskLvls", taskLvls);
+            List<TaskLvl> taskLvls = taskLvlService.getTaskLvls();
+
+            model.addAttribute("taskLvls", taskLvls);
             model.addAttribute("tasks", tasks);
             model.addAttribute("subjects", subjects);
         }
