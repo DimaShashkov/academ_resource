@@ -53,7 +53,7 @@ public class TasksController {
 
         if(user.getGroup() == null ||
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
-            List<Task> tasks = user.getGroup().getTasks();
+            Set<Task> tasks = user.getGroup().getTasks();
             Set<Subject> subjects = user.getGroup().getSubjects();
             List<TaskLvl> taskLvls = taskLvlService.getTaskLvls();
 

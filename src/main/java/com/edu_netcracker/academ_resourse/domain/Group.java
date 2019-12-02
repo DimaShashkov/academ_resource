@@ -22,7 +22,7 @@ import java.util.*;
 
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name="group_id")
-	private List<Task> tasks;
+	private Set<Task> tasks;
 
 	@ManyToMany(fetch = FetchType.EAGER,
 			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -65,20 +65,20 @@ import java.util.*;
 	}
 
 	@Transactional
-	public List<Task> getTasks() {
+	public Set<Task> getTasks() {
 		if(tasks == null) {
-			tasks = new ArrayList<>();
+			tasks = new HashSet<>();
 		}
 		return tasks;
 	}
 
 	public void addTask(Task task) {
 		if(tasks.isEmpty())
-			tasks = new ArrayList<>();
+			tasks = new HashSet<>();
 		this.tasks.add(task);
 	}
 
-	public void setTasks(List<Task> tasks) {
+	public void setTasks(Set<Task> tasks) {
 		this.tasks = tasks;
 	}
 
