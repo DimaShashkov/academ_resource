@@ -71,11 +71,12 @@ public class TasksController {
                                String subject, String taskText, String link,
                                String taskLvl, Model model) {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = new Date();
+        Date date1 = null;
         try {
              date1 = df.parse(date);
+             logger.info(date1.toString());
         } catch (ParseException e) {
-            logger.error("the date is wrong: ", e);
+            logger.error("the date is wrong: ");
         }
         Task task = new Task();
         task.setDate(date1);

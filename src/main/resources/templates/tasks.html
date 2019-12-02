@@ -73,7 +73,7 @@
         <th>Link</th>
       </tr>
         <tr>
-        <td> <input type="date" name="date" value="newDate"></td>
+        <td> <input type="date" name="date" value="newDate" required></td>
         <td><select class="select" name="subject">
           <option th:block th:each="subject: ${subjects}" th:utext="${subject.getName()}"></option>
         </select></td>
