@@ -76,7 +76,7 @@ public class TasksController {
              date1 = df.parse(date);
              logger.info(date1.toString());
         } catch (ParseException e) {
-            logger.error("the date is wrong: ");
+            logger.error("the date is wrong");
         }
         Task task = new Task();
         task.setDate(date1);
