@@ -2,13 +2,15 @@ package com.edu_netcracker.academ_resourse.services;
 
 import com.edu_netcracker.academ_resourse.domain.University;
 import com.edu_netcracker.academ_resourse.repos.IUniversityRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UniversityService {
-	@Autowired
-	private IUniversityRepo universityRepo;
+	private final IUniversityRepo universityRepo;
+
+	public UniversityService(IUniversityRepo universityRepo) {
+		this.universityRepo = universityRepo;
+	}
 
 	public University addUniversity(String universityName) {
 		University universityFromDB = universityRepo.findUniversityByName(universityName);

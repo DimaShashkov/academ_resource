@@ -3,20 +3,22 @@ package com.edu_netcracker.academ_resourse.services;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.TaskLvl;
 import com.edu_netcracker.academ_resourse.repos.ITasksRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TasksService {
 
-    @Autowired
-    ITasksRepo tasksRepo;
+    final ITasksRepo tasksRepo;
 
-    @Autowired
-    TaskLvlService taskLvlService;
+    final TaskLvlService taskLvlService;
+
+	public TasksService(ITasksRepo tasksRepo, TaskLvlService taskLvlService) {
+		this.tasksRepo = tasksRepo;
+		this.taskLvlService = taskLvlService;
+	}
 
 
-    public Task addTasks(final Task task) {
+	public Task addTasks(final Task task) {
         Task taskFromBD = tasksRepo.findTasksByTaskAndDate(task.getTask(), task.getDate());
 
         if (taskFromBD != null) {

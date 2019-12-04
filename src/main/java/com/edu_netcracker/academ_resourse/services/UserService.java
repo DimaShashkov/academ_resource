@@ -5,7 +5,6 @@ import com.edu_netcracker.academ_resourse.domain.Role;
 import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.repos.IUserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,10 +15,13 @@ import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
-	@Autowired
-	private IUserRepo userRepo;
-	@Autowired
-	private GroupService groupService;
+	private final IUserRepo userRepo;
+	private final GroupService groupService;
+
+	public UserService(IUserRepo userRepo, GroupService groupService) {
+		this.userRepo = userRepo;
+		this.groupService = groupService;
+	}
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

@@ -5,20 +5,21 @@ import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.University;
 import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 
 @Service
 public class GroupService {
-	@Autowired
-	private IGroupRepo groupRepo;
-	@Autowired
-	private UniversityService universityService;
-	@Autowired
-	private TasksService tasksService;
+	private final IGroupRepo groupRepo;
+	private final UniversityService universityService;
+	private final TasksService tasksService;
+
+	public GroupService(IGroupRepo groupRepo, UniversityService universityService, TasksService tasksService) {
+		this.groupRepo = groupRepo;
+		this.universityService = universityService;
+		this.tasksService = tasksService;
+	}
 
 	public void addGroup(final Group group) {
 		Group groupFromDB = groupRepo.findGroupByName(group.getName());

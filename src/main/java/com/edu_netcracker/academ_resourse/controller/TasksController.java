@@ -9,7 +9,6 @@ import com.edu_netcracker.academ_resourse.services.TaskLvlService;
 import com.edu_netcracker.academ_resourse.services.TasksService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,15 +28,18 @@ public class TasksController {
     private final String ADMIN = "<template v-if=\"true\">";
     private final String USER = "<template v-if=\"false\">";
 
-    @Autowired
-    private GroupService groupService;
-    @Autowired
-    private TasksService tasksService;
-    @Autowired
-    private TaskLvlService taskLvlService;
+    private final GroupService groupService;
+    private final TasksService tasksService;
+    private final TaskLvlService taskLvlService;
+
+	public TasksController(GroupService groupService, TasksService tasksService, TaskLvlService taskLvlService) {
+		this.groupService = groupService;
+		this.tasksService = tasksService;
+		this.taskLvlService = taskLvlService;
+	}
 
 
-    @GetMapping("/tasks")
+	@GetMapping("/tasks")
     public String getSchedule(@AuthenticationPrincipal User user, Model model) {
 
         if(user.getUniversity() == null || user.getGroupName() == null) {

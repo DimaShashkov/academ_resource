@@ -9,7 +9,6 @@ import com.edu_netcracker.academ_resourse.schedule.universities.Nsu;
 import com.edu_netcracker.academ_resourse.schedule.universities.Smtu;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -31,14 +30,17 @@ public class Schedule {
     private final String END_TABLE = "</table>";
     private final String END_LINE = "\n";
 
-    @Autowired
-    IItmoRepository IItmoRepository;
-    @Autowired
-    ISmtuRepository ISmtuRepository;
-    @Autowired
-    INsuRepository INsuRepository;
+    final IItmoRepository IItmoRepository;
+    final ISmtuRepository ISmtuRepository;
+    final INsuRepository INsuRepository;
 
-    public Boolean existGroup(final MongoGroup mongoGroup) {
+	public Schedule(IItmoRepository IItmoRepository, ISmtuRepository ISmtuRepository, INsuRepository INsuRepository) {
+		this.IItmoRepository = IItmoRepository;
+		this.ISmtuRepository = ISmtuRepository;
+		this.INsuRepository = INsuRepository;
+	}
+
+	public Boolean existGroup(final MongoGroup mongoGroup) {
         if(mongoGroup.getUniversity() instanceof Itmo) {
             if(IItmoRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
                 return true;
