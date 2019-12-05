@@ -6,8 +6,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 
 @Component
@@ -20,10 +20,13 @@ public class JsoupPars {
     private final String ALREADY_EXIST = "this group already exist";
 
 
-    @Autowired
-    Schedule schedule;
+    private final Schedule schedule;
 
-public void addSchedule(final MongoGroup mongoGroup) throws IOException {
+	public JsoupPars(Schedule schedule) {
+		this.schedule = schedule;
+	}
+
+	public void addSchedule(final MongoGroup mongoGroup) throws IOException {
 
 
 
@@ -43,7 +46,6 @@ public void addSchedule(final MongoGroup mongoGroup) throws IOException {
 
     schedule.save(mongoGroup, elements);
 
-
-}
+	}
 
 }

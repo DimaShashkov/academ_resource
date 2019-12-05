@@ -30,9 +30,9 @@ public class Schedule {
     private final String END_TABLE = "</table>";
     private final String END_LINE = "\n";
 
-    final IItmoRepository IItmoRepository;
-    final ISmtuRepository ISmtuRepository;
-    final INsuRepository INsuRepository;
+    private final IItmoRepository IItmoRepository;
+    private final ISmtuRepository ISmtuRepository;
+    private final INsuRepository INsuRepository;
 
 	public Schedule(IItmoRepository IItmoRepository, ISmtuRepository ISmtuRepository, INsuRepository INsuRepository) {
 		this.IItmoRepository = IItmoRepository;
