@@ -75,7 +75,7 @@ public class UserController {
         Set<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());
         userService.addGroup(user, group, university, sub);
 
-        return "redirect:/schedule";
+        return "redirect:/profile";
     }
 
     private void addSchedule(MongoGroup mongoGroup) {
