@@ -46,7 +46,7 @@ public class TasksController {
             return "redirect:/profile";
         }
 
-        String isAdmin = new String();
+        String isAdmin = "";
         if(user.getRole().equals("Admin"))
             isAdmin = ADMIN;
         else if(user.getRole().equals("User"))

@@ -5,8 +5,8 @@ import com.edu_netcracker.academ_resourse.domain.TaskLvl;
 import com.edu_netcracker.academ_resourse.repos.ITasksRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashSet;
@@ -164,9 +164,6 @@ public class TasksService {
     private Set<Task> getTasks(Set<Task> tasks, Date[] dates) {
         HashSet<Task> result = new HashSet<>();
         for(Task task : tasks) {
-            double taskDate = task.getDate().getTime();
-            double beforeDate = dates[0].getTime();
-            double afterDate = dates[1].getTime();
             if(task.getDate().getTime() > dates[0].getTime() && task.getDate().getTime() < dates[1].getTime()) {
                 result.add(task);
             }

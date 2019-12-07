@@ -4,8 +4,9 @@ package com.edu_netcracker.academ_resourse.domain;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.text.ParseException;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
