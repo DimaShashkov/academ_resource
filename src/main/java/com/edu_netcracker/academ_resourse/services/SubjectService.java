@@ -2,6 +2,7 @@ package com.edu_netcracker.academ_resourse.services;
 
 import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.repos.ISubjectRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -13,12 +14,12 @@ public class SubjectService {
 
     private final TaskLvlService taskLvlService;
 
-	public SubjectService(ISubjectRepo subjectRepo, TaskLvlService taskLvlService) {
-		this.subjectRepo = subjectRepo;
-		this.taskLvlService = taskLvlService;
-	}
+    public SubjectService(ISubjectRepo subjectRepo, TaskLvlService taskLvlService) {
+        this.subjectRepo = subjectRepo;
+        this.taskLvlService = taskLvlService;
+    }
 
-	public Set<Subject> addSubject(String[] sub){
+    public Set<Subject> addSubject(String[] sub){
         HashSet<Subject> subjects = new HashSet<>();
 
         for (String s : sub ){

@@ -9,6 +9,7 @@ import com.edu_netcracker.academ_resourse.schedule.universities.Nsu;
 import com.edu_netcracker.academ_resourse.schedule.universities.Smtu;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -30,29 +31,30 @@ public class Schedule {
     private final String END_TABLE = "</table>";
     private final String END_LINE = "\n";
 
-    private final IItmoRepository IItmoRepository;
-    private final ISmtuRepository ISmtuRepository;
-    private final INsuRepository INsuRepository;
+    final
+    IItmoRepository IItmoRepository;
+    final
+    ISmtuRepository ISmtuRepository;
+    final
+    INsuRepository INsuRepository;
 
-	public Schedule(IItmoRepository IItmoRepository, ISmtuRepository ISmtuRepository, INsuRepository INsuRepository) {
-		this.IItmoRepository = IItmoRepository;
-		this.ISmtuRepository = ISmtuRepository;
-		this.INsuRepository = INsuRepository;
-	}
+    public Schedule(IItmoRepository IItmoRepository, ISmtuRepository ISmtuRepository, INsuRepository INsuRepository) {
+        this.IItmoRepository = IItmoRepository;
+        this.ISmtuRepository = ISmtuRepository;
+        this.INsuRepository = INsuRepository;
+    }
 
-	public Boolean existGroup(final MongoGroup mongoGroup) {
-        if(mongoGroup.getUniversity() instanceof Itmo) {
-            if(IItmoRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
+    public Boolean existGroup(final MongoGroup mongoGroup) {
+        if (mongoGroup.getUniversity() instanceof Itmo) {
+            if (IItmoRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
                 return true;
             }
-        }
-        else if (mongoGroup.getUniversity() instanceof Smtu) {
-            if(ISmtuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
+        } else if (mongoGroup.getUniversity() instanceof Smtu) {
+            if (ISmtuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
                 return true;
             }
-        }
-        else if (mongoGroup.getUniversity() instanceof Nsu) {
-            if(INsuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
+        } else if (mongoGroup.getUniversity() instanceof Nsu) {
+            if (INsuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
                 return true;
             }
         }
@@ -88,33 +90,31 @@ public class Schedule {
     }
 
     public void save(final MongoGroup mongoGroup, final Elements elements) {
-        if(mongoGroup.getUniversity() instanceof Itmo) {
+        if (mongoGroup.getUniversity() instanceof Itmo) {
             StringBuilder sb = new StringBuilder(elements.toString().replaceAll(ITMO_TABLE_BEFORE, ITMO_TABLE_AFTER));
             mongoGroup.getUniversity().setSchedule(sb.toString());
 
-            Itmo itmo = (Itmo)mongoGroup.getUniversity();
+            Itmo itmo = (Itmo) mongoGroup.getUniversity();
             IItmoRepository.save(itmo);
-        }
-        else if(mongoGroup.getUniversity() instanceof Smtu) {
+        } else if (mongoGroup.getUniversity() instanceof Smtu) {
             boolean a = false;
             String[] str = elements.toString().split(END_LINE);
             StringBuilder sb = new StringBuilder();
             for (String s : str) {
-                if(s.contains(SMTU_REGEX)) {
+                if (s.contains(SMTU_REGEX)) {
                     a = true;
                 }
-                if(s.contains(END_TABLE)) {
+                if (s.contains(END_TABLE)) {
                     a = false;
                 }
-                if(a) {
+                if (a) {
                     sb.append(s + END_LINE);
                 }
             }
             mongoGroup.getUniversity().setSchedule(sb.toString());
             Smtu smtu = (Smtu) mongoGroup.getUniversity();
             ISmtuRepository.save(smtu);
-        }
-        else if(mongoGroup.getUniversity() instanceof Nsu) {
+        } else if (mongoGroup.getUniversity() instanceof Nsu) {
             StringBuilder sb = new StringBuilder();
             String[] str = elements.toString().split(END_LINE);
             for (int i = 0; i < str.length; i++) {
@@ -132,34 +132,30 @@ public class Schedule {
     }
 
     public void saveSubjects(final MongoGroup mongoGroup, final Elements elements) {
-        if(mongoGroup.getUniversity() instanceof Itmo) {
+        if (mongoGroup.getUniversity() instanceof Itmo) {
             StringBuilder sb = new StringBuilder();
-            for(Element element: elements.select(ITMO_QUERY)) {
+            for (Element element : elements.select(ITMO_QUERY)) {
                 String s = element.text();
                 String[] str = s.split(ITMO_SPLIT);
-                if(!sb.toString().contains(str[0]))
+                if (!sb.toString().contains(str[0]))
                     sb.append(str[0]).append(END_LINE);
             }
             String[] subjects = sb.toString().split(END_LINE);
             mongoGroup.setSubjects(subjects);
-        }
-
-        else if(mongoGroup.getUniversity() instanceof Nsu) {
+        } else if (mongoGroup.getUniversity() instanceof Nsu) {
             StringBuilder sb = new StringBuilder();
-            for(Element element: elements.select(NSU_QUERY)) {
-                if(!sb.toString().contains(element.text()))
+            for (Element element : elements.select(NSU_QUERY)) {
+                if (!sb.toString().contains(element.text()))
                     sb.append(element.text()).append(END_LINE);
             }
             String[] subjects = sb.toString().split(END_LINE);
             mongoGroup.setSubjects(subjects);
-        }
-
-        else if(mongoGroup.getUniversity() instanceof Smtu) {
+        } else if (mongoGroup.getUniversity() instanceof Smtu) {
             StringBuilder sb = new StringBuilder();
-            for(Element element: elements.select(SMTU_QUERY)) {
+            for (Element element : elements.select(SMTU_QUERY)) {
                 String[] str = element.toString().split(SMTU_SPLIT1);
                 String[] strings = str[3].split(SMTU_SPLIT2);
-                if(!sb.toString().contains(strings[0]))
+                if (!sb.toString().contains(strings[0]))
                     sb.append(strings[0]).append(END_LINE);
             }
             String[] subjects = sb.toString().split(END_LINE);

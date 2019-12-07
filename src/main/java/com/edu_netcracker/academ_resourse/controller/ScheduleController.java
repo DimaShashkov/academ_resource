@@ -18,13 +18,13 @@ public class ScheduleController {
 
     private final static Logger logger = LoggerFactory.getLogger(ScheduleController.class);
 
-	public ScheduleController(Schedule schedule) {
-		this.schedule = schedule;
-	}
+    public ScheduleController(Schedule schedule) {
+        this.schedule = schedule;
+    }
 
-	@GetMapping("/schedule")
+    @GetMapping("/schedule")
     public String getSchedule(@AuthenticationPrincipal User user, Model model) {
-        if(user.getUniversity() == null || user.getGroupName() == null) {
+        if (user.getUniversity() == null || user.getGroupName() == null) {
             return "redirect:/profile";
         }
         model = schedule.getSchedule(user.getUniversity(), user.getGroupName(), model);

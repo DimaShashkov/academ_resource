@@ -47,7 +47,7 @@
        <tr th:block th:each="task, state: ${tasks}"
            class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
          <td th:utext="${state.count}">№</td>
-         <td th:utext="${task.date}">Date</td>
+         <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
          <td th:utext="${task.subject}">Subject</td>
          <td th:utext="${task.task}">Text</td>
          <td th:utext="${task.link}">Link</td>
@@ -66,14 +66,14 @@
   <form action="/tasks" method="post">
     <table cellpadding="4" cellspacing="1" border="1" align='center'>
       <tr>
-        <th>Data</th>
+        <th>Date</th>
         <th>Subject</th>
         <th>Task type</th>
         <th>Text</th>
         <th>Link</th>
       </tr>
         <tr>
-        <td> <input type="date" name="date" value="newDate"></td>
+        <td> <input type="date" name="date" value="newDate" required></td>
         <td><select class="select" name="subject">
           <option th:block th:each="subject: ${subjects}" th:utext="${subject.getName()}"></option>
         </select></td>

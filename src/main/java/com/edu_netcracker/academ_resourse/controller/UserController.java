@@ -33,15 +33,15 @@ public class UserController {
 
     private final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
-	public UserController(JsoupPars jsoupPars, UserService userService, SubjectService subjectService, PasswordEncoder passwordEncoder) {
-		this.jsoupPars = jsoupPars;
-		this.userService = userService;
-		this.subjectService = subjectService;
-		this.passwordEncoder = passwordEncoder;
-	}
+    public UserController(JsoupPars jsoupPars, UserService userService, SubjectService subjectService, PasswordEncoder passwordEncoder) {
+        this.jsoupPars = jsoupPars;
+        this.userService = userService;
+        this.subjectService = subjectService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
 
-	@GetMapping("/profile")
+    @GetMapping("/profile")
     public String getProfile(
             @AuthenticationPrincipal User user,
             Model model) {
@@ -61,8 +61,8 @@ public class UserController {
 
         user.setEmail(email);
         if(!password.isEmpty()){
-			user.setPassword(passwordEncoder.encode(password));
-		}
+            user.setPassword(passwordEncoder.encode(password));
+        }
 
         MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
 

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css" href="css/calendar.css" />
     <meta charset="utf-8">
     <title>Calendar</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
 </head>
 <body>
 <table class="head" cellpadding="4" cellspacing="1" border="1" align="center">
@@ -93,16 +95,330 @@
         <div class="day" v-if="lastDay==31" v-for="a in 5"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 6"></div>
         <div class="day" v-if="lastDay==28" v-for="a in 1"></div>
-
     </div>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js'></script>
 
-
-    <script  src="js/calendar.js"></script>
 
 </div>
+
+<div id="taskList">
+    <div class="tasks" v-if="thisMonth == 'January' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${januaryTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'February' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${februaryTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'March' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${marchTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'April' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${aprilTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'May' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${mayTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'June' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${juneTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'July' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${julyTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'August' && thisYear == secondSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${augustTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'September' && thisYear == firstSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${septemberTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'October' && thisYear == firstSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${octoberTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'November' && thisYear == firstSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${novemberTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="tasks" v-if="thisMonth == 'December' && thisYear == firstSemesterYear">
+        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
+            <caption>Tasks</caption>
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Date</th>
+                <th>Subject</th>
+                <th>Text</th>
+                <th>Link</th>
+                <th>Is done</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:block th:each="task, state: ${decemberTask}"
+                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                <td th:utext="${state.count}">№</td>
+                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:utext="${task.subject}">Subject</td>
+                <td th:utext="${task.task}">Text</td>
+                <td th:utext="${task.link}">Link</td>
+                <td><input type="checkbox" name="isDone">is done</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js'></script>
+<script  src="js/calendar.js"></script>
 </body>
 </html>

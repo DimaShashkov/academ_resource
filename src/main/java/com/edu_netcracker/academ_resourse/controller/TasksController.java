@@ -32,14 +32,14 @@ public class TasksController {
     private final TasksService tasksService;
     private final TaskLvlService taskLvlService;
 
-	public TasksController(GroupService groupService, TasksService tasksService, TaskLvlService taskLvlService) {
-		this.groupService = groupService;
-		this.tasksService = tasksService;
-		this.taskLvlService = taskLvlService;
-	}
+    public TasksController(GroupService groupService, TasksService tasksService, TaskLvlService taskLvlService) {
+        this.groupService = groupService;
+        this.tasksService = tasksService;
+        this.taskLvlService = taskLvlService;
+    }
 
 
-	@GetMapping("/tasks")
+    @GetMapping("/tasks")
     public String getSchedule(@AuthenticationPrincipal User user, Model model) {
 
         if(user.getUniversity() == null || user.getGroupName() == null) {
@@ -55,7 +55,7 @@ public class TasksController {
 
         if(user.getGroup() == null ||
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
-            List<Task> tasks = user.getGroup().getTasks();
+            Set<Task> tasks = user.getGroup().getTasks();
             Set<Subject> subjects = user.getGroup().getSubjects();
             List<TaskLvl> taskLvls = taskLvlService.getTaskLvls();
 
@@ -75,7 +75,7 @@ public class TasksController {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = new Date();
         try {
-             date1 = df.parse(date);
+            date1 = df.parse(date);
         } catch (ParseException e) {
             logger.error("the date is wrong: ", e);
         }

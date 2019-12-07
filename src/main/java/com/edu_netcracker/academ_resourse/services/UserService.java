@@ -17,18 +17,16 @@ import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
-	@Autowired
-	private IUserRepo userRepo;
-	@Autowired
-	private GroupService groupService;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	private final IUserRepo userRepo;
+	private final GroupService groupService;
+	private final PasswordEncoder passwordEncoder;
 
-
-//	public UserService(IUserRepo userRepo, GroupService groupService) {
-//		this.userRepo = userRepo;
-//		this.groupService = groupService;
-//	}
+	public UserService(IUserRepo userRepo, GroupService groupService, PasswordEncoder passwordEncoder) {
+		this.userRepo = userRepo;
+		this.groupService = groupService;
+		this.passwordEncoder = passwordEncoder;
+	}
+	
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
