@@ -13,7 +13,7 @@ import java.util.Set;
 @Service
 public class TaskLvlService {
 
-    @Autowired
+    final
     ITaskLvlRepo taskLvlRepo;
 
     private static final List<String> taskLvl;
@@ -26,6 +26,10 @@ public class TaskLvlService {
         taskLvl.add("Research");
         taskLvl.add("Report");
         taskLvl.add("Abstract");
+    }
+
+    public TaskLvlService(ITaskLvlRepo taskLvlRepo) {
+        this.taskLvlRepo = taskLvlRepo;
     }
 
     public Set<TaskLvl> getTaskLvl() {

@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-//@EnableWebMvc
 @ComponentScan(basePackages = "com.edu_netcracker.academ_resourse")
 public class MvcConfig implements WebMvcConfigurer {
 

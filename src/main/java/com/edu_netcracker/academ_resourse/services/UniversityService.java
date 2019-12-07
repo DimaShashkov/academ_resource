@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UniversityService {
-	@Autowired
-	private IUniversityRepo universityRepo;
+	private final IUniversityRepo universityRepo;
+
+	public UniversityService(IUniversityRepo universityRepo) {
+		this.universityRepo = universityRepo;
+	}
 
 	public University addUniversity(String universityName) {
 		University universityFromDB = universityRepo.findUniversityByName(universityName);

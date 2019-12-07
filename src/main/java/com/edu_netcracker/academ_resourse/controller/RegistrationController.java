@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class RegistrationController {
-	@Autowired
-	private UserService userService;
+
+    private final UserService userService;
 
     private final static Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+
+    public RegistrationController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/registration")
     public String getRegistration(Model model) {
@@ -27,11 +31,11 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-    	if (!userService.addUser(user)) {
-			model.addAttribute("message", "User exists!");
-			return "registration";
-		}
-		return "redirect:/login";
+        if (!userService.addUser(user)) {
+            model.addAttribute("message", "User exists!");
+            return "registration";
+        }
+        return "redirect:/profile";
     }
 
 }

@@ -10,11 +10,14 @@ import java.util.Set;
 
 @Service
 public class SubjectService {
-    @Autowired
-    private ISubjectRepo subjectRepo;
+    private final ISubjectRepo subjectRepo;
 
-    @Autowired
-    private TaskLvlService taskLvlService;
+    private final TaskLvlService taskLvlService;
+
+    public SubjectService(ISubjectRepo subjectRepo, TaskLvlService taskLvlService) {
+        this.subjectRepo = subjectRepo;
+        this.taskLvlService = taskLvlService;
+    }
 
     public Set<Subject> addSubject(String[] sub){
         HashSet<Subject> subjects = new HashSet<>();

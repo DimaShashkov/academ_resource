@@ -31,12 +31,18 @@ public class Schedule {
     private final String END_TABLE = "</table>";
     private final String END_LINE = "\n";
 
-    @Autowired
+    final
     IItmoRepository IItmoRepository;
-    @Autowired
+    final
     ISmtuRepository ISmtuRepository;
-    @Autowired
+    final
     INsuRepository INsuRepository;
+
+    public Schedule(IItmoRepository IItmoRepository, ISmtuRepository ISmtuRepository, INsuRepository INsuRepository) {
+        this.IItmoRepository = IItmoRepository;
+        this.ISmtuRepository = ISmtuRepository;
+        this.INsuRepository = INsuRepository;
+    }
 
     public Boolean existGroup(final MongoGroup mongoGroup) {
         if (mongoGroup.getUniversity() instanceof Itmo) {

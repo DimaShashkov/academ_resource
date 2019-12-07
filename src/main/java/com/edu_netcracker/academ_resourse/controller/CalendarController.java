@@ -13,8 +13,12 @@ import java.util.Set;
 @Controller
 public class CalendarController {
 
-    @Autowired
+    final
     TasksService tasksService;
+
+    public CalendarController(TasksService tasksService) {
+        this.tasksService = tasksService;
+    }
 
     @GetMapping(value = "/calendar")
     public String getController(@AuthenticationPrincipal User user, Model model) {

@@ -13,12 +13,15 @@ import java.util.Set;
 
 @Service
 public class GroupService {
-	@Autowired
-	private IGroupRepo groupRepo;
-	@Autowired
-	private UniversityService universityService;
-	@Autowired
-	private TasksService tasksService;
+	private final IGroupRepo groupRepo;
+	private final UniversityService universityService;
+	private final TasksService tasksService;
+
+	public GroupService(IGroupRepo groupRepo, UniversityService universityService, TasksService tasksService) {
+		this.groupRepo = groupRepo;
+		this.universityService = universityService;
+		this.tasksService = tasksService;
+	}
 
 	public void addGroup(final Group group) {
 		Group groupFromDB = groupRepo.findGroupByName(group.getName());

@@ -6,8 +6,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 
 @Component
@@ -20,30 +20,32 @@ public class JsoupPars {
     private final String ALREADY_EXIST = "this group already exist";
 
 
-    @Autowired
-    Schedule schedule;
+    private final Schedule schedule;
 
-public void addSchedule(final MongoGroup mongoGroup) throws IOException {
-
-
-
-    Document document = Jsoup.connect(mongoGroup.getUniversity().getUrl())
-            .userAgent(JSOUP_USERAGENT)
-            .referrer(JSOUP_REFERRER)
-            .get();
-
-    Elements elements = document.select(mongoGroup.getUniversity().getQuery());
-
-    schedule.saveSubjects(mongoGroup, elements);
-
-    if(schedule.existGroup(mongoGroup)) {
-        logger.info(ALREADY_EXIST);
-        return;
+    public JsoupPars(Schedule schedule) {
+        this.schedule = schedule;
     }
 
-    schedule.save(mongoGroup, elements);
+    public void addSchedule(final MongoGroup mongoGroup) throws IOException {
 
 
-}
+
+        Document document = Jsoup.connect(mongoGroup.getUniversity().getUrl())
+                .userAgent(JSOUP_USERAGENT)
+                .referrer(JSOUP_REFERRER)
+                .get();
+
+        Elements elements = document.select(mongoGroup.getUniversity().getQuery());
+
+        schedule.saveSubjects(mongoGroup, elements);
+
+        if(schedule.existGroup(mongoGroup)) {
+            logger.info(ALREADY_EXIST);
+            return;
+        }
+
+        schedule.save(mongoGroup, elements);
+
+    }
 
 }

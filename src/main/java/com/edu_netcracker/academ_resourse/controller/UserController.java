@@ -5,13 +5,12 @@ import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.schedule.factory.MongoGroupFactory;
 import com.edu_netcracker.academ_resourse.schedule.logic.JsoupPars;
 import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
-import com.edu_netcracker.academ_resourse.services.GroupService;
 import com.edu_netcracker.academ_resourse.services.SubjectService;
 import com.edu_netcracker.academ_resourse.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,23 +18,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
 
 public class UserController {
-    @Autowired
-    JsoupPars jsoupPars;
+    final JsoupPars jsoupPars;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private SubjectService subjectService;
+    private final SubjectService subjectService;
+
+    private final PasswordEncoder passwordEncoder;
 
     private final static Logger logger = LoggerFactory.getLogger(UserController.class);
+
+    public UserController(JsoupPars jsoupPars, UserService userService, SubjectService subjectService, PasswordEncoder passwordEncoder) {
+        this.jsoupPars = jsoupPars;
+        this.userService = userService;
+        this.subjectService = subjectService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
 
     @GetMapping("/profile")
@@ -57,7 +60,9 @@ public class UserController {
             Model model) {
 
         user.setEmail(email);
-        user.setPassword(password);
+        if(!password.isEmpty()){
+            user.setPassword(passwordEncoder.encode(password));
+        }
 
         MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
 
@@ -67,18 +72,10 @@ public class UserController {
 
         addSchedule(mongoGroup);
 
-            Set<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());
-            userService.addGroup(user, group, university, sub);
+        Set<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());
+        userService.addGroup(user, group, university, sub);
 
-        //////////// В этом месте уже можно доставать через mongoGroup.getSubjects() все предметы для этой
-        //////////// группы, вытащенные из расписания на неделю
-//		System.out.println(Arrays.toString(mongoGroup.getSubjects()));
-//
-//		System.out.println(user.getGroup().getSubjects());
-
-        //System.out.println(user.getGroup().);
-
-        return "redirect:/schedule";
+        return "redirect:/profile";
     }
 
     private void addSchedule(MongoGroup mongoGroup) {

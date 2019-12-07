@@ -15,17 +15,22 @@ import java.util.Set;
 @Service
 public class TasksService {
 
-    @Autowired
+    final
     ITasksRepo tasksRepo;
 
-    @Autowired
+    final
     TaskLvlService taskLvlService;
 
-    @Autowired
+    final
     DateService dateService;
 
     final static Logger logger = LoggerFactory.getLogger(TasksService.class);
 
+    public TasksService(ITasksRepo tasksRepo, TaskLvlService taskLvlService, DateService dateService) {
+        this.tasksRepo = tasksRepo;
+        this.taskLvlService = taskLvlService;
+        this.dateService = dateService;
+    }
 
 
     public Task addTasks(final Task task) {
