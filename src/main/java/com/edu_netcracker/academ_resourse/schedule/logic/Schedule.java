@@ -9,7 +9,6 @@ import com.edu_netcracker.academ_resourse.schedule.universities.Nsu;
 import com.edu_netcracker.academ_resourse.schedule.universities.Smtu;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
@@ -46,24 +45,18 @@ public class Schedule {
 
     public Boolean existGroup(final MongoGroup mongoGroup) {
         if (mongoGroup.getUniversity() instanceof Itmo) {
-            if (IItmoRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
-                return true;
-            }
+            return IItmoRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0;
         } else if (mongoGroup.getUniversity() instanceof Smtu) {
-            if (ISmtuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
-                return true;
-            }
+            return ISmtuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0;
         } else if (mongoGroup.getUniversity() instanceof Nsu) {
-            if (INsuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0) {
-                return true;
-            }
+            return INsuRepository.findAllByGroup(mongoGroup.getGroup()).size() != 0;
         }
         return false;
     }
 
     public Model getSchedule(final String univ, final String group, final Model model) {
         StringBuilder week = new StringBuilder();
-        String tomorrow = new String();
+        String tomorrow = "";
 
         if (univ.equals("SMTU")) {
             List<Smtu> smtus = ISmtuRepository.findAllByGroup(group);
@@ -108,7 +101,7 @@ public class Schedule {
                     a = false;
                 }
                 if (a) {
-                    sb.append(s + END_LINE);
+                    sb.append(s).append(END_LINE);
                 }
             }
             mongoGroup.getUniversity().setSchedule(sb.toString());
@@ -119,9 +112,9 @@ public class Schedule {
             String[] str = elements.toString().split(END_LINE);
             for (int i = 0; i < str.length; i++) {
                 if (i == 0) {
-                    sb.append(str[0].substring(0, str[0].length() - 2) + NSU_TABLE);
+                    sb.append(str[0], 0, str[0].length() - 2).append(NSU_TABLE);
                 } else {
-                    sb.append(str[i] + END_LINE);
+                    sb.append(str[i]).append(END_LINE);
                 }
             }
             mongoGroup.getUniversity().setSchedule(sb.toString());

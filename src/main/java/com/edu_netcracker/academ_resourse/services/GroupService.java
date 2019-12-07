@@ -5,10 +5,8 @@ import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.Task;
 import com.edu_netcracker.academ_resourse.domain.University;
 import com.edu_netcracker.academ_resourse.repos.IGroupRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 
 @Service
