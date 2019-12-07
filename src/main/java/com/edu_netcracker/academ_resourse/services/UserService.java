@@ -26,12 +26,7 @@ public class UserService implements UserDetailsService {
 		this.groupService = groupService;
 		this.passwordEncoder = passwordEncoder;
 	}
-
-
-//	public UserService(IUserRepo userRepo, GroupService groupService) {
-//		this.userRepo = userRepo;
-//		this.groupService = groupService;
-//	}
+	
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
