@@ -26,7 +26,6 @@ public class UserService implements UserDetailsService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		return userRepo.findUserByEmail(email);

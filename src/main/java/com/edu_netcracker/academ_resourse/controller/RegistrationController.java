@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistrationController {
 
-    private final UserService userService;
+	private final UserService userService;
 
     private final static Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
-    }
+	public RegistrationController(UserService userService) {
+		this.userService = userService;
+	}
 
-    @GetMapping("/registration")
+	@GetMapping("/registration")
     public String getRegistration(Model model) {
         model.addAttribute("message", "");
         logger.info("the empty data has been added into model");
@@ -30,11 +30,11 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        if (!userService.addUser(user)) {
-            model.addAttribute("message", "User exists!");
-            return "registration";
-        }
-        return "redirect:/profile";
+    	if (!userService.addUser(user)) {
+			model.addAttribute("message", "User exists!");
+			return "registration";
+		}
+		return "redirect:/profile";
     }
 
 }
