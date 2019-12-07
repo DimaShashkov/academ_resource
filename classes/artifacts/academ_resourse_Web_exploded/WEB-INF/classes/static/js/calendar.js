@@ -1,3 +1,19 @@
+
+
+vue.component('task-list', {
+    template: '<div>List</div>'
+});
+
+var taskList = new Vue({
+    el: '.taskList',
+    template: '<task-list/>',
+    data: {
+        tasks: [
+            {date : '2019-12-05', subject: 'Math', text: 'some task text', link: 'some link'}
+        ]
+    }
+});
+
 var calendar = new Vue({
     el: '#calendar',
     data: {
@@ -18,7 +34,6 @@ var calendar = new Vue({
         previousMonth: function() {
             this.counter--
             this.thisMonth = moment().add(this.counter, 'months').format('MMMM');
-            taskList.thisMonth = this.thisMonth;
             this.lastDay =  parseInt(moment().add(this.counter, 'months').endOf('month').format('D'));
             this.thisYear = moment().add(this.counter, 'months').format("YYYY");
             this.firstWeekDay= moment().add(this.counter, 'months').startOf('month').format("dddd");
@@ -27,18 +42,10 @@ var calendar = new Vue({
         nextMonth: function() {
             this.counter++
             this.thisMonth = moment().add(this.counter, 'months').format('MMMM');
-            taskList.thisMonth = this.thisMonth;
             this.lastDay =  parseInt(moment().add(this.counter, 'months').endOf('month').format('D'));
             this.thisYear = moment().add(this.counter, 'months').format("YYYY");
             this.firstWeekDay= moment().add(this.counter, 'months').startOf('month').format("dddd");
             console.log(this.thisMonth)
         }
     },
-});
-
-var taskList = new Vue({
-    el: '#taskList',
-    data: {
-        thisMonth: calendar.thisMonth
-    }
 });

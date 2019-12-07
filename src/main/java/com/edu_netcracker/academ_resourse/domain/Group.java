@@ -4,6 +4,7 @@ package com.edu_netcracker.academ_resourse.domain;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
+import java.text.ParseException;
 import java.util.*;
 
 
@@ -30,6 +31,8 @@ import java.util.*;
 			joinColumns=@JoinColumn (name="grp_id", insertable=false, updatable=false),
 			inverseJoinColumns=@JoinColumn(name="subject_id", insertable=false, updatable=false))
 	private Set<Subject> subjects;
+
+
 
 	public Group(){
 
@@ -115,4 +118,5 @@ import java.util.*;
 	public int hashCode() {
 		return Objects.hash(id, name, university, tasks);
 	}
+
 }
