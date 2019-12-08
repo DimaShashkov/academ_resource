@@ -3,39 +3,19 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Getting Started: Serving Web Content</title>
+    <link rel="stylesheet" type="text/css" href="css/greeting.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/profile.css" />
 </head>
 <body>
-<div align="center">
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <h1>Academ Resource</h1>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="card">
-                <div class="card-body">
-                    <div>
-                        <p>Добро пожаловать на наш ресурс, благодаря нам, Вы перестанете пропускать дедлайны и будете учиться на отлично, конечно, если будете следовать всем инструкциям</p>
-
-                        <p>Хочешь попробовать? Тогда зарегистрируйся или войди, если уже пользуешься этим проектом</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <a th:href="@{/profile}" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">
-                Primary link
-            </a>
-        </div>
-    </div>
+<div class="row justify-content-md-center">
+    <h1>Academ Resource</h1>
 </div>
+<br>
+<div>
+    <p>Добро пожаловать на наш ресурс, благодаря нам, Вы перестанете пропускать дедлайны и будете учиться на отлично, конечно, если будете следовать всем инструкциям</p>
+    <br>
+    <p>Хочешь попробовать? Тогда зарегистрируйся или войди, если уже пользуешься этим проектом</p>
+</div>
+<a th:href="@{/profile}">Main page</a>
 </body>
 </html>
