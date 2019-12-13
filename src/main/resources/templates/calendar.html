@@ -42,19 +42,20 @@
     <div class="days" v-if="firstWeekDay == 'Sunday'">
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==31" v-for="a in 4"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 5"></div>
@@ -66,19 +67,20 @@
         <div class="day"></div>
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==31" v-for="a in 3"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 4"></div>
@@ -89,19 +91,20 @@
         <div class="day" v-for="a in 2"></div>
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==31" v-for="a in 2"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 3"></div>
@@ -112,19 +115,20 @@
         <div class="day" v-for="a in 3"></div>
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <dv class="day"  v-if="lastDay==31"></dv>
         <div class="day" v-if="lastDay==30" v-for="a in 2"></div>
@@ -135,19 +139,20 @@
         <div class="day" v-for="a in 4"></div>
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==30"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 2"></div>
@@ -158,19 +163,20 @@
         <div class="day" v-for="a in 5"></div>
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==31" v-for="a in 6"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 1"></div>
@@ -180,19 +186,20 @@
         <div class="day" v-for="a in 6"></div>
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
-            <span v-else="n!=today">{{ n }}</span>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="showModal = true">
-                    show tasks
-                </button>
-            </div>
-            <modal title="Title of the modal" v-show="showModal" @close="showModal = false">
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
-                    <div class="tasksOfDay" v-for="(task, index) in tasks" v-if="currentDate(n, task.date)">
-                        №: {{ index + 1 }} <br> task: {{ task.task }} <br> subject: {{ task.subject }} <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
                     </div>
                 </div>
             </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==31" v-for="a in 5"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 6"></div>

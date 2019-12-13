@@ -108,9 +108,20 @@ div{
     }
 }
 .content {
-    width: auto;
-    padding: 30px 10px;
-    /* position: absolute; */
-    /* background-color: black; */
+    background:black;
+    width:400px;
+    height:400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    text-align: left;
+    margin:-200px 0 0 -200px;
+}
+.modal-close {
+    width:15px;
+    height:15px;
+    position:absolute;
+    top:23%;
+    left:62%;
     text-align: center;
 }

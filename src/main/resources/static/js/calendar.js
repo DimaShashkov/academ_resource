@@ -31,45 +31,13 @@ var calendar = new Vue({
         friday:'Friday',
         thursday:'Thursday',
         counter: 0,
-        showModal1: false,
-        showModal: false,
-        showModal3: false,
-        showModal4: false,
-        showModal5: false,
-        showModal6: false,
-        showModal7: false,
-        showModal8: false,
-        showModal9: false,
-        showModal10: false,
-        showModal11: false,
-        showModal12: false,
-        showModal13: false,
-        showModal14: false,
-        showModal15: false,
-        showModal16: false,
-        showModal17: false,
-        showModal18: false,
-        showModal19: false,
-        showModal20: false,
-        showModal21: false,
-        showModal22: false,
-        showModal23: false,
-        showModal24: false,
-        showModal25: false,
-        showModal26: false,
-        showModal27: false,
-        showModal28: false,
-        showModal29: false,
-        showModal30: false,
-        showModal31: false,
+        taskCount: 0,
+        comtainTasksCount: false,
     },
     created: function() {
-        taskApi.get().then(result =>
-            result.json().then(data => data.forEach( task => this.tasks.push(task)))
-        );
-        taskApi.get().then(result =>
-            result.json().then(data => data.forEach( task => console.log(task)))
-        );
+            taskApi.get().then(result =>
+                result.json().then(data => data.forEach(task => this.tasks.push(task)))
+            );
     },
     methods: {
         previousMonth: function() {
@@ -89,30 +57,52 @@ var calendar = new Vue({
             console.log(this.thisMonth)
         },
         currentDate: function(n, date) {
+            console.log("currentDate");
             this.monthForTasks = moment().add(this.counter, 'months').format('MM');
-            // console.log(this.monthForTasks);
-            // console.log(this.thisYear);
-            // console.log(n);
-            // console.log(date);
 
             dateA = moment(this.monthForTasks + '-' + n + '-' + this.thisYear, "MM-DD-YYYY");
             dateB = moment(date, "MM-DD-YYYY");
-            // console.log(dateA);
-            // console.log(dateB);
+
             if (moment(this.thisYear + '-' + this.monthForTasks + '-' + n).isSame(date)) {
+                if(!this.comtainTasksCount) {
+                    // this.comtainTasksCount = true;
+                }
+
                 return true;
             } else {
+
                 return false;
             }
         },
         buttonForTasks: function(n) {
-            return '<button class="button is-success" @click="showModal' + n +  '= true">' +
-                'show tasks' +
-                '</button>'
+            console.log("buttonForTasks");
+            this.taskCount = n;
         },
         modalForTasks: function(n) {
-            return '<modal title="Title of the modal" v-show="showModal' + n + '" @close="showModal' + n + ' = false">'
-        }
-    },
+            console.log("modalForTasks");
+            if(this.taskCount === n) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
+        closeModalForTasks: function(n) {
+            this.taskCount = 0;
+            console.log('some doing for close modal window');
+        },
+
+        isRenderButton: function(n, tasks) {
+            console.log('isRenderButton');
+            var isRender = false;
+            for(let i = 0; i < tasks.length; i++) {
+                if(this.currentDate(n, tasks[i].date)) {
+                    isRender = true;
+                }
+            }
+            return isRender;
+        },
+    }
 });
+
 
