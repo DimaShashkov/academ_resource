@@ -21,15 +21,13 @@ public class TasksService {
     final
     TaskLvlService taskLvlService;
 
-    final
-    DateService dateService;
+
 
     final static Logger logger = LoggerFactory.getLogger(TasksService.class);
 
-    public TasksService(ITasksRepo tasksRepo, TaskLvlService taskLvlService, DateService dateService) {
+    public TasksService(ITasksRepo tasksRepo, TaskLvlService taskLvlService) {
         this.tasksRepo = tasksRepo;
         this.taskLvlService = taskLvlService;
-        this.dateService = dateService;
     }
 
 
@@ -50,116 +48,6 @@ public class TasksService {
         tasksRepo.saveAndFlush(task);
     }
 
-    public Set<Task> getJanuaryTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getJanuary();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-
-
-    public Set<Task> getFebruaryTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getFebruary();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getMarchTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getMarch();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getAprilTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getApril();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getMayTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getMay();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getJuneTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getJune();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getJulyTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getJuly();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getAugustTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getAugust();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getSeptemberTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getSeptember();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getOctoberTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getOctober();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getNovemberTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getNovember();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
-    public Set<Task> getDecemberTasks(Set<Task> tasks) {
-        Date[] dates = new Date[2];
-        try {
-            dates = dateService.getDecember();
-        } catch (ParseException e) {
-            logger.error("error parse date");
-        }
-        return getTasks(tasks, dates);
-    }
 
     private Set<Task> getTasks(Set<Task> tasks, Date[] dates) {
         HashSet<Task> result = new HashSet<>();

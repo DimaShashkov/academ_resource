@@ -40,7 +40,23 @@
         </div>
     </div>
     <div class="days" v-if="firstWeekDay == 'Sunday'">
-        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
+        </div>
         <div class="day" v-if="lastDay==31" v-for="a in 4"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 5"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 6"></div>
@@ -49,7 +65,23 @@
     </div>
     <div class="days" v-if="firstWeekDay == 'Monday' && firstWeekDay != 'Sunday'">
         <div class="day"></div>
-        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
+        </div>
         <div class="day" v-if="lastDay==31" v-for="a in 3"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 4"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 5"></div>
@@ -57,7 +89,23 @@
     </div>
     <div class="days" v-if="firstWeekDay == 'Tuesday'  && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday'">
         <div class="day" v-for="a in 2"></div>
-        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
+        </div>
         <div class="day" v-if="lastDay==31" v-for="a in 2"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 3"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 6"></div>
@@ -65,7 +113,23 @@
     </div>
     <div class="days" v-if="firstWeekDay == 'Wednesday' && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday'">
         <div class="day" v-for="a in 3"></div>
-        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
+        </div>
         <dv class="day"  v-if="lastDay==31"></dv>
         <div class="day" v-if="lastDay==30" v-for="a in 2"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 3"></div>
@@ -73,9 +137,22 @@
     </div>
     <div class="days" v-if="firstWeekDay == 'Thursday'  && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday' && firstWeekDay != 'Wednssday'">
         <div class="day" v-for="a in 4"></div>
-        <div class="day" v-for="n in lastDay">
-            <span style="color:red" v-if="n==today">{{ n }}</span>
-            <span v-if="n!=today">{{ n }}</span>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
         </div>
         <div class="day" v-if="lastDay==30"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 2"></div>
@@ -84,336 +161,53 @@
     </div>
     <div class="days" v-if="firstWeekDay == 'Friday' && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday' && firstWeekDay != 'Wednssday' && firstWeekDay != 'Thursday'">
         <div class="day" v-for="a in 5"></div>
-        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
+        </div>
         <div class="day" v-if="lastDay==31" v-for="a in 6"></div>
         <div class="day" v-if="lastDay==29" v-for="a in 1"></div>
         <div class="day" v-if="lastDay==28" v-for="a in 2"></div>
     </div>
     <div class="days" v-if="firstWeekDay == 'Saturday' && firstWeekDay != 'Sunday' && firstWeekDay != 'Monday' && firstWeekDay != 'Tuesday' && firstWeekDay != 'Wednssday' && firstWeekDay != 'Thursday' && firstWeekDay != 'Friday'">
         <div class="day" v-for="a in 6"></div>
-        <div class="day" v-for="n in lastDay">{{ n }}</div>
+        <div class="day" v-for="(n, index) in lastDay">
+            <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
+            <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
+            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="content">
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+
+                    </div>
+                </div>
+            </modal>
+            <div class="has-text-centered">
+                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+                    show tasks
+                </button>
+            </div>
+        </div>
         <div class="day" v-if="lastDay==31" v-for="a in 5"></div>
         <div class="day" v-if="lastDay==30" v-for="a in 6"></div>
         <div class="day" v-if="lastDay==28" v-for="a in 1"></div>
     </div>
-
-
 </div>
 
-<div id="taskList">
-    <div class="tasks" v-if="thisMonth == 'January' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${januaryTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'February' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${februaryTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'March' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${marchTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'April' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${aprilTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'May' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${mayTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'June' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${juneTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'July' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${julyTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'August' && thisYear == secondSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${augustTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'September' && thisYear == firstSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${septemberTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'October' && thisYear == firstSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${octoberTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'November' && thisYear == firstSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${novemberTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="tasks" v-if="thisMonth == 'December' && thisYear == firstSemesterYear">
-        <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
-            <caption>Tasks</caption>
-            <thead>
-            <tr>
-                <th>№</th>
-                <th>Date</th>
-                <th>Subject</th>
-                <th>Text</th>
-                <th>Link</th>
-                <th>Is done</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:block th:each="task, state: ${decemberTask}"
-                class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
-                <td th:utext="${state.count}">№</td>
-                <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                <td th:utext="${task.subject}">Subject</td>
-                <td th:utext="${task.task}">Text</td>
-                <td th:utext="${task.link}">Link</td>
-                <td><input type="checkbox" name="isDone">is done</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+
 
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>

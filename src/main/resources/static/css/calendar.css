@@ -107,3 +107,21 @@ div{
         width: 12.18%;
     }
 }
+.content {
+    background:black;
+    width:400px;
+    height:400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    text-align: left;
+    margin:-200px 0 0 -200px;
+}
+.modal-close {
+    width:15px;
+    height:15px;
+    position:absolute;
+    top:23%;
+    left:62%;
+    text-align: center;
+}
