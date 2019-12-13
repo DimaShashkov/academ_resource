@@ -107,3 +107,10 @@ div{
         width: 12.18%;
     }
 }
+.content {
+    width: auto;
+    padding: 30px 10px;
+    /* position: absolute; */
+    /* background-color: black; */
+    text-align: center;
+}
