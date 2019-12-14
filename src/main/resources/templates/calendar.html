@@ -43,7 +43,7 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+            <modal title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
                 <div class="content">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
                         <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
