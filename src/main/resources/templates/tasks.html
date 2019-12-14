@@ -30,6 +30,13 @@
 <br>
 <br>
 <br>
+<div id="addTaskButton">
+  <p th:utext="${admin}"></p>
+  <div class="addTask">
+    <a href="#newJob" @click="setIsAddTask"> Add new Task </a>
+  </div>
+  </template>
+</div>
 <div id="taskTable">
   <table cellpadding="4" cellspacing="1" border="1" align=\'center\' >
         <caption>Tasks</caption>
@@ -58,8 +65,7 @@
 
 <br>
 <br>
-<div id="newJob">
-  <p th:utext="${admin}"></p>
+<div id="newJob" v-show="showTask()">
     <hr>
   <form action="/tasks" method="post">
     <table cellpadding="4" cellspacing="1" border="1" align='center'>
@@ -87,7 +93,6 @@
       </tr>
     </table>
   </form>
-  </template>
 </div>
 <br>
 <br>
