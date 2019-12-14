@@ -58,10 +58,10 @@ public class UserService implements UserDetailsService {
 	}
 
 	public void addRole(User user, String role) {
-		if(role.equals("USER")) {
+		if(role.equalsIgnoreCase("USER")) {
 			user.setRoles(Collections.singleton(Role.USER));
 		}
-		if(role.equals("ADMIN")) {
+		if(role.equalsIgnoreCase("ADMIN")) {
 			user.setRoles(Collections.singleton(Role.ADMIN));
 		}
 		userRepo.save(user);

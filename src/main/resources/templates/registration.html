@@ -9,8 +9,11 @@
 <body>
 Add new user
 <form th:action="@{/registration}" method="post">
-    <div><label> User Name : <input type="email" name="email"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><label> User Name : <input type="email" name="email" required pattern
+            ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/> </label></div> <!-- знаки до @, затем еще знаки / цифры, . и еще что-то-->
+    <div><label> Password: <input type="password" name="password" required pattern
+            ="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/></label></div> <!-- строчные и прописные латинские буквы, цифры -->
+    <p>The password must contain: lowercase and uppercase Latin letters and numbers </p>
     <div><input type="submit" value="Registration"/></div>
 </form>
 </body>
