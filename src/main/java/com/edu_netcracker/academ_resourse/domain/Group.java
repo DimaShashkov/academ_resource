@@ -4,9 +4,7 @@ package com.edu_netcracker.academ_resourse.domain;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -68,12 +66,23 @@ import java.util.Set;
 		this.university = university;
 	}
 
-	@Transactional
 	public Set<Task> getTasks() {
 		if(tasks == null) {
 			tasks = new HashSet<>();
 		}
 		return tasks;
+	}
+
+	public List<Task> getTasksList() {
+		List<Task> taskList = new ArrayList<Task>(this.tasks);
+		Collections.sort(taskList, new Comparator<Task>() {
+			public int compare(Task o1, Task o2) {
+				if (o1.getDate() == null || o2.getDate() == null)
+					return 0;
+				return o1.getDate().compareTo(o2.getDate());
+			}
+		});
+		return taskList;
 	}
 
 	public void addTask(Task task) {

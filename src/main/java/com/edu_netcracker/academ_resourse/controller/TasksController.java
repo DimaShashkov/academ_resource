@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class TasksController {
@@ -55,7 +53,8 @@ public class TasksController {
 
         if(user.getGroup() == null ||
                 user.getGroup().getTasks() != null || !user.getGroup().getTasks().isEmpty()) {
-            Set<Task> tasks = user.getGroup().getTasks();
+            List<Task> tasks = user.getGroup().getTasksList();
+
             Set<Subject> subjects = user.getGroup().getSubjects();
             List<TaskLvl> taskLvls = taskLvlService.getTaskLvls();
 

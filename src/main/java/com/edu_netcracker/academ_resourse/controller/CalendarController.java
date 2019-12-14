@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -30,7 +31,7 @@ public class CalendarController {
 
     @GetMapping("/calendar/tasks")
     @ResponseBody
-    public Set<Task> getTasksJson(@AuthenticationPrincipal User user) {
-        return user.getGroup().getTasks();
+    public List<Task> getTasksJson(@AuthenticationPrincipal User user) {
+        return user.getGroup().getTasksList();
     }
 }
