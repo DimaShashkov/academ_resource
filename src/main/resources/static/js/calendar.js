@@ -1,14 +1,14 @@
 var taskApi = Vue.resource("/calendar/tasks");
 
 
-Vue.component('modal', {
+Vue.component('mod', {
     template: `
-    <div class="modal is-active">
-      <div class="modal-background"></div>
-      <div class="modal-content">
+    <div class="mod is-active">
+      <div class="mod-background"></div>
+      <div class="mod-cont">
         <div class="box"><slot></slot></div>
       </div>
-      <button class="modal-close" @click="$emit('close')"></button>
+      <button class="mod-close" @click="$emit('close')"></button>
     </div>
   `
 });

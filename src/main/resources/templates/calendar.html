@@ -3,8 +3,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/calendar.css" />
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>Календарь</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
@@ -15,6 +13,11 @@
         body {
             background-color: #e9ecef;
             color: #fff;
+        }
+        p{
+            background-color: white;
+            margin: 5px;
+            padding: 3px;
         }
     </style>
 </head>
@@ -50,7 +53,6 @@
     </div>
 </nav>
 <br><br><br><br><br>
-
 <div id="calendar">
     <div class="title">{{title}}</div>
     <div class="month">
@@ -64,16 +66,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -89,16 +97,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -113,16 +127,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -137,16 +157,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -161,16 +187,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -185,16 +217,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -208,16 +246,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <modal title="Title of the modal" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="content">
+            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+                <div class="con">
                     <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr> subject: {{ task.subject }} <br> task: {{ task.task }} <hr>
+                        <hr>
+                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                        <p class="text-justify">
+                            Задание: {{ task.task }}
+                        </p>
+                        <hr>
 
                     </div>
                 </div>
-            </modal>
-            <div class="has-text-centered">
-                <button class="button is-success" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
+            </mod>
+            <div >
+                <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
                 </button>
             </div>
@@ -228,16 +272,13 @@
     </div>
 </div>
 
-
-<br><br>
+<br><br><br>
 <hr>
 <div class="container">
     <footer>
-        <p>&copy; Netcracker 2019</p>
+        <font color="black">&copy; Netcracker 2019</font>
     </footer>
 </div>
-
-
 
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>

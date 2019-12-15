@@ -4,7 +4,7 @@ body {
     background-size: cover;
     /*font-family: 'Roboto', 'Helvetica Nue', cursive;*/
     /*font-size: 110%;*/
-    color: #fcfcfc;
+    color: #fff;
 
 }
 
@@ -41,11 +41,11 @@ dt {
 }
 
 a:hover{
-    color:red;
+    color:#fff;
 }
 a{
     text-decoration: none;
-    color:black;
+    color:#fff;
     transition: all .5s ease-in-out;
 }
 .head  {
@@ -113,8 +113,8 @@ div{
         width: 12.18%;
     }
 }
-.content {
-    background:black;
+.con {
+    background:#32b7d1;
     width:400px;
     height:400px;
     position:absolute;
@@ -122,8 +122,16 @@ div{
     left:50%;
     text-align: left;
     margin:-200px 0 0 -200px;
+    padding: 5px;
+    color: black;
+    border-spacing: 2px;
+    border-color: #454d55;
 }
-.modal-close {
+.mod{
+    border-spacing: 10px;
+    border-color: #454d55;
+}
+.mod-close {
     width:15px;
     height:15px;
     position:absolute;

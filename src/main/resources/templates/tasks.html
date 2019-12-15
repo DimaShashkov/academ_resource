@@ -66,10 +66,10 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-10 mx-auto">
+        <div class="col-md-12 mx-auto">
             <div id="newJob" v-show="showTask()">
                 <form action="/tasks" method="post">
-                    <table>
+                    <table class="table table-dark">
                         <tr>
                             <th>Дата</th>
                             <th>Предмет</th>
@@ -90,7 +90,7 @@
                         </tr>
                         <tr>
                             <td colspan="5"><input type="hidden" th:value="${_csrf.token}" name="_csrf">
-                                <button class="btn btn-light" type="submit">Save</button></td>
+                                <button class="btn btn-secondary" type="submit">Save</button></td>
                         </tr>
                     </table>
                 </form>
@@ -127,26 +127,26 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-10 mx-auto">
+        <div class="col-md-12 mx-auto">
             <div id="taskTable">
-              <table>
+                <table class="table table-dark table-striped">
                   <thead>
                   <tr>
                       <th>№</th>
-                      <th>Date</th>
-                      <th>Subject</th>
-                      <th>Text</th>
-                      <th>Link</th>
+                      <th>Дата</th>
+                      <th>Предмет</th>
+                      <th>Задание</th>
+                      <th>Ссылки</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr th:block th:each="task, state: ${tasks}"
-                      class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+                       th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
                       <td th:utext="${state.count}">№</td>
-                      <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Date</td>
-                      <td th:utext="${task.subject}">Subject</td>
-                      <td th:utext="${task.task}">Text</td>
-                      <td th:utext="${task.link}">Link</td>
+                      <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Дата</td>
+                      <td th:utext="${task.subject}">Предмет</td>
+                      <td th:utext="${task.task}">Задание</td>
+                      <td th:utext="${task.link}">Ссылки</td>
                   </tr>
                   </tbody>
               </table>
