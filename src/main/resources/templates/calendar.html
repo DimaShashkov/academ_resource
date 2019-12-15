@@ -3,33 +3,54 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/calendar.css" />
     <meta charset="utf-8">
-    <title>Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Календарь</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #e9ecef;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-<table class="head" cellpadding="4" cellspacing="1" border="1" align="center">
-    <tr>
-        <td><ul>
-            <li><a href="/schedule" target="">Schedule</a></li>
-        </ul></td>
-        <td><ul>
-            <li><a href="/calendar" target="">Calendar</a></li>
-        </ul> </td>
-        <td><ul>
-            <li><a href="/tasks" target="">Tasks</a></li>
-        </ul> </td>
-        <td><ul>
-            <li><a href="/profile" target="">Profile</a></li>
-        </ul> </td>
-    </tr>
-</table>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Academ Resourse</a>
+        <div class="btn-group">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" th:href="@{profile}">Профиль</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" th:href="@{schedule}">Расписание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" th:href="@{tasks}">Задания</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-item nav-link" th:href="@{calendar}">Календарь</a>
+                </li>
+            </ul>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button class="btn btn-light" type="submit">Выйти</button>
+        </form>
+    </div>
+</nav>
+<br><br><br><br><br>
+
 <div id="calendar">
     <div class="title">{{title}}</div>
     <div class="month">
@@ -205,6 +226,15 @@
         <div class="day" v-if="lastDay==30" v-for="a in 6"></div>
         <div class="day" v-if="lastDay==28" v-for="a in 1"></div>
     </div>
+</div>
+
+
+<br><br>
+<hr>
+<div class="container">
+    <footer>
+        <p>&copy; Netcracker 2019</p>
+    </footer>
 </div>
 
 

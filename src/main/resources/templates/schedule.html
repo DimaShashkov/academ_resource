@@ -3,43 +3,83 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Schedule</title>
+    <title>Расписание</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="css/schedule.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+    </style>
 </head>
 <body>
-<table class="head" cellpadding="4" cellspacing="1" border="1" align="center">
-    <tr>
-        <td><ul>
-            <li><a href="/schedule" target="">Schedule</a></li>
-        </ul></td>
-        <td><ul>
-            <li><a href="/calendar" target="">Calendar</a></li>
-        </ul> </td>
-        <td><ul>
-            <li><a href="/tasks" target="">Tasks</a></li>
-        </ul> </td>
-        <td><ul>
-            <li><a href="/profile" target="">Profile</a></li>
-        </ul> </td>
-    </tr>
-</table>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div id="tomorrow_table">
-          <div th:utext="${tomorrow}"/>
-  </div>
-   <br>
-   <br>
-   <br>
-   <br>
-   <div id="week_table">
-       <div th:utext="${schedule}"/>
-   </div>
-    <script src="/resources/js/schedule.js"></script>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Academ Resourse</a>
+        <div class="btn-group">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-item nav-link" th:href="@{profile}">Профиль</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-item nav-link" th:href="@{schedule}">Расписание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" th:href="@{tasks}">Задания</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item nav-link" th:href="@{calendar}">Календарь</a>
+                </li>
+            </ul>
+        </div>
+        <form th:action="@{/logout}" method="post">
+            <button class="btn btn-light" type="submit">Выйти</button>
+        </form>
+    </div>
+</nav>
+<br><br><br><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <table th:utext="${tomorrow}"/>
+            </div>
+        </div>
+    </div>
+   <br><br><br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+               <div id="week_table">
+                   <div th:utext="${schedule}"/>
+               </div>
+            </div>
+        </div>
+    </div>
+<hr>
+<div class="container">
+    <footer>
+        <font color="black">&copy; Netcracker 2019</font>
+    </footer>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/resources/js/schedule.js"></script>
 </body>
 </html>

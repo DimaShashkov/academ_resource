@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class GreetingController {
 	final static Logger logger = LoggerFactory.getLogger(GreetingController.class);
 
-	@GetMapping("/")
+	@GetMapping("/login")
 	public String getGreeting(Model model) {
-		return "greeting";
+		return "login";
 	}
 }
