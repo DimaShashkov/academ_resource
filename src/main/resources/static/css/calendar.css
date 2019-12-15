@@ -69,7 +69,8 @@ div{
 }
 #calendar
 {
-    background: navy;
+    border-color: #454d55;
+    background-color: #4f4646;
     margin: 0 5%;
 }
 .month

@@ -38,6 +38,7 @@ var calendar = new Vue({
             taskApi.get().then(result =>
                 result.json().then(data => data.forEach(task => this.tasks.push(task)))
             );
+        console.log(this.tasks);
     },
     methods: {
         previousMonth: function() {
@@ -61,11 +62,10 @@ var calendar = new Vue({
             this.monthForTasks = moment().add(this.counter, 'months').format('MM');
 
             dateA = moment(this.monthForTasks + '-' + n + '-' + this.thisYear, "MM-DD-YYYY");
-            dateB = moment(date, "MM-DD-YYYY");
+            dateB = moment(date).format( "MM-DD-YYYY");
 
-            if (moment(this.thisYear + '-' + this.monthForTasks + '-' + n).isSame(date)) {
+            if (moment(dateA).isSame(dateB)) {
                 if(!this.comtainTasksCount) {
-                    // this.comtainTasksCount = true;
                 }
 
                 return true;
@@ -75,11 +75,9 @@ var calendar = new Vue({
             }
         },
         buttonForTasks: function(n) {
-            console.log("buttonForTasks");
             this.taskCount = n;
         },
         modalForTasks: function(n) {
-            console.log("modalForTasks");
             if(this.taskCount === n) {
                 return true;
             }
@@ -89,11 +87,9 @@ var calendar = new Vue({
         },
         closeModalForTasks: function(n) {
             this.taskCount = 0;
-            console.log('some doing for close modal window');
         },
 
         isRenderButton: function(n, tasks) {
-            console.log('isRenderButton');
             var isRender = false;
             for(let i = 0; i < tasks.length; i++) {
                 if(this.currentDate(n, tasks[i].date)) {
