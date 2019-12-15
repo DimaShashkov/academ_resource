@@ -1,29 +1,35 @@
 body {
     text-align: center;
-    background: url('../img/background.jpg');
+    /*background: url('../img/background.jpg');*/
     background-size: cover;
-    font-family: 'Roboto', 'Helvetica Nue', cursive;
-    font-size: 110%;
-    color: #F5F5DC;
+    /*font-family: 'Roboto', 'Helvetica Nue', cursive;*/
+    /*font-size: 110%;*/
+    color: #fff;
+
 }
 
 table {
-    color: #F5F5DC;
-    border: 1px solid green;
+    width:100%;
+    max-width:100%;
+    /*border: 2px solid black;*/
     margin: auto;
-    width: 1000px;
-    background: navy;
+    color: #fff;
+    border-spacing: 2px;
+    border-color: #454d55;
+    background-color: #4f4646;
 }
 th {
-
-    width: 30px;
-    padding: 10px;
+    padding:.75rem;
+    vertical-align:top;
+    /*border-top:1px solid #000000;*/
+    border-top: 1px solid #dee2e6;
+    background: #211f1f;
 }
 td {
 
     width: 300px;
     padding: 10px;
-    background: #3EB489;
+    background: #363232;
 }
 dd {
 
@@ -35,11 +41,11 @@ dt {
 }
 
 a:hover{
-    color:red;
+    color:#fff;
 }
 a{
     text-decoration: none;
-    color:black;
+    color:#fff;
     transition: all .5s ease-in-out;
 }
 .head  {
@@ -63,7 +69,8 @@ div{
 }
 #calendar
 {
-    background: navy;
+    border-color: #454d55;
+    background-color: #4f4646;
     margin: 0 5%;
 }
 .month
@@ -107,8 +114,8 @@ div{
         width: 12.18%;
     }
 }
-.content {
-    background:black;
+.con {
+    background:#32b7d1;
     width:400px;
     height:400px;
     position:absolute;
@@ -116,8 +123,16 @@ div{
     left:50%;
     text-align: left;
     margin:-200px 0 0 -200px;
+    padding: 5px;
+    color: black;
+    border-spacing: 2px;
+    border-color: #454d55;
 }
-.modal-close {
+.mod{
+    border-spacing: 10px;
+    border-color: #454d55;
+}
+.mod-close {
     width:15px;
     height:15px;
     position:absolute;

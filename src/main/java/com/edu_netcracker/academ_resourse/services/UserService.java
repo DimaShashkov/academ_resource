@@ -5,9 +5,11 @@ import com.edu_netcracker.academ_resourse.domain.Role;
 import com.edu_netcracker.academ_resourse.domain.Subject;
 import com.edu_netcracker.academ_resourse.domain.User;
 import com.edu_netcracker.academ_resourse.repos.IUserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +18,13 @@ import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
-	private final IUserRepo userRepo;
-	private final GroupService groupService;
-	private final PasswordEncoder passwordEncoder;
+	@Autowired
+	private IUserRepo userRepo;
+	@Autowired
+	private GroupService groupService;
+	private PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-	public UserService(IUserRepo userRepo, GroupService groupService, PasswordEncoder passwordEncoder) {
-		this.userRepo = userRepo;
-		this.groupService = groupService;
-		this.passwordEncoder = passwordEncoder;
-	}
+
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

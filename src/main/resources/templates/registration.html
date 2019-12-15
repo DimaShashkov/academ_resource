@@ -3,18 +3,69 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
-    <link rel="stylesheet" type="text/css" href="css/registration.css" />
+    <title>Регистрация</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Регистрация</title>
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+    </style>
 </head>
 <body>
-Add new user
-<form th:action="@{/registration}" method="post">
-    <div><label> User Name : <input type="email" name="email" required pattern
-            ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/> </label></div> <!-- знаки до @, затем еще знаки / цифры, . и еще что-то-->
-    <div><label> Password: <input type="password" name="password" required pattern
-            ="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/></label></div> <!-- строчные и прописные латинские буквы, цифры -->
-    <p>The password must contain: lowercase and uppercase Latin letters and numbers </p>
-    <div><input type="submit" value="Registration"/></div>
-</form>
+
+<nav class="navbar navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <a href="#" class="navbar-brand">Academ Resourse</a>
+    </div>
+</nav>
+<br><br><br><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Registration</h5>
+                    <form th:action="@{/registration}" method="post">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required pattern
+                                    ="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <p style='font-size:10pt'>Пароль должен содержать заглавные и строчные латинские буквы, цифры</p>
+                            <input type="password" class="form-control" id="password" name="password" required pattern
+                                    ="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+                        </div>
+                        <br>
+
+                        <button type="submit" class="btn btn-success btn-sm">Зарегистрироваться</button>
+                        <a th:href="@{login}" class="btn btn-info btn-sm">Вернуться на главную</a>
+                        <input type="hidden" th:value="${_csrf.token}" name="_csrf">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<hr>
+<div class="container">
+    <footer>
+        <p>&copy; Netcracker 2019</p>
+    </footer>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
