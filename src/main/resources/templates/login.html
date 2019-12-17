@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Login</h5>
                     <div th:if="${param.error}">
-                        <p>Неправильный логин или пароль</p>
+                        <p style="color:red">Неправильный логин или пароль</p>
                     </div>
                     <form th:action="@{/login}" method="post">
                         <div class="form-group">
