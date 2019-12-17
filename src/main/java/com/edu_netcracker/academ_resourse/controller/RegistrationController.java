@@ -28,14 +28,14 @@ public class RegistrationController {
 	@GetMapping("/registration")
     public String getRegistration(Model model) {
         model.addAttribute("message", "");
-        logger.info("the empty data has been added into model");
         return "registration";
     }
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
     	if (!userService.addUser(user)) {
-			model.addAttribute("message", "User exists!");
+			model.addAttribute("error", "Пользователь с таким E-mail уже зарегистрирован");
+			logger.info("this user already exist");
 			return "registration";
 		}
 		return "redirect:/profile";

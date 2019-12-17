@@ -122,7 +122,7 @@
                       <td th:text="${#dates.format(task.date, 'dd-MMM-yyyy')}">Дата</td>
                       <td th:utext="${task.subject}">Предмет</td>
                       <td th:utext="${task.task}">Задание</td>
-                      <td> <a th:if="${task.link != ''}" th:href="${task.link}">Ссылка</a></td>
+                      <td> <a th:if="${!task.link.equals('')}" th:href="${task.link}">Ссылка</a></td>
                   </tr>
                   </tbody>
               </table>
