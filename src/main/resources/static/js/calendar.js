@@ -3,13 +3,25 @@ var taskApi = Vue.resource("/calendar/tasks");
 
 Vue.component('mod', {
     template: `
-    <div class="mod is-active">
-      <div class="mod-background"></div>
-      <div class="mod-cont">
-        <div class="box"><slot></slot></div>
-      </div>
-      <button class="mod-close" @click="$emit('close')"></button>
+<div class="cust">
+    <div class="cust-title">
+<table class="cust-text" id="">
+            <tr>
+                <td><h3>Задания</h3></td>
+                <td class="rightcol">
+                    <button class="btn btn-outline-light" @click="$emit('close')" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </td>
+            </tr>        
+        </table>
     </div>
+    <div class="cust-body">
+    
+        <slot></slot>
+    </div>
+</div>
+
   `
 });
 

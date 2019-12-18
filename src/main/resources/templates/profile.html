@@ -46,7 +46,7 @@
         </form>
     </div>
 </nav>
-<br><br><br><br><br>
+<br><br><br><br>
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -67,20 +67,23 @@
                             <input type="text" class="form-control" id="group" name="group" th:value="${user.groupName}">
                         </div>
                         <div class="form-group">
-                            <p th:text="${user.getRole()}"></p>
-                            <select name="role" class="form-control">
-                                <option th:value="${user.getRole()}"><p th:text="${user.getRole()}"></p></option>
-                                <option value="ADMIN">Admin</option>
-                                <option value="USER">User</option>
+                            <label for="role">Роль в группе</label>
+
+                            <select name="role" class="form-control" id="role">
+                                <option ><p th:text="${user.getRole()}"></p></option>
+                                <option value="ADMIN">Староста</option>
+                                <option value="USER">Студент</option>
                             </select>
                         </div>
+
                         <div class="form-group">
-                            <p th:text="${user.university}"></p>
-                            <select name="university" class="form-control">
+<!--                            <p th:text="${user.university}"></p>-->
+                            <label for="univ">Университет</label>
+                            <select name="university" class="form-control" id="univ">
                                 <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>
-                                <option value="ITMO">ITMO</option>
-                                <option value="NSU">NSU</option>
-                                <option value="SMTU">SMTU</option>
+                                <option value="ITMO">ИТМО</option>
+                                <option value="NSU">НСУ</option>
+                                <option value="SMTU">СМТУ</option>
                             </select>
                         </div>
 
@@ -93,7 +96,7 @@
     </div>
 </div>
 
-<br><br><br>
+<br>
 <hr>
 <div class="container">
     <footer>

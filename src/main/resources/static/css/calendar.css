@@ -114,24 +114,23 @@ div{
         width: 12.18%;
     }
 }
-.con {
-    background:#32b7d1;
-    width:400px;
-    height:400px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    text-align: left;
-    margin:-200px 0 0 -200px;
-    padding: 5px;
-    color: black;
-    border-spacing: 2px;
-    border-color: #454d55;
-}
-.mod{
-    border-spacing: 10px;
-    border-color: #454d55;
-}
+/*.con {*/
+/*    background:#32b7d1;*/
+/*    width: auto;*/
+/*    height: auto;*/
+/*    position:absolute;*/
+/*    top:50%;*/
+/*    left:50%;*/
+/*    text-align: left;*/
+/*    margin:-200px 0 0 -200px;*/
+/*    padding: 5px;*/
+/*    color: black;*/
+/*    border-spacing: 2px;*/
+/*    border-color: #454d55;*/
+/*}*/
+/*mod{*/
+/*    background-color: black;*/
+/*}*/
 .mod-close {
     width:15px;
     height:15px;
@@ -140,3 +139,37 @@ div{
     left:62%;
     text-align: center;
 }
+.cust{
+    background-color: #717478;
+    color : black;
+    width:400px;
+    height:auto;
+    position: absolute;
+    top: 50%;
+    left: 29%;
+    border-radius: 10px;
+
+}
+.cust-body{
+    margin: 7px;
+    padding: 3px;
+    background-color: white;
+}
+
+.cust-title{
+    color: white;
+}
+table.cust-text  {
+    width:  100%; /* Ширина таблицы */
+    border-spacing: 0; /* Расстояние между ячейками */
+}
+table.cust-text td {
+    width: 50%; /* Ширина ячеек */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+}
+td.rightcol { /* Правая ячейка */
+    text-align: right; /* Выравнивание по правому краю */
+}
+/*#tab{*/
+/*  background-color: #717478;*/
+/*}*/
