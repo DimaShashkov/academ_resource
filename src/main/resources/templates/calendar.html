@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/calendar.css" />
+
     <meta charset="utf-8">
     <title>Календарь</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/calendar.css" />
 
     <style>
         *, ::after, ::before {
@@ -18,10 +20,11 @@
             color: #fff;
         }
         p{
-            background-color: white;
+            /*background-color: black;*/
             margin: 5px;
             padding: 3px;
         }
+
     </style>
 </head>
 <body>
@@ -69,20 +72,22 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
-                        <p class="text-justify" > Предмет: {{ task.subject }} </p>
+            <div class="cust">
+                <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
 
-                        <p class="text-justify">
-                            Задание: {{ task.task }}
-                        </p>
-                        <hr>
+                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                        <div class="con">
+                            <p class="text-justify" > Предмет: {{ task.subject }} </p>
+
+                            <p class="text-justify">
+                                Задание: {{ task.task }}
+                            </p>
+                        </div>
 
                     </div>
-                </div>
-            </mod>
+                </mod>
+            </div>
+
             <div >
                 <button class="btn btn-info" @click="buttonForTasks(n)" v-if="isRenderButton(n, tasks)">
                     show tasks
@@ -100,18 +105,17 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
+            <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+
+                <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                    <div class="con">
                         <p class="text-justify" > Предмет: {{ task.subject }} </p>
 
                         <p class="text-justify">
                             Задание: {{ task.task }}
                         </p>
-                        <hr>
-
                     </div>
+
                 </div>
             </mod>
             <div >
@@ -130,18 +134,17 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
+            <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+
+                <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                    <div class="con">
                         <p class="text-justify" > Предмет: {{ task.subject }} </p>
 
                         <p class="text-justify">
                             Задание: {{ task.task }}
                         </p>
-                        <hr>
-
                     </div>
+
                 </div>
             </mod>
             <div >
@@ -160,18 +163,17 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
+            <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+
+                <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                    <div class="con">
                         <p class="text-justify" > Предмет: {{ task.subject }} </p>
 
                         <p class="text-justify">
                             Задание: {{ task.task }}
                         </p>
-                        <hr>
-
                     </div>
+
                 </div>
             </mod>
             <div >
@@ -190,18 +192,17 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
+            <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+
+                <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                    <div class="con">
                         <p class="text-justify" > Предмет: {{ task.subject }} </p>
 
                         <p class="text-justify">
                             Задание: {{ task.task }}
                         </p>
-                        <hr>
-
                     </div>
+
                 </div>
             </mod>
             <div >
@@ -220,18 +221,17 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
+            <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+
+                <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                    <div class="con">
                         <p class="text-justify" > Предмет: {{ task.subject }} </p>
 
                         <p class="text-justify">
                             Задание: {{ task.task }}
                         </p>
-                        <hr>
-
                     </div>
+
                 </div>
             </mod>
             <div >
@@ -249,18 +249,17 @@
         <div class="day" v-for="(n, index) in lastDay">
             <span style="color:red" v-if="realMonth == thisMonth && n==today">{{ n }}</span>
             <span v-if="realMonth != thisMonth || realMonth == thisMonth && n != today">{{ n }}</span>
-            <mod title="Close" v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
-                <div class="con">
-                    <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
-                        <hr>
+            <mod  v-show="modalForTasks(n)" @close="closeModalForTasks(n)">
+
+                <div class="tasksOfDay" v-for="task in tasks" v-if="currentDate(n, task.date)">
+                    <div class="con">
                         <p class="text-justify" > Предмет: {{ task.subject }} </p>
 
                         <p class="text-justify">
                             Задание: {{ task.task }}
                         </p>
-                        <hr>
-
                     </div>
+
                 </div>
             </mod>
             <div >
@@ -275,11 +274,11 @@
     </div>
 </div>
 
-<br><br><br>
+<br>
 <hr>
 <div class="container">
-    <footer>
-        <font color="black">&copy; Netcracker 2019</font>
+    <footer align="left">
+        <font color="black" >&copy; Netcracker 2019</font>
     </footer>
 </div>
 
