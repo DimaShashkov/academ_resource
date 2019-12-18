@@ -9,7 +9,6 @@ import com.edu_netcracker.academ_resourse.services.SubjectService;
 import com.edu_netcracker.academ_resourse.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,8 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
@@ -47,11 +44,7 @@ public class UserController {
     @GetMapping("/profile")
     public String getProfile(
             @AuthenticationPrincipal User user,
-            @RequestParam(name = "incorrect", defaultValue = "") String incorrect,
             Model model) {
-        if(incorrect.equals("serverResponse")) {
-            model.addAttribute("error", "Пожалуйста, проверьте номер группы и вуз");
-        }
         model.addAttribute("user", user);
 
         return "profile";
@@ -81,7 +74,8 @@ public class UserController {
             addSchedule(mongoGroup);
         } catch (IOException e) {
             logger.error("schedule wasn't added into Mongo");
-            return "redirect:/profile?incorrect=serverResponse";
+            model.addAttribute("error", e.getMessage());
+            return "profile";
         }
 
         Set<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());

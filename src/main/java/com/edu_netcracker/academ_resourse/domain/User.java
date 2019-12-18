@@ -2,7 +2,19 @@ package com.edu_netcracker.academ_resourse.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import javax.persistence.*;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Iterator;
@@ -38,10 +50,10 @@ public class User implements UserDetails {
 	}
 
 	public String getGroupName(){
-		return group !=null ? group.getName() : "<none>";
+		return group !=null ? group.getName() : "";
 	}
 	public String getUniversity(){
-		return group !=null ? group.getUniversityName() : "<none>";
+		return group !=null ? group.getUniversityName() : "";
 	}
 
 

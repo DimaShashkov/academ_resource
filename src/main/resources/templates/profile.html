@@ -46,12 +46,13 @@
         </form>
     </div>
 </nav>
-<br><br><br><br><br>
+<br><br><br><br>
 <div class="container">
     <div class="row">
         <div class="col-md-4">
             <div class="card" style="width: 25rem;">
                 <div class="card-body">
+                    <div style="color:red" th:if="${error}" th:text="${error}"></div>
                     <h5 class="card-title">Ваши данные</h5>
                     <form action="/profile" method="post">
                         <div class="form-group">
@@ -63,21 +64,20 @@
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="form-group">
-                            <div style="color:red" th:if="${error}" th:text="${error}"></div>
                             <label for="group">Группа</label>
                             <input type="text" class="form-control" id="group" name="group" th:value="${user.groupName}">
                         </div>
                         <div class="form-group">
-                            <p>Права пользователя</p>
-                            <select name="role" class="form-control">
+                            <label for="role">Роль в группе</label>
+                            <select name="role" class="form-control" id="role">
                                 <option th:value="${user.getRole()}"><p th:text="${user.getRole()}"></p></option>
                                 <option value="ADMIN" th:if="${!user.getRole().equals('Admin')}">Admin</option>
                                 <option value="USER" th:if="${!user.getRole().equals('User')}">User</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <p>Университет</p>
-                            <select name="university" class="form-control">
+                            <label for="univ">Университет</label>
+                            <select name="university" class="form-control" id="univ">
                                 <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>
                                 <option value="ITMO" th:if="${!user.getUniversity().equals('ITMO')}">ITMO</option>
                                 <option value="NSU" th:if="${!user.getUniversity().equals('NSU')}">NSU</option>
@@ -94,7 +94,7 @@
     </div>
 </div>
 
-<br><br><br>
+<br>
 <hr>
 <div class="container">
     <footer>
