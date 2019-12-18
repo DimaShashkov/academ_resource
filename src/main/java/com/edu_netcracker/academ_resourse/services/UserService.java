@@ -13,7 +13,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.InvalidRoleValueException;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -27,12 +29,12 @@ public class UserService implements UserDetailsService {
 
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
 		return userRepo.findUserByEmail(email);
 	}
 
 
-	public boolean addUser(User user) {
+	public boolean addUser(final User user) {
 		User userFromDb = userRepo.findUserByEmail(user.getEmail());
 
 		user.setRoles(Collections.singleton(Role.USER));
@@ -51,20 +53,29 @@ public class UserService implements UserDetailsService {
 
 		return true;
 	}
-	public void addGroup(User user, String groupName, String universityName, Set<Subject> sub){
+	public void addGroup(final User user, final String groupName,
+						 final String universityName, final Set<Subject> sub){
 		Group group = groupService.addGroupUniversity(groupName, universityName, sub);
 		user.setGroup(group);
 		userRepo.save(user);
 	}
 
-	public void addRole(User user, String role) {
+	public void addRole(final User user, final String role) {
 		if(role.equalsIgnoreCase("USER")) {
 			user.setRoles(Collections.singleton(Role.USER));
 		}
 		if(role.equalsIgnoreCase("ADMIN")) {
-			user.setRoles(Collections.singleton(Role.ADMIN));
+			List<User> userList = userRepo.findUserByGroup(user.getGroup());
+			boolean containsAdmin = false;
+			for(User usr: userList) {
+				if (usr.getRole().equals("Admin"))
+					containsAdmin = true;
+			}
+			if(!containsAdmin)
+				user.setRoles(Collections.singleton(Role.ADMIN));
+			else
+				user.setRoles(Collections.singleton(Role.USER));
 		}
 		userRepo.save(user);
 	}
-
 }

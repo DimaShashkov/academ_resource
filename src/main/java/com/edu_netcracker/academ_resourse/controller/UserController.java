@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.management.relation.InvalidRoleValueException;
 import java.io.IOException;
 import java.util.Set;
 
@@ -66,8 +67,6 @@ public class UserController {
 
         MongoGroup mongoGroup = MongoGroupFactory.getGroup(university, group);
 
-        userService.addRole(user, role);
-
         model.addAttribute("user", user);
 
         try {
@@ -80,6 +79,8 @@ public class UserController {
 
         Set<Subject> sub = subjectService.addSubject(mongoGroup.getSubjects());
         userService.addGroup(user, group, university, sub);
+
+        userService.addRole(user, role);
 
         return "redirect:/profile";
     }
