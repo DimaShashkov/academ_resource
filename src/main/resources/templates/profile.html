@@ -48,11 +48,10 @@
 </nav>
 <br><br><br><br>
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-between">
         <div class="col-md-4">
             <div class="card" style="width: 25rem;">
                 <div class="card-body">
-                    <div style="color:red" th:if="${error}" th:text="${error}"></div>
                     <h5 class="card-title">Ваши данные</h5>
                     <form action="/profile" method="post">
                         <div class="form-group">
@@ -64,13 +63,14 @@
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="form-group">
+                            <div style="color:red" th:if="${error}" th:text="${error}"></div>
                             <label for="group">Группа</label>
                             <input type="text" class="form-control" id="group" name="group" th:value="${user.groupName}">
                         </div>
                         <div class="form-group">
                             <label for="role">Роль в группе</label>
                             <select name="role" class="form-control" id="role">
-<!--                                <option th:value="${user.getRole()}"><p th:switch="${user.getRole()}"></p></option>-->
+                                <!--                                <option th:value="${user.getRole()}"><p th:switch="${user.getRole()}"></p></option>-->
                                 <option value="ADMIN" th:if="${!user.getRole().equals('Admin')}">Староста</option>
                                 <option value="ADMIN" th:if="${user.getRole().equals('Admin')}" selected>Староста</option>
                                 <option value="USER" th:if="${!user.getRole().equals('User')}">Студент</option>
@@ -80,7 +80,7 @@
                         <div class="form-group">
                             <label for="univ">Университет</label>
                             <select name="university" class="form-control" id="univ">
-<!--                                <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>-->
+                                <!--                                <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>-->
                                 <option value="ITMO" th:if="${!user.getUniversity().equals('ITMO')}">ИТМО</option>
                                 <option value="ITMO" th:if="${user.getUniversity().equals('ITMO')}" selected>ИТМО</option>
                                 <option value="NSU" th:if="${!user.getUniversity().equals('NSU')}">НГУ</option>
@@ -96,6 +96,40 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Тайм-менеджмент</h5>
+                        <p class="card-text">или Эффективное управление хаосом</p>
+                        <a href="https://habr.com/ru/post/421431/" class="btn btn-primary" target="_blank">Читать &raquo;</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Скорочтение</h5>
+                        <p class="card-text">работает или нет? </p>
+                        <a href="https://habr.com/ru/company/spbifmo/blog/331270/" class="btn btn-primary" target="_blank">Читать &raquo;</a>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Советы</h5>
+                        <p class="card-text">как понимать больше, запоминать дольше</p>
+                        <a href="https://habr.com/ru/post/293730/" class="btn btn-primary" target="_blank">Читать &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -107,6 +141,58 @@
     </footer>
 </div>
 
+<!--    <a class="avatar"><img th:src="@{https://yt3.ggpht.com/a-/AAuE7mB-x4uFugC7DuM6ph-jphPsaE0nnZdUI-QUTg=s800-mo-c-c0xffffffff-rj-k-no}" alt="avatar" width="200"-->
+<!--    vspace="5" hspace="5"> </a>-->
+<!--    <form method="post">-->
+<!--        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+<!--    <table class="persData" cellpadding="4" cellspacing="1" border="1" align='center' >-->
+<!--    <caption>Personal data</caption>-->
+<!--    <tr>-->
+<!--      <td>Name:<br>-->
+<!--&lt;!&ndash;        <li th:text="${user.name}"></li>&ndash;&gt;-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Last name:<br>-->
+<!--        [[lastName]]</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td> Email: <br>-->
+<!--          <div th:text="${user.email}"></div>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>University:<br>-->
+<!--        ${university}<br>-->
+<!--          <div class="dataField">University:<br>-->
+<!--              <select name="university">-->
+<!--                  <option value="ITMO">ITMO</option>-->
+<!--                  <option value="NSU">NSU</option>-->
+<!--                  <option value="SMTU">SMTU</option>-->
+<!--              </select></div></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>group:<br>-->
+<!--        ${group} <br>-->
+<!--        <div class="dataField">Group:<br>-->
+<!--            <input type="text" th:name="group" required/></div></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Role:<br>-->
+<!--        [[role]]</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td><hr> </td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>Old password:<br>-->
+<!--        <input type="password" name="password"></td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--      <td>New password:<br>-->
+<!--        <input type="password" name="password2"></td>-->
+<!--    </tr>-->
+<!--    </table>-->
 
 
 

@@ -13,7 +13,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.InvalidRoleValueException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
