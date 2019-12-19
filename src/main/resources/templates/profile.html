@@ -70,18 +70,23 @@
                         <div class="form-group">
                             <label for="role">Роль в группе</label>
                             <select name="role" class="form-control" id="role">
-                                <option th:value="${user.getRole()}"><p th:text="${user.getRole()}"></p></option>
-                                <option value="ADMIN" th:if="${!user.getRole().equals('Admin')}">Admin</option>
-                                <option value="USER" th:if="${!user.getRole().equals('User')}">User</option>
+                                <!--                                <option th:value="${user.getRole()}"><p th:switch="${user.getRole()}"></p></option>-->
+                                <option value="ADMIN" th:if="${!user.getRole().equals('Admin')}">Староста</option>
+                                <option value="ADMIN" th:if="${user.getRole().equals('Admin')}" selected>Староста</option>
+                                <option value="USER" th:if="${!user.getRole().equals('User')}">Студент</option>
+                                <option value="USER" th:if="${user.getRole().equals('User')}" selected>Студент</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="univ">Университет</label>
                             <select name="university" class="form-control" id="univ">
-                                <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>
-                                <option value="ITMO" th:if="${!user.getUniversity().equals('ITMO')}">ITMO</option>
-                                <option value="NSU" th:if="${!user.getUniversity().equals('NSU')}">NSU</option>
-                                <option value="SMTU" th:if="${!user.getUniversity().equals('SMTU')}">SMTU</option>
+                                <!--                                <option th:value="${user.getUniversity()}"><p th:text="${user.getUniversity()}"></p></option>-->
+                                <option value="ITMO" th:if="${!user.getUniversity().equals('ITMO')}">ИТМО</option>
+                                <option value="ITMO" th:if="${user.getUniversity().equals('ITMO')}" selected>ИТМО</option>
+                                <option value="NSU" th:if="${!user.getUniversity().equals('NSU')}">НГУ</option>
+                                <option value="NSU" th:if="${user.getUniversity().equals('NSU')}" selected>НГУ</option>
+                                <option value="SMTU" th:if="${!user.getUniversity().equals('SMTU')}">ГМТУ</option>
+                                <option value="SMTU" th:if="${user.getUniversity().equals('SMTU')}" selected>ГМТУ</option>
                             </select>
                         </div>
 
@@ -99,7 +104,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Тайм-менеджмент</h5>
                         <p class="card-text">или Эффективное управление хаосом</p>
-                        <a href="https://habr.com/ru/post/421431/" class="btn btn-primary">Читать &raquo;</a>
+                        <a href="https://habr.com/ru/post/421431/" class="btn btn-primary" target="_blank">Читать &raquo;</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +114,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Скорочтение</h5>
                         <p class="card-text">работает или нет? </p>
-                        <a href="https://habr.com/ru/company/spbifmo/blog/331270/" class="btn btn-primary">Читать &raquo;</a>
+                        <a href="https://habr.com/ru/company/spbifmo/blog/331270/" class="btn btn-primary" target="_blank">Читать &raquo;</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +125,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Советы</h5>
                         <p class="card-text">как понимать больше, запоминать дольше</p>
-                        <a href="https://habr.com/ru/post/293730/" class="btn btn-primary">Читать &raquo;</a>
+                        <a href="https://habr.com/ru/post/293730/" class="btn btn-primary" target="_blank">Читать &raquo;</a>
                     </div>
                 </div>
             </div>
@@ -135,9 +140,6 @@
         <p>&copy; Netcracker 2019</p>
     </footer>
 </div>
-
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
