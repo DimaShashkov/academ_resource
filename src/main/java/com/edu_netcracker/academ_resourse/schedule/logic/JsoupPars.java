@@ -70,6 +70,10 @@ public class JsoupPars {
 
         Elements elements = document.select(mongoGroup.getUniversity().getQuery());
 
+        if(elements.isEmpty()) {
+            throw new IOException(ERROR_URL1);
+        }
+
         schedule.saveSubjects(mongoGroup, elements);
 
         if(schedule.existGroup(mongoGroup)) {
