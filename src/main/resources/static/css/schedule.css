@@ -14,6 +14,10 @@ table {
     border-color: #454d55;
     background-color: #4f4646;
 }
+table a{
+    text-decoration: none;
+    color: #fff;
+}
 th {
     padding:.75rem;
     vertical-align:top;

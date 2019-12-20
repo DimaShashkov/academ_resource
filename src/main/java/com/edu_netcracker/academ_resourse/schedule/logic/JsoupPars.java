@@ -42,7 +42,7 @@ public class JsoupPars {
                     .referrer(JSOUP_REFERRER)
                     .get();
         } catch (IOException e) {
-            if(errorCountWithLikeURL == 0) {
+            if(errorCountWithLikeURL == 0 || !errorURL.equals(mongoGroup.getUniversity().getUrl())) {
                 errorCountWithLikeURL++;
                 errorURL = mongoGroup.getUniversity().getUrl();
                 throw new IOException(ERROR_URL1);
