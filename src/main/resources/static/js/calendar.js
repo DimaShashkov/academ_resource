@@ -30,7 +30,7 @@ var calendar = new Vue({
     data: {
         tasks: [],
         monthForTasks : moment().format("MM"),
-        title: 'Calendar',
+        title: 'Календарь',
         months: moment().months(),
         today:moment().format("D"),
         realMonth:moment().format("MMMM"),

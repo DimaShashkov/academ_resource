@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,10 +14,10 @@ import java.util.Set;
 @Service
 public class TasksService {
 
-    final
+    private final
     ITasksRepo tasksRepo;
 
-    final
+    private final
     TaskLvlService taskLvlService;
 
 
@@ -48,15 +47,5 @@ public class TasksService {
         tasksRepo.saveAndFlush(task);
     }
 
-
-    private Set<Task> getTasks(Set<Task> tasks, Date[] dates) {
-        HashSet<Task> result = new HashSet<>();
-        for(Task task : tasks) {
-            if(task.getDate().getTime() > dates[0].getTime() && task.getDate().getTime() < dates[1].getTime()) {
-                result.add(task);
-            }
-        }
-        return result;
-    }
 
 }

@@ -21,23 +21,23 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Academ <b>Resourse</b></a>
+        <p class="navbar-brand">Academ <b>Resourse</b></p>
         <div class="btn-group">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:50px;">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-item nav-link" th:href="@{profile}">Профиль</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-item nav-link" th:href="@{schedule}">Расписание</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-item nav-link" th:href="@{tasks}">Задания</a>
+                <li class="nav-item active">
+                    <a class="nav-item nav-link active" th:href="@{tasks}">Задания</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-item nav-link" th:href="@{calendar}">Календарь</a>
@@ -53,6 +53,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 mx-auto">
+                <p>Расписание на следующий учебный день</p>
                 <table th:utext="${tomorrow}"/>
             </div>
         </div>
@@ -63,7 +64,8 @@
         <div class="row">
             <div class="col-md-10 mx-auto">
                <div id="week_table">
-                   <div th:utext="${schedule}"/>
+                   <p>Расписание на неделю</p>
+                   <table th:utext="${schedule}"/>
                </div>
             </div>
         </div>

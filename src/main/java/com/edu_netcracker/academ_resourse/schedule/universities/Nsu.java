@@ -1,6 +1,7 @@
 package com.edu_netcracker.academ_resourse.schedule.universities;
 
 import com.edu_netcracker.academ_resourse.schedule.model.University;
+import com.edu_netcracker.academ_resourse.schedule.utils.INsuConstants;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.text.DateFormat;
@@ -8,22 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class Nsu extends University {
+public class Nsu extends University implements INsuConstants {
     @Field
     private String group;
     @Field
     private String schedule;
-    private static String URL = "https://table.nsu.ru/group/";
-    private static String SCHEDULE_START = "<table cellspacing=\"0\" border=\"1\" class=\"time-table\"> \r\n";
-    private static String QUERY = "table.time-table";
-    private static String TABLE = "<table>";
-    private static String TR = "<tr>";
-    private static String TH = "<th>";
-    private static String TD = "<td>";
-    private static String TOMORROW_1 = "<tr> \r\n <th>Время</th> \r\n";
-    private static String TOMORROW_2 = "</th> </tr> \r\n";
-    private static String TOMORROW_3 = "<tr> \r\n <td>";
-    private static String TOMORROW_4 = "</tr> \r\n";
 
     public Nsu() {
     }

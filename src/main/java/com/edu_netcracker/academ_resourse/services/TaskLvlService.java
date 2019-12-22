@@ -2,6 +2,7 @@ package com.edu_netcracker.academ_resourse.services;
 
 import com.edu_netcracker.academ_resourse.domain.TaskLvl;
 import com.edu_netcracker.academ_resourse.repos.ITaskLvlRepo;
+import com.edu_netcracker.academ_resourse.utils.ITaskLvlConstants;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,9 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class TaskLvlService {
+public class TaskLvlService implements ITaskLvlConstants {
 
-    final
+    private final
     ITaskLvlRepo taskLvlRepo;
 
     private static final List<String> taskLvl;
@@ -20,11 +21,12 @@ public class TaskLvlService {
 
     static {
         taskLvl = new ArrayList<>();
-        taskLvl.add("Test");
-        taskLvl.add("Coursework");
-        taskLvl.add("Research");
-        taskLvl.add("Report");
-        taskLvl.add("Abstract");
+        taskLvl.add(TEST);
+        taskLvl.add(COURSE_WORK);
+        taskLvl.add(RESEARCH);
+        taskLvl.add(REPORT);
+        taskLvl.add(HOME_WORK);
+        taskLvl.add(LABORATORY_WORK);
     }
 
     public TaskLvlService(ITaskLvlRepo taskLvlRepo) {
