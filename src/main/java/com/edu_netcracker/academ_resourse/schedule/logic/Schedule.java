@@ -7,34 +7,23 @@ import com.edu_netcracker.academ_resourse.schedule.repositories.ISmtuRepository;
 import com.edu_netcracker.academ_resourse.schedule.universities.Itmo;
 import com.edu_netcracker.academ_resourse.schedule.universities.Nsu;
 import com.edu_netcracker.academ_resourse.schedule.universities.Smtu;
+import com.edu_netcracker.academ_resourse.schedule.utils.ISheduleHTMLConstants;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
-public class Schedule {
+public class Schedule implements ISheduleHTMLConstants {
 
-    private final String ITMO_TABLE_BEFORE = "border=\"0\"";
-    private final String ITMO_TABLE_AFTER = "border=\"1\"";
-    private final String ITMO_QUERY = "td.lesson dl dd";
-    private final String ITMO_SPLIT = " \\(";
-    private final String SMTU_REGEX = "<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\" width=\"100%\">";
-    private final String SMTU_QUERY = "tbody tr";
-    private final String SMTU_SPLIT1 = "<td>";
-    private final String SMTU_SPLIT2 = "<br>";
-    private final String NSU_TABLE = " border=\"1\"> \n";
-    private final String NSU_QUERY = "div.subject";
-    private final String END_TABLE = "</table>";
-    private final String END_LINE = "\n";
-
-    final
+    private final
     IItmoRepository IItmoRepository;
-    final
+    private final
     ISmtuRepository ISmtuRepository;
-    final
+    private final
     INsuRepository INsuRepository;
 
     public Schedule(IItmoRepository IItmoRepository, ISmtuRepository ISmtuRepository, INsuRepository INsuRepository) {
@@ -58,24 +47,28 @@ public class Schedule {
         StringBuilder week = new StringBuilder();
         String tomorrow = "";
 
-        if (univ.equals("SMTU")) {
-            List<Smtu> smtus = ISmtuRepository.findAllByGroup(group);
-            for (Smtu smtu : smtus) {
-                week.append(smtu.getSchedule());
-                tomorrow = smtu.getTomorrowSchedule();
-            }
-        } else if (univ.equals("ITMO")) {
-            List<Itmo> itmos = IItmoRepository.findAllByGroup(group);
-            for (Itmo itmo : itmos) {
-                week.append(itmo.getSchedule());
-                tomorrow = itmo.getTomorrowSchedule();
-            }
-        } else if (univ.equals("NSU")) {
-            List<Nsu> nsus = INsuRepository.findAllByGroup(group);
-            for (Nsu nsu : nsus) {
-                week.append(nsu.getSchedule());
-                tomorrow = nsu.getTomorrowSchedule();
-            }
+        switch (univ) {
+            case SMTU:
+                List<Smtu> smtus = ISmtuRepository.findAllByGroup(group);
+                for (Smtu smtu : smtus) {
+                    week.append(smtu.getSchedule());
+                    tomorrow = smtu.getTomorrowSchedule();
+                }
+                break;
+            case ITMO:
+                List<Itmo> itmos = IItmoRepository.findAllByGroup(group);
+                for (Itmo itmo : itmos) {
+                    week.append(itmo.getSchedule());
+                    tomorrow = itmo.getTomorrowSchedule();
+                }
+                break;
+            case NSU:
+                List<Nsu> nsus = INsuRepository.findAllByGroup(group);
+                for (Nsu nsu : nsus) {
+                    week.append(nsu.getSchedule());
+                    tomorrow = nsu.getTomorrowSchedule();
+                }
+                break;
         }
         model.addAttribute("tomorrow", tomorrow);
         model.addAttribute("schedule", week);
@@ -84,9 +77,7 @@ public class Schedule {
 
     public void save(final MongoGroup mongoGroup, final Elements elements) {
         if (mongoGroup.getUniversity() instanceof Itmo) {
-            StringBuilder sb = new StringBuilder(elements.toString().replaceAll(ITMO_TABLE_BEFORE, ITMO_TABLE_AFTER));
-            mongoGroup.getUniversity().setSchedule(sb.toString());
-
+            mongoGroup.getUniversity().setSchedule(elements.toString().replaceAll(ITMO_TABLE_BEFORE, ITMO_TABLE_AFTER));
             Itmo itmo = (Itmo) mongoGroup.getUniversity();
             IItmoRepository.save(itmo);
         } else if (mongoGroup.getUniversity() instanceof Smtu) {
@@ -124,7 +115,7 @@ public class Schedule {
         }
     }
 
-    public void saveSubjects(final MongoGroup mongoGroup, final Elements elements) {
+    public void saveSubjects(final MongoGroup mongoGroup, final Elements elements) throws IOException {
         if (mongoGroup.getUniversity() instanceof Itmo) {
             StringBuilder sb = new StringBuilder();
             for (Element element : elements.select(ITMO_QUERY)) {
@@ -152,6 +143,8 @@ public class Schedule {
                     sb.append(strings[0]).append(END_LINE);
             }
             String[] subjects = sb.toString().split(END_LINE);
+            if(subjects[0].equals(""))
+                throw new IOException("Пожалуйста, проверьте номер группы и вуз");
             mongoGroup.setSubjects(subjects);
         }
 

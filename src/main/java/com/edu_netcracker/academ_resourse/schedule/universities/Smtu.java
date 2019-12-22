@@ -1,6 +1,7 @@
 package com.edu_netcracker.academ_resourse.schedule.universities;
 
 import com.edu_netcracker.academ_resourse.schedule.model.University;
+import com.edu_netcracker.academ_resourse.schedule.utils.ISmtuConstans;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -10,19 +11,14 @@ import java.util.Date;
 import java.util.Locale;
 
 @Document
-public class Smtu extends University {
+public class Smtu extends University implements ISmtuConstans {
     @Field
     private String group;
     @Field
     private String schedule;
-    private static String URL = "https://www.smtu.ru/ru/viewschedule/";
-    private static String SCHEDULE_START = "<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\" width=\"100%\">";
-    private static String QUERY = "div.l-container";
-    private static String END_TABLE = "</table>";
-    private static String THEAD = "<thead>";
-    private static String END_LINE = "\r\n";
 
-    public Smtu() {
+
+    public Smtu(){
     }
 
     public Smtu(final String group) {

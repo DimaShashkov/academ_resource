@@ -1,27 +1,21 @@
 package com.edu_netcracker.academ_resourse.schedule.logic;
 
 import com.edu_netcracker.academ_resourse.schedule.model.MongoGroup;
+import com.edu_netcracker.academ_resourse.schedule.utils.IJsoupConstants;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+
 @Component
-public class JsoupPars {
+public class JsoupPars implements IJsoupConstants {
     private final static Logger logger = LoggerFactory.getLogger(JsoupPars.class);
 
-
-    private final String JSOUP_USERAGENT = "Chrome/4.0.249.0 Safari/532.5";
-    private final String JSOUP_REFERRER = "http://www.google.com";
-    private final String ALREADY_EXIST = "this group already exist";
-    private final String ERROR_URL1 = "Пожалуйста, проверьте номер группы и вуз";
-    private final String ERROR_URL2 = "Пожалуйста, подождите. Сайт университета не отвечает," +
-            " повторная попытка добавления расписания произойдет автоматически, приносим извенения за неудобства.";
     private int errorCountWithLikeURL = 0;
     private String errorURL;
 
@@ -32,7 +26,7 @@ public class JsoupPars {
         this.schedule = schedule;
     }
 
-    public void addSchedule(final MongoGroup mongoGroup) throws IOException {
+    public void addSchedule(final MongoGroup mongoGroup, final boolean errorThread) throws IOException {
 
 
         Document document = null;
@@ -50,20 +44,22 @@ public class JsoupPars {
             else if(errorURL.equals(mongoGroup.getUniversity().getUrl())) {
                 errorCountWithLikeURL = 0;
                 errorURL = "";
-                new Thread(() -> {
-                    try {
-                        Thread.sleep(2000);
-                        addSchedule(mongoGroup);
-                    } catch (IOException | InterruptedException ex) {
-                        logger.error("the second schedule addition failed. URL: " + mongoGroup.getUniversity().getUrl()); // first attempt
+                if(!errorThread) {
+                    new Thread(() -> {
                         try {
-                            Thread.sleep(2000);
-                            addSchedule(mongoGroup);
-                        } catch (InterruptedException | IOException exc) {
-                            logger.error("the third schedule addition failed. URL: " + mongoGroup.getUniversity().getUrl()); // second attempt
+                            Thread.sleep(120000);
+                            addSchedule(mongoGroup, true);
+                        } catch (IOException | InterruptedException ex) {
+                            logger.error("the second schedule addition failed. URL: " + mongoGroup.getUniversity().getUrl()); // first attempt
+                            try {
+                                Thread.sleep(120000);
+                                addSchedule(mongoGroup, true);
+                            } catch (InterruptedException | IOException exc) {
+                                logger.error("the third schedule addition failed. URL: " + mongoGroup.getUniversity().getUrl()); // second attempt
+                            }
                         }
-                    }
-                }).start();
+                    }).start();
+                }
                 throw new IOException(ERROR_URL2);
             }
         }

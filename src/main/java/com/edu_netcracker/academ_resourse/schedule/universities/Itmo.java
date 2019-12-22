@@ -1,6 +1,7 @@
 package com.edu_netcracker.academ_resourse.schedule.universities;
 
 import com.edu_netcracker.academ_resourse.schedule.model.University;
+import com.edu_netcracker.academ_resourse.schedule.utils.IItmoConstants;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -10,16 +11,12 @@ import java.util.Date;
 import java.util.Locale;
 
 @Document
-public class Itmo extends University {
+public class Itmo extends University implements IItmoConstants {
     @Field
     private String group;
     @Field
     private String schedule;
-    private static String URL1 = "http://www.ifmo.ru/ru/schedule/0/";
-    private static String URL2 = "/raspisanie_zanyatiy_";
-    private static String URL3 = ".htm";
-    private static String QUERY = "div.rasp_tabl_day";
-    private static String TABLE = "<table";
+
 
     public Itmo() {
     }

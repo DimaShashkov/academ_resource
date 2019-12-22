@@ -23,7 +23,7 @@ import java.util.Set;
 @Controller
 
 public class UserController {
-    final JsoupPars jsoupPars;
+    private final JsoupPars jsoupPars;
 
     private final UserService userService;
 
@@ -85,7 +85,7 @@ public class UserController {
     }
 
     private void addSchedule(MongoGroup mongoGroup) throws IOException {
-        jsoupPars.addSchedule(mongoGroup);
+        jsoupPars.addSchedule(mongoGroup, false);
         logger.info("the data has been added into model");
     }
 }

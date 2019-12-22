@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ScheduleController {
 
-    final Schedule schedule;
+    private final Schedule schedule;
 
     private final static Logger logger = LoggerFactory.getLogger(ScheduleController.class);
 

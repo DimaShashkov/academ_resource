@@ -54,7 +54,7 @@ import java.util.*;
 		return name;
 	}
 
-	public void setName(String groupName) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

@@ -33,5 +33,7 @@ td {
 
 .head  {
   pointer-events: auto;
-
+}
+p {
+    color: black;
 }

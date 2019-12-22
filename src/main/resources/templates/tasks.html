@@ -21,14 +21,14 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Academ <b>Resourse</b></a>
+        <p class="navbar-brand">Academ <b>Resourse</b></p>
         <div class="btn-group">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:50px;">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-item nav-link" th:href="@{profile}">Профиль</a>
@@ -68,10 +68,11 @@
     <div class="row">
         <div class="col-md-12 mx-auto">
             <div id="newJob" v-show="showTask()">
+                <div v-if="showNewJob">
                 <form action="/tasks" method="post">
                     <table class="table table-dark">
                         <tr>
-                            <th>Дата</th>
+                            <th>Дата сдачи</th>
                             <th>Предмет</th>
                             <th>Тип задания</th>
                             <th>Задание</th>
@@ -90,10 +91,12 @@
                         </tr>
                         <tr>
                             <td colspan="5"><input type="hidden" th:value="${_csrf.token}" name="_csrf">
-                                <button class="btn btn-secondary" type="submit">Save</button></td>
+                                <button class="btn btn-secondary" type="submit">Сохранить</button></td>
                         </tr>
                     </table>
                 </form>
+                <button class="btn btn-dark" @click="closeNewJob()">Закрыть</button>
+                </div>
             </div>
         </div>
     </div>
@@ -108,7 +111,7 @@
                   <thead>
                   <tr>
                       <th>№</th>
-                      <th>Дата</th>
+                      <th>Дата сдачи</th>
                       <th>Предмет</th>
                       <th>Задание</th>
                       <th>Ссылки</th>
